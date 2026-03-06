@@ -39,9 +39,39 @@
     });
   }
 
+  function shuffleArray(arr){
+    const a = arr.slice();
+    for(let i = a.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function initWorksGrid(){
+    const grid = document.getElementById("works-grid");
+    if(!grid) return;
+    const base = document.querySelector("main.subpage") ? "../" : "";
+    fetch(base + "assets/data/works-images.json")
+      .then(r=>r.json())
+      .then(list=>{
+        const shuffled = shuffleArray(list);
+        shuffled.forEach(name=>{
+          const img = document.createElement("img");
+          img.src = base + "assets/images/works/" + name;
+          img.alt = "小巴老師攝影 畢業照作品 幼兒園畢業照";
+          img.loading = "lazy";
+          img.className = "works-grid-item";
+          grid.appendChild(img);
+        });
+      })
+      .catch(()=>{ grid.innerHTML = "<p class=\"small\">無法載入作品列表，請稍後再試。</p>"; });
+  }
+
   document.addEventListener("DOMContentLoaded", ()=>{
     wireNav();
     initHeroCarousel();
     initMoodSliders();
+    initWorksGrid();
   });
 })();

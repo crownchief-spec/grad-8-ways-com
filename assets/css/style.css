@@ -116,7 +116,7 @@ p{margin:0 0 12px}
   .slider-counter{font-size:1.45rem; gap:10px}
 }
 
-.hero{position:relative; min-height:70vh; display:grid; align-items:center; overflow:hidden; background:#1f2328; z-index:0}
+.hero{position:relative; min-height:91vh; display:grid; align-items:center; overflow:hidden; background:#1f2328; z-index:0}
 .hero .hero-media{position:absolute; inset:0; z-index:-1}
 .hero .hero-media video{width:100%; height:100%; object-fit:cover; transform:scale(1.02)}
 .hero .hero-carousel{overflow:hidden}
@@ -160,7 +160,7 @@ p{margin:0 0 12px}
 .mood-section h2{margin-bottom:6px}
 .mood-section .small{max-width:640px}
 .mood-slider{width:min(100%, 960px); margin:20px auto 0; position:relative; overflow:hidden}
-.mood-track{position:relative; min-height:260px}
+.mood-track{position:relative; min-height:340px}
 .mood-slide{position:absolute; inset:0; opacity:0; transform:translateX(8%); transition:opacity .6s ease, transform .6s ease}
 .mood-slide.active{opacity:1; transform:translateX(0)}
 .mood-card{display:grid; grid-template-columns:1.1fr 1.2fr; gap:18px; background:#fff; border-radius:var(--r); box-shadow:var(--shadow); padding:22px; border:1px solid var(--line)}
@@ -172,3 +172,8 @@ p{margin:0 0 12px}
   .mood-card{grid-template-columns:1fr; padding:18px}
   .mood-section{padding:32px 0 42px}
 }
+
+/* 作品集頁 grid */
+.works-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:16px}
+.works-grid-item{width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; display:block; border-radius:var(--r2); border:1px solid var(--line); box-shadow:var(--shadow); background:#eee}
+@media(max-width:640px){.works-grid{grid-template-columns:repeat(2, 1fr); gap:10px}}
