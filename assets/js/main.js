@@ -39,9 +39,32 @@
     });
   }
 
+  function initYearbookCarousel(){
+    const carousel = document.getElementById("yearbookCarousel");
+    if(!carousel) return;
+    const track = carousel.querySelector(".yearbook-carousel-track");
+    const slides = carousel.querySelectorAll(".yearbook-carousel-slide");
+    const totalEl = carousel.querySelector("#yearbookTotal");
+    const currentEl = carousel.querySelector("#yearbookCurrent");
+    const prevBtn = carousel.querySelector(".yearbook-carousel-btn.prev");
+    const nextBtn = carousel.querySelector(".yearbook-carousel-btn.next");
+    if(!track || !slides.length) return;
+    let idx = 0;
+    if(totalEl) totalEl.textContent = slides.length;
+    function go(i){
+      idx = Math.max(0, Math.min(i, slides.length - 1));
+      track.style.transform = "translateX(-" + (idx * 100) + "%)";
+      if(currentEl) currentEl.textContent = idx + 1;
+    }
+    if(prevBtn) prevBtn.addEventListener("click", ()=> go(idx - 1));
+    if(nextBtn) nextBtn.addEventListener("click", ()=> go(idx + 1));
+    go(0);
+  }
+
   document.addEventListener("DOMContentLoaded", ()=>{
     wireNav();
     initHeroCarousel();
     initMoodSliders();
+    initYearbookCarousel();
   });
 })();
