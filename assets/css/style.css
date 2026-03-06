@@ -141,3 +141,25 @@ p{margin:0 0 12px}
 .subpage h1{font-size:clamp(24px,2.8vw,32px); margin-bottom:8px}
 .subpage h2{margin-top:28px; margin-bottom:10px}
 .subpage h3{margin-top:18px; margin-bottom:8px}
+
+.yearbook-timeline{list-style:decimal inside; margin:0 0 16px; padding-left:0}
+.yearbook-timeline li{margin-bottom:14px; line-height:1.65}
+.yearbook-timeline li:last-child{margin-bottom:0}
+
+.mood-section{background:#efeee2; padding:40px 0 54px}
+.mood-section.alt{background:#f6f1e7}
+.mood-section h2{margin-bottom:6px}
+.mood-section .small{max-width:640px}
+.mood-slider{width:min(100%, 960px); margin:20px auto 0; position:relative; overflow:hidden}
+.mood-track{position:relative; min-height:260px}
+.mood-slide{position:absolute; inset:0; opacity:0; transform:translateX(8%); transition:opacity .6s ease, transform .6s ease}
+.mood-slide.active{opacity:1; transform:translateX(0)}
+.mood-card{display:grid; grid-template-columns:1.1fr 1.2fr; gap:18px; background:#fff; border-radius:var(--r); box-shadow:var(--shadow); padding:22px; border:1px solid var(--line)}
+.mood-copy h3{margin:0 0 8px; font-size:18px}
+.mood-copy p{margin:0; font-size:14px; line-height:1.7}
+.mood-image-wrap{border-radius:var(--r2); overflow:hidden; border:1px solid var(--line); background:#ddd}
+.mood-image-wrap img{width:100%; height:100%; object-fit:cover; display:block}
+@media(max-width:840px){
+  .mood-card{grid-template-columns:1fr; padding:18px}
+  .mood-section{padding:32px 0 42px}
+}

@@ -24,8 +24,24 @@
     }, 4500);
   }
 
+  function initMoodSliders(){
+    const sliders = document.querySelectorAll("[data-mood-slider]");
+    sliders.forEach(slider=>{
+      const slides = slider.querySelectorAll(".mood-slide");
+      if(!slides.length) return;
+      let idx = 0;
+      slides[0].classList.add("active");
+      setInterval(()=>{
+        slides[idx].classList.remove("active");
+        idx = (idx + 1) % slides.length;
+        slides[idx].classList.add("active");
+      }, 6000);
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", ()=>{
     wireNav();
     initHeroCarousel();
+    initMoodSliders();
   });
 })();
