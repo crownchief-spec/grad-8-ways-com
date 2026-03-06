@@ -114,11 +114,14 @@ p{margin:0 0 12px}
   .slider-counter{font-size:1.45rem; gap:10px}
 }
 
-.hero{position:relative; min-height:70vh; display:grid; align-items:center; overflow:hidden; background:linear-gradient(135deg, #2c2416 0%, #4a3c2a 50%, #1f2328 100%); z-index:0}
-.hero .media{position:absolute; inset:0; z-index:-1}
-.hero .overlay{position:absolute; inset:0;
+.hero{position:relative; min-height:70vh; display:grid; align-items:center; overflow:hidden; background:#1f2328; z-index:0}
+.hero .hero-media{position:absolute; inset:0; z-index:-1}
+.hero .hero-carousel{overflow:hidden}
+.hero .hero-carousel img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1s ease}
+.hero .hero-carousel img.active{opacity:1; z-index:1}
+.hero .overlay{position:absolute; inset:0; z-index:1;
   background:radial-gradient(80% 60% at 50% 35%, rgba(0,0,0,.15) 0%, rgba(0,0,0,.5) 70%, rgba(0,0,0,.75) 100%),
-            linear-gradient(180deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,.65) 100%)}
+            linear-gradient(180deg, rgba(0,0,0,.2) 0%, rgba(0,0,0,.65) 100%); pointer-events:none}
 .hero .inner{position:relative; z-index:2; color:#fff; padding:72px 0 68px}
 .hero .title{max-width:24ch}
 .hero .subtitle{max-width:72ch; opacity:.92}

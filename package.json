@@ -1,0 +1,10 @@
+{
+  "name": "grad-8-ways-com",
+  "private": true,
+  "scripts": {
+    "fetch-icloud": "node scripts/fetch-icloud-photos.js"
+  },
+  "devDependencies": {
+    "puppeteer": "^23.0.0"
+  }
+}
