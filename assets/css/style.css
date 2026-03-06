@@ -145,6 +145,14 @@ p{margin:0 0 12px}
 .yearbook-timeline{list-style:decimal inside; margin:0 0 16px; padding-left:0}
 .yearbook-timeline li{margin-bottom:14px; line-height:1.65}
 .yearbook-timeline li:last-child{margin-bottom:0}
+.yearbook-timeline-box{background:#fff; padding:24px 22px}
+
+.yearbook-media{display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:16px}
+.yearbook-media-item{background:#fff; border-radius:var(--r2); overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow)}
+.yearbook-media-item img{width:100%; height:auto; display:block}
+.yearbook-media-item video{width:100%; height:auto; display:block; background:#000}
+.yearbook-media-caption{font-size:12px; color:var(--muted); margin:8px 12px 10px; line-height:1.4}
+@media(max-width:640px){.yearbook-media{grid-template-columns:1fr}}
 
 .mood-section{background:#efeee2; padding:40px 0 54px}
 .mood-section.alt{background:#f6f1e7}
