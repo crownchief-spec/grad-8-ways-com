@@ -44,6 +44,17 @@
 
         <div id="works-grid" class="works-grid" aria-label="畢業照作品相簿"></div>
 
+        <!-- Lightbox：點擊縮圖後顯示大圖，支援左右箭頭與鍵盤 -->
+        <div id="works-lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="作品大圖檢視" aria-hidden="true">
+          <div class="lightbox-bg" data-lightbox-close aria-label="關閉"></div>
+          <div class="lightbox-inner">
+            <img id="works-lightbox-img" src="" alt="" />
+          </div>
+          <button type="button" class="lightbox-prev" id="works-lightbox-prev" aria-label="上一張">‹</button>
+          <button type="button" class="lightbox-next" id="works-lightbox-next" aria-label="下一張">›</button>
+          <button type="button" class="lightbox-close" data-lightbox-close aria-label="關閉">×</button>
+        </div>
+
         <div class="actions" style="margin-top:32px">
           <a class="btn primary" href="https://line.me/ti/p/~0911252302" target="_blank" rel="noopener">加 Line 詢價</a>
           <a class="btn ghost" href="../index.html">回首頁</a>
