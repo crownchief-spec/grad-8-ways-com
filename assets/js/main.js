@@ -56,6 +56,16 @@
     const lightboxImg = document.getElementById("works-lightbox-img");
     const lightboxPrev = document.getElementById("works-lightbox-prev");
     const lightboxNext = document.getElementById("works-lightbox-next");
+    const categoryToTheme = {
+      "學士服個人畢業照": "Personal graduation photo",
+      "個人便服照": "Casual portrait",
+      "學生小組照": "Student group photo",
+      "學生與老師合照": "Teacher & students photo",
+      "上課照": "Classroom activity",
+      "團體大合照": "Group graduation photo",
+      "畢業典禮活動照": "Graduation ceremony",
+      "攝影師工作側拍照": "Behind the scenes"
+    };
     let worksList = [];
     let currentIndex = 0;
 
@@ -98,9 +108,12 @@
         worksList = shuffleArray(meta).map(item=>{
           const filename = item.newName || item.oldName;
           const thumbName = item.newName || item.oldName;
+          const category = item.category || "";
           return {
             thumbUrl: base + "assets/images/works/thumbs/" + thumbName,
             fullUrl: base + "assets/images/works/" + filename,
+            category: category,
+            theme: categoryToTheme[category] || category,
             alt: item.title ? (item.category + "｜" + item.title) : (item.category || "小巴老師攝影 畢業照作品"),
             title: item.title || item.category || ""
           };
@@ -118,6 +131,10 @@
           img.loading = "lazy";
           img.onerror = function(){ this.src = item.fullUrl; };
           wrap.appendChild(img);
+          const caption = document.createElement("span");
+          caption.className = "works-grid-caption";
+          caption.textContent = item.theme || item.category || "";
+          wrap.appendChild(caption);
           wrap.addEventListener("click", ()=> openLightbox(idx));
           wrap.addEventListener("keydown", e=>{ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openLightbox(idx); } });
           grid.appendChild(wrap);
