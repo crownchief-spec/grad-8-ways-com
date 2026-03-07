@@ -133,7 +133,7 @@
           wrap.appendChild(img);
           const caption = document.createElement("span");
           caption.className = "works-grid-caption";
-          caption.textContent = item.theme || item.category || "";
+          caption.textContent = item.category || "";
           wrap.appendChild(caption);
           wrap.addEventListener("click", ()=> openLightbox(idx));
           wrap.addEventListener("keydown", e=>{ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openLightbox(idx); } });
