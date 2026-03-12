@@ -145,10 +145,73 @@
       });
   }
 
+  function initCeremonyWorksLightbox(){
+    const grid = document.getElementById("ceremony-works-grid");
+    if(!grid) return;
+
+    const items = Array.from(grid.querySelectorAll(".works-grid-item img"));
+    if(!items.length) return;
+
+    const lightbox = document.getElementById("ceremony-lightbox");
+    const lightboxImg = document.getElementById("ceremony-lightbox-img");
+    const btnPrev = document.getElementById("ceremony-lightbox-prev");
+    const btnNext = document.getElementById("ceremony-lightbox-next");
+    let currentIndex = 0;
+
+    function openAt(index){
+      if(!lightbox || !lightboxImg) return;
+      currentIndex = (index + items.length) % items.length;
+      const img = items[currentIndex];
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt || "";
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+    function close(){
+      if(!lightbox) return;
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+    function goPrev(){ openAt(currentIndex - 1); }
+    function goNext(){ openAt(currentIndex + 1); }
+
+    items.forEach((img, idx)=>{
+      const clickTarget = img.closest(".works-grid-item") || img;
+      clickTarget.addEventListener("click", ()=> openAt(idx));
+      clickTarget.addEventListener("keydown", e=>{
+        if(e.key === "Enter" || e.key === " "){
+          e.preventDefault();
+          openAt(idx);
+        }
+      });
+      clickTarget.setAttribute("role", "button");
+      clickTarget.tabIndex = 0;
+    });
+
+    if(lightbox){
+      lightbox.querySelectorAll("[data-lightbox-close]").forEach(el=>{
+        el.addEventListener("click", close);
+      });
+      lightbox.addEventListener("click", close);
+    }
+    btnPrev?.addEventListener("click", e=>{ e.preventDefault(); e.stopPropagation(); goPrev(); });
+    btnNext?.addEventListener("click", e=>{ e.preventDefault(); e.stopPropagation(); goNext(); });
+
+    document.addEventListener("keydown", e=>{
+      if(!lightbox || !lightbox.classList.contains("is-open")) return;
+      if(e.key === "Escape"){ close(); }
+      if(e.key === "ArrowLeft"){ e.preventDefault(); goPrev(); }
+      if(e.key === "ArrowRight"){ e.preventDefault(); goNext(); }
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", ()=>{
     wireNav();
     initHeroCarousel();
     initMoodSliders();
     initWorksGrid();
+    initCeremonyWorksLightbox();
   });
 })();
