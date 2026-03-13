@@ -127,7 +127,11 @@
         return categoryContainers.class || defaultGrid;
       }
       if(c === "畢業典禮活動照"){
-        if(has("family") && (title.includes("家庭") || title.includes("家人") || title.includes("一家"))){
+        if(
+          has("family") &&
+          (title.includes("家庭") || title.includes("家人") || title.includes("一家") ||
+           title.includes("爸") || title.includes("媽") || title.includes("父母"))
+        ){
           return categoryContainers.family;
         }
         return categoryContainers.scene || defaultGrid;
