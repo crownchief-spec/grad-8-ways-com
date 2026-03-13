@@ -1,5 +1,6 @@
 (function(){
-  var base = (typeof location !== "undefined" && location.pathname.indexOf("/pages/") !== -1) ? "../" : "";
+  var pathname = typeof location !== "undefined" ? location.pathname : "";
+var base = (pathname.indexOf("/pages/") !== -1 || pathname.indexOf("/seo") === 0 || pathname.indexOf("/case") === 0) ? "../" : "";
 
   function inject(placeholderId, url, runNavAfter) {
     var el = document.getElementById(placeholderId);
