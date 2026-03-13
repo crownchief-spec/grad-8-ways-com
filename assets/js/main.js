@@ -49,8 +49,13 @@
   }
 
   function initWorksGrid(){
-    const grid = document.getElementById("works-grid");
-    if(!grid) return;
+    const defaultGrid = document.getElementById("works-grid");
+    const categoryContainers = {};
+    document.querySelectorAll("[data-works-category]").forEach(el=>{
+      const key = el.getAttribute("data-works-category");
+      if(key) categoryContainers[key] = el;
+    });
+    if(!defaultGrid && !Object.keys(categoryContainers).length) return;
     const base = document.querySelector("main.subpage") ? "../" : "";
     const lightbox = document.getElementById("works-lightbox");
     const lightboxImg = document.getElementById("works-lightbox-img");
@@ -102,6 +107,37 @@
       });
     }
 
+    function pickTargetContainer(item){
+      const c = item.category || "";
+      const title = item.title || "";
+      const has = key => !!categoryContainers[key];
+
+      if(Object.keys(categoryContainers).length === 0) return defaultGrid;
+
+      if(c === "學士服個人畢業照"){
+        return categoryContainers.gown || defaultGrid;
+      }
+      if(c === "個人便服照"){
+        return categoryContainers.casual || defaultGrid;
+      }
+      if(c === "學生與老師合照"){
+        return categoryContainers.teacher || defaultGrid;
+      }
+      if(c === "團體大合照" || c === "學生小組照"){
+        return categoryContainers.class || defaultGrid;
+      }
+      if(c === "畢業典禮活動照"){
+        if(has("family") && (title.includes("家庭") || title.includes("家人") || title.includes("一家"))){
+          return categoryContainers.family;
+        }
+        return categoryContainers.scene || defaultGrid;
+      }
+      if(c === "上課照" || c === "攝影師工作側拍照"){
+        return categoryContainers.scene || defaultGrid;
+      }
+      return categoryContainers.scene || defaultGrid || Object.values(categoryContainers)[0] || defaultGrid;
+    }
+
     fetch(base + "assets/data/works-photos-meta.json")
       .then(r=>r.json())
       .then(meta=>{
@@ -137,11 +173,18 @@
           wrap.appendChild(caption);
           wrap.addEventListener("click", ()=> openLightbox(idx));
           wrap.addEventListener("keydown", e=>{ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openLightbox(idx); } });
-          grid.appendChild(wrap);
+
+          const target = pickTargetContainer(item) || defaultGrid;
+          if(target){
+            target.appendChild(wrap);
+          }
         });
       })
       .catch(()=>{
-        grid.innerHTML = "<p class=\"small\">無法載入作品列表，請稍後再試。</p>";
+        const fallbackGrid = defaultGrid || Object.values(categoryContainers)[0];
+        if(fallbackGrid){
+          fallbackGrid.innerHTML = "<p class=\"small\">無法載入作品列表，請稍後再試。</p>";
+        }
       });
   }
 
