@@ -127,8 +127,8 @@ p{margin:0 0 12px}
 @media(max-width:980px){.footer-grid{grid-template-columns:1fr}}
 
 /* Footer four blocks */
-.footer-grid--four{grid-template-columns:repeat(4, 1fr); gap:28px 20px; padding:32px 0 24px}
-@media(max-width:980px){.footer-grid--four{grid-template-columns:1fr 1fr; gap:24px 16px}}
+.footer-grid--four{grid-template-columns:repeat(4, 1fr); gap:24px 18px; padding:28px 0 20px}
+@media(max-width:980px){.footer-grid--four{grid-template-columns:1fr 1fr; gap:20px 14px}}
 @media(max-width:520px){.footer-grid--four{grid-template-columns:1fr}}
 .footer-block{min-width:0}
 .footer-title{font-size:15px; font-weight:700; color:#fff; margin:0 0 12px; letter-spacing:.02em}
@@ -139,9 +139,25 @@ p{margin:0 0 12px}
 .footer-links a{font-size:13px; color:rgba(255,255,255,.88)}
 .footer-links a:hover{color:#ffd9a4}
 .footer-links--contact a{display:inline-block}
-.footer-links--sitemap .footer-nav-label{list-style:none; margin-top:12px; font-weight:700; color:rgba(255,255,255,.95)}
-.footer-links--sitemap .footer-nav-label:first-child{margin-top:0}
-.footer-links--sitemap li:first-child{margin-top:0}
+.footer-links--nav-inline{
+  display:flex;
+  flex-wrap:wrap;
+  column-gap:18px;
+  row-gap:4px;
+}
+.footer-links--nav-inline li{
+  margin:0;
+  flex:0 0 48%;
+}
+@media(max-width:640px){
+  .footer-links--nav-inline{
+    column-gap:12px;
+    row-gap:4px;
+  }
+  .footer-links--nav-inline li{
+    flex:0 0 auto;
+  }
+}
 .footer-actions{margin-top:14px}
 .footer-actions .btn{font-size:13px; padding:10px 16px}
 .footer-seo{margin-top:20px; padding-top:20px; border-top:1px solid rgba(255,255,255,.15)}
@@ -318,6 +334,39 @@ p{margin:0 0 12px}
 @media (max-width: 1024px){ .works-grid{ column-count: 4 } }
 @media (max-width: 768px){ .works-grid{ column-count: 3; column-gap: 12px } .works-grid-item{ margin-bottom: 12px } }
 @media (max-width: 640px){ .works-grid{ column-count: 2; column-gap: 10px } .works-grid-item{ margin-bottom: 10px } }
+
+/* 畢業典禮作品集：更接近滿版的 Mosaic 牆 */
+.works-grid--ceremony{
+  column-count: 4;
+  column-gap: 18px;
+  margin: 0 -8px;
+}
+.works-grid--ceremony .works-grid-item{
+  border-radius: 14px;
+  border: none;
+  box-shadow: none;
+  background: #000;
+}
+.works-grid--ceremony .works-grid-item img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.works-grid--ceremony .works-grid-caption{
+  font-size: 11px;
+  padding: 4px 2px 0;
+  text-align: left;
+  color: rgba(255,255,255,.85);
+}
+@media (min-width: 1200px){
+  .works-grid--ceremony{ column-count: 4; }
+}
+@media (max-width: 1024px){
+  .works-grid--ceremony{ column-count: 3; column-gap: 16px; margin:0 -6px; }
+}
+@media (max-width: 768px){
+  .works-grid--ceremony{ column-count: 2; column-gap: 12px; margin:0 -4px; }
+}
 
 /* Lightbox */
 .lightbox{
