@@ -259,6 +259,17 @@ p{margin:0 0 12px}
 
 .anchor{scroll-margin-top:80px}
 
+/* 畢業照作品頁：影片／照片切換 */
+.portfolio-tabs{display:flex; gap:0; margin-top:20px; border-bottom:2px solid var(--line)}
+.portfolio-tab{
+  padding:12px 20px; font-size:15px; font-weight:700; border:none; background:transparent; color:var(--muted);
+  cursor:pointer; border-bottom:3px solid transparent; margin-bottom:-2px; transition:color .2s, border-color .2s
+}
+.portfolio-tab:hover{color:var(--text)}
+.portfolio-tab.is-active{color:var(--wood-dark); border-bottom-color:var(--wood)}
+.portfolio-panel[aria-hidden="true"]{display:none}
+.portfolio-panel[aria-hidden="false"]{display:block}
+
 .subpage .section.tight:first-of-type{padding-top:32px}
 .subpage h1{font-size:clamp(24px,2.8vw,32px); margin-bottom:8px}
 .subpage h2{margin-top:28px; margin-bottom:10px}

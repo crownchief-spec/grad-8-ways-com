@@ -254,11 +254,30 @@
     });
   }
 
+  function initPortfolioTabs(){
+    const tabs = document.querySelectorAll(".portfolio-tab[data-portfolio-tab]");
+    const panels = document.querySelectorAll(".portfolio-panel");
+    if(!tabs.length || !panels.length) return;
+    tabs.forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const key = btn.getAttribute("data-portfolio-tab");
+        tabs.forEach(t=>{ t.classList.remove("is-active"); t.setAttribute("aria-selected", "false"); });
+        btn.classList.add("is-active");
+        btn.setAttribute("aria-selected", "true");
+        panels.forEach(p=>{
+          const show = p.id === "portfolio-" + key;
+          p.setAttribute("aria-hidden", show ? "false" : "true");
+        });
+      });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", ()=>{
     wireNav();
     initHeroCarousel();
     initMoodSliders();
     initWorksGrid();
     initCeremonyWorksLightbox();
+    initPortfolioTabs();
   });
 })();
