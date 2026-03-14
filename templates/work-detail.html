@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{metaTitle}}</title>
+  <link rel="icon" type="image/png" href="../../assets/images/logo/eightways-logo-square-gold.png" />
+  <meta name="description" content="{{metaDescription}}" />
+  <link rel="canonical" href="{{shareUrl}}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{metaTitle}}" />
+  <meta property="og:description" content="{{metaDescription}}" />
+  <meta property="og:image" content="{{ogImage}}" />
+  <meta property="og:url" content="{{shareUrl}}" />
+  <meta property="og:locale" content="zh_TW" />
+  <meta name="robots" content="index, follow" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+</head>
+<body>
+  <div id="site-header-placeholder"></div>
+
+  <main class="subpage work-detail" id="top">
+    <article class="section tight">
+      <div class="container" style="max-width:840px">
+        <header class="work-detail-header">
+          <h1>{{title}}</h1>
+          <p class="work-detail-meta">
+            <time datetime="{{dateISO}}">{{date}}</time>
+            {{categoryBlock}}{{subcategoryBlock}}
+          </p>
+        </header>
+
+        {{excerptBlock}}
+
+        <div class="work-cover-wrap">
+          <img src="../../{{coverPath}}" alt="{{title}}" class="work-cover-img" loading="eager" />
+        </div>
+
+        {{bodyBlock}}
+
+        {{galleryBlock}}
+
+        {{videoBlock}}
+
+        <footer class="work-detail-footer">
+          <p class="small" style="margin-bottom:12px">分享作品</p>
+          <div class="work-share" data-work-share data-share-url="{{shareUrl}}" data-share-title="{{title}}">
+            <a class="btn ghost work-share-btn" href="{{facebookShareUrl}}" target="_blank" rel="noopener" aria-label="分享到 Facebook">Facebook</a>
+            <a class="btn ghost work-share-btn" href="{{lineShareUrl}}" target="_blank" rel="noopener" aria-label="分享到 LINE">LINE</a>
+            <a class="btn ghost work-share-btn" href="{{twitterShareUrl}}" target="_blank" rel="noopener" aria-label="分享到 X">X</a>
+            <button type="button" class="btn ghost work-share-btn" data-copy-link aria-label="複製連結">複製連結</button>
+          </div>
+        </footer>
+
+        <div class="actions" style="margin-top:32px">
+          <a class="btn ghost" href="../works.html">回作品總覽</a>
+          <a class="btn ghost" href="../index.html">回首頁</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <div id="site-footer-placeholder"></div>
+
+  <script src="../../assets/js/include-components.js" defer></script>
+  <script src="../../assets/js/main.js" defer></script>
+  <script src="../../assets/js/work-share.js" defer></script>
+</body>
+</html>

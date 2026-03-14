@@ -403,3 +403,62 @@ p{margin:0 0 12px}
   .lightbox .lightbox-prev, .lightbox .lightbox-next{ width: 48px; height: 48px; font-size: 20px; left: 10px; right: 10px; }
   .lightbox .lightbox-close{ top: 12px; right: 12px; width: 40px; height: 40px; font-size: 18px; }
 }
+
+/* ========== 攝影作品文章系統 ========== */
+.hidden{ display: none !important; }
+
+.work-filters{ display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 24px; }
+.work-filter-btn{
+  padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line);
+  background: var(--surface); font-weight: 700; font-size: 14px; cursor: pointer;
+  color: var(--text); transition: background .2s, border-color .2s, color .2s;
+}
+.work-filter-btn:hover{ background: rgba(184,137,91,.1); border-color: rgba(184,137,91,.3); color: var(--wood-dark); }
+.work-filter-btn.active{ background: var(--wood); color: #1b1208; border-color: var(--wood); }
+
+.works-list{ gap: 24px; }
+@media (max-width: 980px){ .works-list{ grid-template-columns: repeat(2, 1fr); gap: 20px; } }
+@media (max-width: 640px){ .works-list{ grid-template-columns: 1fr; gap: 20px; } }
+
+.work-card{ break-inside: avoid; }
+.work-card-link{
+  display: block; background: var(--surface); border-radius: var(--r); overflow: hidden;
+  border: 1px solid var(--line); box-shadow: var(--shadow);
+  text-decoration: none; color: inherit; transition: transform .25s ease, box-shadow .25s ease;
+}
+.work-card-link:hover{ transform: translateY(-4px); box-shadow: 0 14px 40px rgba(0,0,0,.12); }
+.work-card-cover{ aspect-ratio: 4/3; overflow: hidden; background: #eee; }
+.work-card-cover img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.work-card-body{ padding: 18px; }
+.work-card-title{ font-size: 17px; margin: 0 0 8px; line-height: 1.35; }
+.work-card-excerpt{ margin: 0 0 8px; color: var(--muted); }
+.work-card-date{ margin: 0 0 8px; color: var(--muted); }
+.work-card-badges{ margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.work-badge{
+  display: inline-block; padding: 4px 10px; border-radius: 999px;
+  font-size: 12px; font-weight: 600; background: rgba(184,137,91,.14); color: var(--wood-dark);
+}
+
+/* 單篇作品頁 */
+.work-detail-header{ margin-bottom: 20px; }
+.work-detail-meta{ font-size: 14px; color: var(--muted); margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.work-detail-meta time{ font-weight: 600; }
+.work-excerpt{ margin-bottom: 20px; padding: 16px 20px; background: rgba(255,255,255,.8); border-radius: var(--r2); border-left: 4px solid var(--wood); }
+.work-cover-wrap{ margin: 24px 0; border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line); }
+.work-cover-img{ width: 100%; height: auto; display: block; }
+.work-body{ margin: 24px 0; }
+.work-body.prose p{ margin-bottom: 12px; }
+.work-body.prose ul{ margin: 0 0 12px; padding-left: 20px; }
+.work-gallery{
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 28px 0;
+}
+.work-gallery-item{ border-radius: var(--r2); overflow: hidden; border: 1px solid var(--line); background: #eee; }
+.work-gallery-item img{ width: 100%; height: auto; display: block; }
+@media (min-width: 768px){ .work-gallery{ grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+.work-video-wrap{ margin: 28px 0; }
+.work-video-inner{ position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--r); border: 1px solid var(--line); background: #000; }
+.work-video-inner iframe{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+.work-detail-footer{ margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); }
+.work-share{ display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.work-share-btn{ font-size: 14px; }
+.work-list-empty{ margin-top: 24px; color: var(--muted); }
