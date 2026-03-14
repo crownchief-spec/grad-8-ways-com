@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>客戶專屬頁面｜小巴老師｜8-ways.com</title>
+  <link rel="icon" type="image/png" href="../assets/images/logo/eightways-logo-square-gold.png" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <div id="site-header-placeholder"></div>
+  <main class="subpage project-entry" id="top">
+    <div class="container" style="max-width:480px">
+      <header class="project-entry-header">
+        <p class="kicker">客戶專屬</p>
+        <h1>客戶專屬頁面</h1>
+        <p class="project-entry-desc">請輸入您的學校名稱或專屬查詢碼，查看拍攝與校稿進度。</p>
+      </header>
+      <form class="project-query-form" id="projectQueryForm" novalidate>
+        <label for="projectQuery" class="visually-hidden">學校名稱或查詢碼</label>
+        <input type="text" id="projectQuery" name="q" class="project-query-input" placeholder="例如：1208、小太陽幼兒園" autocomplete="off" required />
+        <button type="submit" class="btn primary project-query-btn">查詢</button>
+      </form>
+      <p class="project-query-error hidden" id="projectQueryError" role="alert">查無對應資料，請確認輸入的學校名稱或查詢碼是否正確。</p>
+      <div class="actions" style="margin-top:32px">
+        <a class="btn ghost" href="../index.html">回首頁</a>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer-placeholder"></div>
+  <script src="../assets/js/include-components.js" defer></script>
+  <script src="../assets/js/main.js" defer></script>
+  <script>
+(function() {
+  var form = document.getElementById('projectQueryForm');
+  var input = document.getElementById('projectQuery');
+  var errEl = document.getElementById('projectQueryError');
+  var index = null;
+
+  function showError() {
+    errEl.classList.remove('hidden');
+    input.setAttribute('aria-invalid', 'true');
+  }
+  function hideError() {
+    errEl.classList.add('hidden');
+    input.removeAttribute('aria-invalid');
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    hideError();
+    var q = (input.value || '').trim();
+    if (!q) {
+      input.focus();
+      return;
+    }
+    if (!index) {
+      showError();
+      return;
+    }
+    var slug = index[q] || index[q.toLowerCase()];
+    if (slug) {
+      location.href = slug + '.html';
+      return;
+    }
+    showError();
+    input.focus();
+  });
+
+  fetch('projects-index.json')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      index = data;
+    })
+    .catch(function() {
+      index = {};
+    });
+})();
+  </script>
+</body>
+</html>

@@ -48,7 +48,7 @@
         <div class="yearbook-media">
           <div class="yearbook-media-item">
             <p class="yearbook-media-caption">畢業紀念冊實體介紹</p>
-            <video src="../assets/images/graduation-album/graduation-yearbook-physical-intro.mp4" controls playsinline preload="metadata" title="畢業紀念冊實體介紹"></video>
+            <video src="../assets/images/graduation-album/graduation-yearbook-physical-intro.mp4" controls playsinline preload="auto" muted title="畢業紀念冊實體介紹" data-poster-first-frame></video>
           </div>
           <div class="yearbook-media-item">
             <img src="../assets/images/graduation-album/graduation-yearbook-physical-1.jpg" alt="畢業紀念冊實體1" loading="lazy" />
@@ -61,7 +61,7 @@
           </div>
           <div class="yearbook-media-item">
             <p class="yearbook-media-caption">證書夾實體介紹</p>
-            <video src="../assets/images/graduation-album/graduation-certificate-holder-intro.mp4" controls playsinline preload="metadata" title="證書夾實體介紹"></video>
+            <video src="../assets/images/graduation-album/graduation-certificate-holder-intro.mp4" controls playsinline preload="auto" muted title="證書夾實體介紹" data-poster-first-frame></video>
           </div>
           <div class="yearbook-media-item">
             <img src="../assets/images/graduation-album/graduation-certificate-holder-1.jpg" alt="證書夾1" loading="lazy" />
@@ -91,5 +91,25 @@
 
   <script src="../assets/js/include-components.js" defer></script>
   <script src="../assets/js/main.js" defer></script>
+  <script>
+(function() {
+  function setPosterFromFirstFrame(video) {
+    if (video.poster) return;
+    video.currentTime = 0.001;
+    video.addEventListener('loadeddata', function onLoaded() {
+      video.removeEventListener('loadeddata', onLoaded);
+      try {
+        var c = document.createElement('canvas');
+        c.width = video.videoWidth;
+        c.height = video.videoHeight;
+        var ctx = c.getContext('2d');
+        ctx.drawImage(video, 0, 0);
+        video.poster = c.toDataURL('image/jpeg', 0.85);
+      } catch (e) {}
+    }, { once: true });
+  }
+  document.querySelectorAll('video[data-poster-first-frame]').forEach(setPosterFromFirstFrame);
+})();
+  </script>
 </body>
 </html>

@@ -2,6 +2,7 @@
   var pathname = typeof location !== "undefined" ? location.pathname : "";
 var base = "";
   if (pathname.indexOf("/pages/work/") !== -1) base = "../../";
+  else if (pathname.indexOf("/projects/") !== -1) base = "../";
   else if (pathname.indexOf("/pages/") !== -1 || pathname.indexOf("/seo") === 0 || pathname.indexOf("/case") === 0) base = "../";
 
   function inject(placeholderId, url, runNavAfter) {

@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "fetch-icloud": "node scripts/fetch-icloud-photos.js",
-    "build:works": "node scripts/build-works.js"
+    "build:works": "node scripts/build-works.js",
+    "build:projects": "node scripts/build-projects.js"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
