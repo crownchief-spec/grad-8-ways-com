@@ -2,7 +2,7 @@
 # 從畢業紀念冊影片擷取第一格畫面作為 poster，播放前可顯示首幀不黑屏
 set -e
 DIR="$(cd "$(dirname "$0")/.." && pwd)"
-MEDIA="$DIR/assets/images/graduation-yearbook"
+MEDIA="$DIR/assets/images/graduation-album"
 cd "$MEDIA"
 for f in *.mp4; do
   [ -f "$f" ] || continue

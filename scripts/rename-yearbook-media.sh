@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Rename graduation-yearbook media to SEO-friendly English, resize images.
+# Rename graduation-album media to SEO-friendly English, resize images.
 # Run from project root: bash scripts/rename-yearbook-media.sh
 
 set -e
-DIR="assets/images/graduation-yearbook"
+DIR="assets/images/graduation-album"
 MAX_WIDTH=1200
 
 cd "$(dirname "$0")/.."
