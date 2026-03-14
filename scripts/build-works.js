@@ -121,7 +121,7 @@ function buildDetailHtml(work) {
   const shareUrl = `${SITE_BASE}/pages/work/${work.slug}.html`;
   const encodedUrl = encodeURIComponent(shareUrl);
   const encodedTitle = encodeURIComponent(work.title);
-  const metaTitle = `${work.title}｜小巴老師｜8-ways.com`;
+  const metaTitle = `幼兒園畢業照攝影 畢業典禮攝影｜${work.title}｜小巴老師｜8-ways.com`;
   const metaDesc = work.excerpt ? work.excerpt.slice(0, 160) : work.title;
   const ogImage = pathToAbsolute(work.cover);
 

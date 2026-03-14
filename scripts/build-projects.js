@@ -160,7 +160,7 @@ function buildDetailHtml(p) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>${escapeHtml(projectTitle)}</title>
+  <title>幼兒園畢業照攝影 畢業典禮攝影｜${escapeHtml(projectTitle)}｜小巴老師｜8-ways.com</title>
   <link rel="icon" type="image/png" href="../assets/images/logo/eightways-logo-square-gold.png" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   ${noindex ? '<meta name="robots" content="noindex, nofollow" />' : ''}
