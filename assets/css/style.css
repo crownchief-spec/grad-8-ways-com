@@ -474,6 +474,7 @@ p{margin:0 0 12px}
 .project-query-input{ width: 100%; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--r2); font-size: 16px; background: var(--surface); }
 .project-query-input:focus{ outline: none; box-shadow: var(--focus); }
 .project-query-btn{ width: 100%; }
+.project-query-required{ color: var(--text-muted, #666); font-size: 14px; margin-top: 12px; }
 .project-query-error{ color: #c00; font-size: 14px; margin-top: 12px; }
 
 .project-header{ margin-bottom: 28px; }

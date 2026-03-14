@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>客戶專屬頁面</title>
+  <link rel="icon" type="image/png" href="../assets/images/logo/eightways-logo-square-gold.png" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <meta name="robots" content="noindex, nofollow" />
+</head>
+<body data-project-slug="README" data-project-protected="false">
+
+  <div id="site-header-placeholder"></div>
+  <main class="subpage project-detail" id="top">
+    <div class="container" style="max-width:900px">
+      <header class="project-header">
+        <p class="kicker">客戶專屬頁面</p>
+        <h1>客戶專屬頁面</h1>
+        
+      </header>
+      <div class="project-overview">
+        
+        
+        
+        
+        
+        
+        
+        <div class="project-card project-log-card"><h3>更新日誌</h3><div class="project-log prose"><h1>客戶專屬頁面</h1>
+<p>此資料夾放置各學校專屬頁的 Markdown 來源檔。</p>
+<h2>新增一間學校</h2>
+<ol>
+<li>複製 <code>_template.md</code> 並重新命名（英文 slug，例如 <code>forest-school.md</code>）。</li>
+<li>填寫 front matter，必填：<code>slug</code>、<code>school</code>、<code>title</code>。<code>project_password</code> 為可選：有填則須在密碼輸入頁驗證後進入；不填則僅能由直接網址 <code>/projects/&lt;slug&gt;.html</code> 進入。</li>
+<li>在專案根目錄執行：<strong><code>npm run build:projects</code></strong>。</li>
+<li>建置後會更新 <code>projects/projects-index.json</code>（僅含已填 <code>project_password</code> 的專案）並產生 <code>projects/&lt;slug&gt;.html</code>。</li>
+</ol>
+<h2>欄位說明</h2>
+<p>見 <code>_template.md</code> 內註解。有資料的欄位才會顯示在頁面上。</p>
+</div></div>
+      </div>
+      <div class="actions" style="margin-top:32px">
+        <a class="btn ghost" href="index.html">回密碼輸入頁</a>
+        <a class="btn ghost" href="../index.html">回首頁</a>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer-placeholder"></div>
+  <script src="../assets/js/include-components.js" defer></script>
+  <script src="../assets/js/main.js" defer></script>
+</body>
+</html>

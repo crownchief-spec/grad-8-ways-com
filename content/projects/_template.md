@@ -1,7 +1,7 @@
 ---
 title:
 school:
-project_code:
+project_password:   # 可選。有填則須輸入密碼才能進入；不填則僅能由直接網址進入
 slug:
 project_year:
 

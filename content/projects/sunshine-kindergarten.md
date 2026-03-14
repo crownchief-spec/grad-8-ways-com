@@ -1,7 +1,7 @@
 ---
 title: "小太陽幼兒園｜客戶專屬頁面"
 school: "小太陽幼兒園"
-project_code: "1208"
+project_password: "1208"
 slug: "sunshine-kindergarten"
 project_year: "2026"
 

@@ -53,11 +53,11 @@ function parseProject(filePath) {
   const raw = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(raw);
   const slug = data.slug || path.basename(filePath, '.md');
-  const project_code = data.project_code != null ? String(data.project_code).trim() : '';
+  const project_password = data.project_password != null ? String(data.project_password).trim() : '';
   const school = data.school ? String(data.school).trim() : '';
   return {
     slug,
-    project_code,
+    project_password,
     school,
     ...data,
     body: content ? content.trim() : '',
@@ -67,8 +67,10 @@ function parseProject(filePath) {
 function buildIndex(projects) {
   const lookup = {};
   projects.forEach((p) => {
-    if (p.project_code) lookup[p.project_code] = p.slug;
-    if (p.school) lookup[p.school] = p.slug;
+    if (p.project_password != null && String(p.project_password).trim() !== '') {
+      lookup[String(p.project_password).trim()] = p.slug;
+      if (p.school) lookup[String(p.school).trim()] = p.slug;
+    }
   });
   return lookup;
 }
@@ -78,7 +80,7 @@ function buildDetailHtml(p) {
 
   let basicRows = '';
   if (p.school) basicRows += renderRow('學校名稱', p.school);
-  if (p.project_code) basicRows += renderRow('專屬查詢碼', p.project_code);
+  if (p.project_password) basicRows += renderRow('專屬密碼', p.project_password);
   if (p.contact_name) basicRows += renderRow('聯絡窗口', p.contact_name);
   if (p.contact_info) basicRows += renderRow('聯絡方式', p.contact_info);
   if (p.project_year) basicRows += renderRow('專案年份', p.project_year);
@@ -137,6 +139,21 @@ function buildDetailHtml(p) {
   const projectSubtitle = [p.service_category, p.project_year].filter(Boolean).join(' · ') || '';
 
   const noindex = p.noindex !== false;
+  const isProtected = !!(p.project_password && String(p.project_password).trim());
+
+  const guardScript = isProtected
+    ? `<script>
+(function(){
+  var slug = ${JSON.stringify(p.slug)};
+  try {
+    var raw = sessionStorage.getItem('verified_projects');
+    var list = raw ? JSON.parse(raw) : [];
+    if (list.indexOf(slug) >= 0) return;
+  } catch (e) {}
+  location.replace('index.html?required=' + encodeURIComponent(slug) + '&msg=' + encodeURIComponent('此頁面需要輸入密碼才能查看'));
+})();
+</script>`
+    : '';
 
   return `<!doctype html>
 <html lang="zh-Hant">
@@ -148,7 +165,8 @@ function buildDetailHtml(p) {
   <link rel="stylesheet" href="../assets/css/style.css" />
   ${noindex ? '<meta name="robots" content="noindex, nofollow" />' : ''}
 </head>
-<body>
+<body data-project-slug="${escapeHtml(p.slug)}" data-project-protected="${isProtected ? 'true' : 'false'}">
+${guardScript}
   <div id="site-header-placeholder"></div>
   <main class="subpage project-detail" id="top">
     <div class="container" style="max-width:900px">
@@ -168,7 +186,7 @@ function buildDetailHtml(p) {
         ${logBlock}
       </div>
       <div class="actions" style="margin-top:32px">
-        <a class="btn ghost" href="index.html">回查詢頁</a>
+        <a class="btn ghost" href="index.html">回密碼輸入頁</a>
         <a class="btn ghost" href="../index.html">回首頁</a>
       </div>
     </div>
