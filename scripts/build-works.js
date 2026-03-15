@@ -30,6 +30,7 @@ const SITE_BASE = 'https://grad.8-ways.com';
 const CATEGORY_LABELS = {
   'graduation-photo': '畢業照攝影',
   'graduation-ceremony': '畢業典禮攝影',
+  'family-graduation': '家庭畢業照',
   'school-event': '學校活動攝影',
   'family-photo': '家庭寫真',
 };
@@ -46,6 +47,9 @@ const SUBCATEGORY_LABELS = {
   'outdoor-campus': '戶外草地外景 × 校園情境拍攝',
   'outdoor-campus-family': '戶外草地外景 × 校園情境拍攝 × 家庭合影',
   'indoor-classroom': '全室內 × 上課情境照',
+  'indoor-styled-night-camp': '全室內 × 白色／粉紅背景 × 夜間場景 × 露營風',
+  'tea-ceremony-green-campus': '茶道 × 台中 × 草地 × 樹木',
+  'camping-family-travel': '露營 × 家庭 × 旅遊',
   'campus-life': '校園生活',
   'event': '活動',
 };
