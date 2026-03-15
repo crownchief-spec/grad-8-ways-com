@@ -23,7 +23,9 @@ try {
 
 const CONTENT_DIR = path.join(__dirname, '../content/articles');
 const BLOG_DIR = path.join(__dirname, '../blog');
+const DATA_DIR = path.join(__dirname, '../assets/data');
 const SITE_BASE = 'https://grad.8-ways.com';
+const LATEST_POSTS_COUNT = 5;
 
 function ensureDir(dir) {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
@@ -202,8 +204,10 @@ function buildArticleHtml(a) {
 
 function main() {
   ensureDir(BLOG_DIR);
+  ensureDir(DATA_DIR);
   const files = listMarkdown(CONTENT_DIR);
   const articles = files.map(parseArticle);
+  const sorted = [...articles].sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
 
   fs.writeFileSync(path.join(BLOG_DIR, 'index.html'), buildIndexHtml(articles), 'utf8');
   console.log('已寫入 blog/index.html');
@@ -212,6 +216,15 @@ function main() {
     fs.writeFileSync(path.join(BLOG_DIR, a.slug + '.html'), buildArticleHtml(a), 'utf8');
     console.log('  生成 blog/' + a.slug + '.html');
   });
+
+  const latest = sorted.slice(0, LATEST_POSTS_COUNT).map((a) => ({
+    title: a.title,
+    excerpt: (a.description || '').slice(0, 80) + ((a.description || '').length > 80 ? '…' : ''),
+    slug: a.slug,
+  }));
+  fs.writeFileSync(path.join(DATA_DIR, 'blog-latest.json'), JSON.stringify({ posts: latest }, null, 2), 'utf8');
+  console.log('已寫入 assets/data/blog-latest.json，最新', latest.length, '篇');
+
   console.log('Blog 建置完成，共', articles.length, '篇文章。');
 }
 

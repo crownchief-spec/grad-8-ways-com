@@ -22,6 +22,36 @@ var base = "";
             });
           }
         }
+        if (placeholderId === "site-footer-placeholder") {
+          var list = document.getElementById("footerBlogPreview");
+          if (list) {
+            fetch(base + "assets/data/blog-latest.json")
+              .then(function(r) { return r.json(); })
+              .then(function(data) {
+                var posts = data && data.posts ? data.posts : [];
+                list.innerHTML = "";
+                posts.forEach(function(p) {
+                  var li = document.createElement("li");
+                  var a = document.createElement("a");
+                  a.href = "/blog/" + (p.slug || "") + ".html";
+                  a.textContent = p.title || "";
+                  a.title = p.excerpt || p.title || "";
+                  li.appendChild(a);
+                  if (p.excerpt) {
+                    var span = document.createElement("span");
+                    span.className = "footer-blog-excerpt small";
+                    span.textContent = " " + p.excerpt;
+                    li.appendChild(span);
+                  }
+                  list.appendChild(li);
+                });
+                if (posts.length === 0) list.innerHTML = "<li class=\"small\"><a href=\"/blog/\">前往攝影資訊</a></li>";
+              })
+              .catch(function() {
+                list.innerHTML = "<li class=\"small\"><a href=\"/blog/\">前往攝影資訊</a></li>";
+              });
+          }
+        }
       })
       .catch(function() {});
   }

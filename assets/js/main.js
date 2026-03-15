@@ -254,6 +254,61 @@
     });
   }
 
+  function initWorkDetailGalleryLightbox(){
+    const main = document.querySelector("main.work-detail");
+    if(!main) return;
+    const gallery = main.querySelector(".work-gallery");
+    if(!gallery) return;
+    const items = gallery.querySelectorAll(".work-gallery-item img");
+    if(!items.length) return;
+    const lightbox = document.getElementById("work-detail-lightbox");
+    const lightboxImg = document.getElementById("work-detail-lightbox-img");
+    const btnPrev = document.getElementById("work-detail-lightbox-prev");
+    const btnNext = document.getElementById("work-detail-lightbox-next");
+    const srcs = Array.from(items).map(function(img){ return img.src || img.getAttribute("src"); }).filter(Boolean);
+    let currentIndex = 0;
+
+    function openAt(index){
+      if(!lightbox || !lightboxImg) return;
+      currentIndex = (index + srcs.length) % srcs.length;
+      lightboxImg.src = srcs[currentIndex];
+      lightboxImg.alt = "";
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+    function close(){
+      if(!lightbox) return;
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+    function goPrev(){ openAt(currentIndex - 1); }
+    function goNext(){ openAt(currentIndex + 1); }
+
+    items.forEach(function(img, idx){
+      img.parentElement.style.cursor = "pointer";
+      img.parentElement.setAttribute("role", "button");
+      img.parentElement.setAttribute("tabIndex", "0");
+      img.parentElement.setAttribute("aria-label", "查看大圖");
+      img.parentElement.addEventListener("click", function(){ openAt(idx); });
+      img.parentElement.addEventListener("keydown", function(e){ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openAt(idx); } });
+    });
+    if(lightbox){
+      lightbox.querySelectorAll("[data-work-detail-lightbox-close]").forEach(function(el){ el.addEventListener("click", close); });
+      lightbox.addEventListener("click", close);
+      lightbox.querySelector(".lightbox-inner")?.addEventListener("click", function(e){ e.stopPropagation(); });
+    }
+    btnPrev?.addEventListener("click", function(e){ e.preventDefault(); e.stopPropagation(); goPrev(); });
+    btnNext?.addEventListener("click", function(e){ e.preventDefault(); e.stopPropagation(); goNext(); });
+    document.addEventListener("keydown", function(e){
+      if(!lightbox || !lightbox.classList.contains("is-open")) return;
+      if(e.key === "Escape"){ close(); }
+      if(e.key === "ArrowLeft"){ e.preventDefault(); goPrev(); }
+      if(e.key === "ArrowRight"){ e.preventDefault(); goNext(); }
+    });
+  }
+
   function initVideoPosterFromFirstFrame(){
     document.querySelectorAll("video[data-poster-first-frame]").forEach(function(video){
       if(video.poster) return;
@@ -278,6 +333,7 @@
     initMoodSliders();
     initWorksGrid();
     initCeremonyWorksLightbox();
+    initWorkDetailGalleryLightbox();
     initVideoPosterFromFirstFrame();
   });
 })();

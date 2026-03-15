@@ -59,7 +59,7 @@ function ensureDir(dir) {
 function listMarkdownFiles(dir) {
   if (!fs.existsSync(dir)) return [];
   return fs.readdirSync(dir)
-    .filter((f) => f.endsWith('.md') && !f.startsWith('_'))
+    .filter((f) => f.endsWith('.md') && !f.startsWith('_') && f !== 'README.md')
     .map((f) => path.join(dir, f));
 }
 
