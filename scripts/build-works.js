@@ -36,11 +36,13 @@ const CATEGORY_LABELS = {
 
 const SUBCATEGORY_LABELS = {
   'kindergarten': '幼兒園',
+  'kindergarten-park-outdoor': '幼兒園 公園外景',
   'primary-school': '小學',
   'school': '學校',
   'family': '家庭',
   'group-family': '團體家庭',
   'outdoor': '戶外',
+  'outdoor-campus-family': '戶外草地外景 × 校園情境拍攝 × 家庭合影',
   'campus-life': '校園生活',
   'event': '活動',
 };

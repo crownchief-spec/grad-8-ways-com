@@ -6,7 +6,7 @@ date: 2024-12-13
 category: graduation-photo
 subcategory: kindergarten
 
-cover: /assets/images/works/montessori-forest-park-outdoor/001.jpg
+cover: /assets/images/works/montessori-forest-park-outdoor/062.jpg
 excerpt: 台北蒙特梭利森林幼兒園畢業照案例，校園互動、大安森林公園外景與親子家庭照，自然互動式拍攝留下孩子最真實的畢業回憶。
 
 metaTitle: 蒙特梭利森林幼兒園畢業照拍攝案例｜校園互動與戶外外景自然攝影
