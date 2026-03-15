@@ -81,7 +81,6 @@ function buildDetailHtml(p) {
   let basicRows = '';
   if (p.school) basicRows += renderRow('學校名稱', p.school);
   if (p.project_password) basicRows += renderRow('專屬密碼', p.project_password);
-  if (p.contact_name) basicRows += renderRow('聯絡窗口', p.contact_name);
   if (p.contact_info) basicRows += renderRow('聯絡方式', p.contact_info);
   if (p.project_year) basicRows += renderRow('專案年份', p.project_year);
   const basicBlock = basicRows ? `<div class="project-card"><h3>基本資訊</h3><table class="project-table">${basicRows}</table></div>` : '';
@@ -140,12 +139,22 @@ function buildDetailHtml(p) {
   const projectSubtitle = [p.service_category, p.project_year].filter(Boolean).join(' · ') || '';
 
   const heroImages = Array.isArray(p.hero_images) ? p.hero_images.filter((src) => src) : [];
-  const heroBlock = heroImages.length
+  const hasHero = heroImages.length > 0;
+  const heroInner = `<div class="container inner">
+        <header class="project-header project-header--hero">
+          <p class="kicker">客戶專屬頁面</p>
+          <h1 class="title">${escapeHtml(projectTitle)}</h1>
+          ${projectSubtitle ? `<p class="project-subtitle">${escapeHtml(projectSubtitle)}專案</p>` : ''}
+        </header>
+        ${basicBlock ? `<div class="project-hero-basic">${basicBlock}</div>` : ''}
+      </div>`;
+  const heroBlock = hasHero
     ? `<section class="hero" aria-label="精選照片">
   <div class="hero-media hero-carousel" id="heroCarousel" aria-hidden="true">
 ${heroImages.map((src, i) => `<img src="../assets/images/projects/${escapeHtml(p.slug)}/${escapeHtml(src)}" alt="精選照片 ${i + 1}" ${i === 0 ? 'class="active"' : 'loading="lazy"'} />`).join('\n')}
   </div>
   <div class="overlay"></div>
+  ${heroInner}
 </section>`
     : '';
 
@@ -182,13 +191,14 @@ ${guardScript}
   <main class="subpage project-detail" id="top">
 ${heroBlock}
     <div class="container" style="max-width:900px">
-      <header class="project-header">
+      ${!hasHero ? `<header class="project-header">
         <p class="kicker">客戶專屬頁面</p>
         <h1>${escapeHtml(projectTitle)}</h1>
         ${projectSubtitle ? `<p class="project-subtitle">${escapeHtml(projectSubtitle)}專案</p>` : ''}
       </header>
       <div class="project-overview">
         ${basicBlock}
+        ` : '<div class="project-overview">'}
         ${serviceBlock}
         ${packageBlock}
         ${albumBlock}
