@@ -37,6 +37,7 @@ const CATEGORY_LABELS = {
 const SUBCATEGORY_LABELS = {
   'kindergarten': '幼兒園',
   'kindergarten-park-outdoor': '幼兒園 公園外景',
+  'kindergarten-teacher-talent': '幼兒園、師生照、才藝照',
   'primary-school': '小學',
   'school': '學校',
   'family': '家庭',
