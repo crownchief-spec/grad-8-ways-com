@@ -23,6 +23,43 @@ var base = "";
           }
         }
         if (placeholderId === "site-footer-placeholder") {
+          var worksEl = document.getElementById("footerWorksPreview");
+          if (worksEl) {
+            fetch((base || "") + "assets/data/works.json")
+              .then(function(r) { return r.json(); })
+              .then(function(works) {
+                var list = Array.isArray(works) ? works.slice() : [];
+                function shuffle(a) {
+                  for (var i = a.length - 1; i > 0; i--) {
+                    var j = Math.floor(Math.random() * (i + 1));
+                    var t = a[i]; a[i] = a[j]; a[j] = t;
+                  }
+                  return a;
+                }
+                var three = shuffle(list).slice(0, 3);
+                function excerptText(w) {
+                  var s = (w.metaDescription || w.excerpt || "").replace(/\s+/g, " ").trim();
+                  return s.length > 60 ? s.slice(0, 60) + "…" : s;
+                }
+                var html = "";
+                three.forEach(function(w) {
+                  var slug = w.slug || "";
+                  var href = "/pages/work/" + slug + ".html";
+                  var coverSrc = (w.cover || "").indexOf("/") === 0 ? w.cover : "/" + (w.cover || "");
+                  var title = (w.title || "").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                  var excerpt = excerptText(w).replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                  html += '<a class="footer-case-card" href="' + href + '">';
+                  html += '<div class="footer-case-thumb"><img src="' + coverSrc + '" alt="" loading="lazy" width="320" height="180" /></div>';
+                  html += '<div class="footer-case-body"><h3 class="footer-case-title">' + title + '</h3>';
+                  if (excerpt) html += '<p class="footer-case-excerpt">' + excerpt + '</p>';
+                  html += '</div></a>';
+                });
+                worksEl.innerHTML = html || '<span class="footer-works-loading">暫無案例</span>';
+              })
+              .catch(function() {
+                worksEl.innerHTML = '<span class="footer-works-loading">載入失敗</span>';
+              });
+          }
           var list = document.getElementById("footerBlogPreview");
           if (list) {
             fetch(base + "assets/data/blog-latest.json")
@@ -35,14 +72,7 @@ var base = "";
                   var a = document.createElement("a");
                   a.href = "/blog/" + (p.slug || "") + ".html";
                   a.textContent = p.title || "";
-                  a.title = p.excerpt || p.title || "";
                   li.appendChild(a);
-                  if (p.excerpt) {
-                    var span = document.createElement("span");
-                    span.className = "footer-blog-excerpt small";
-                    span.textContent = " " + p.excerpt;
-                    li.appendChild(span);
-                  }
                   list.appendChild(li);
                 });
                 if (posts.length === 0) list.innerHTML = "<li class=\"small\"><a href=\"/blog/\">前往攝影資訊</a></li>";
