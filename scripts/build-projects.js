@@ -31,7 +31,7 @@ function ensureDir(dir) {
 function listMarkdown(dir) {
   if (!fs.existsSync(dir)) return [];
   return fs.readdirSync(dir)
-    .filter((f) => f.endsWith('.md') && !f.startsWith('_'))
+    .filter((f) => f.endsWith('.md') && !f.startsWith('_') && f !== 'README.md')
     .map((f) => path.join(dir, f));
 }
 
@@ -67,9 +67,9 @@ function parseProject(filePath) {
 function buildIndex(projects) {
   const lookup = {};
   projects.forEach((p) => {
+    if (p.school) lookup[String(p.school).trim()] = p.slug;
     if (p.project_password != null && String(p.project_password).trim() !== '') {
       lookup[String(p.project_password).trim()] = p.slug;
-      if (p.school) lookup[String(p.school).trim()] = p.slug;
     }
   });
   return lookup;
@@ -111,6 +111,7 @@ function buildDetailHtml(p) {
   if (p.album_size) albumRows += renderRow('尺寸', p.album_size);
   if (p.album_pages) albumRows += renderRow('頁數', p.album_pages);
   if (p.album_style) albumRows += renderRow('版型風格', p.album_style);
+  if (p.album_deadline) albumRows += renderRow('交件期限', p.album_deadline);
   if (p.proofing_required != null && p.proofing_required !== '') albumRows += renderRow('是否需要校稿', p.proofing_required === true || p.proofing_required === 'true' ? '是' : '否');
   if (p.add_on_video != null && p.add_on_video !== '') albumRows += renderRow('是否加購影片', p.add_on_video === true || p.add_on_video === 'true' ? '是' : '否');
   if (p.add_on_usb != null && p.add_on_usb !== '') albumRows += renderRow('是否加購隨身碟', p.add_on_usb === true || p.add_on_usb === 'true' ? '是' : '否');
@@ -137,6 +138,16 @@ function buildDetailHtml(p) {
 
   const projectTitle = p.title || p.school || '客戶專屬頁面';
   const projectSubtitle = [p.service_category, p.project_year].filter(Boolean).join(' · ') || '';
+
+  const heroImages = Array.isArray(p.hero_images) ? p.hero_images.filter((src) => src) : [];
+  const heroBlock = heroImages.length
+    ? `<section class="hero" aria-label="精選照片">
+  <div class="hero-media hero-carousel" id="heroCarousel" aria-hidden="true">
+${heroImages.map((src, i) => `<img src="../images/projects/${escapeHtml(p.slug)}/${escapeHtml(src)}" alt="精選照片 ${i + 1}" ${i === 0 ? 'class="active"' : 'loading="lazy"'} />`).join('\n')}
+  </div>
+  <div class="overlay"></div>
+</section>`
+    : '';
 
   const noindex = p.noindex !== false;
   const isProtected = !!(p.project_password && String(p.project_password).trim());
@@ -169,6 +180,7 @@ function buildDetailHtml(p) {
 ${guardScript}
   <div id="site-header-placeholder"></div>
   <main class="subpage project-detail" id="top">
+${heroBlock}
     <div class="container" style="max-width:900px">
       <header class="project-header">
         <p class="kicker">客戶專屬頁面</p>
@@ -209,7 +221,7 @@ function main() {
     JSON.stringify(lookup, null, 2),
     'utf8'
   );
-  console.log('已寫入 projects/projects-index.json，共', Object.keys(lookup).length / 2, '所學校');
+  console.log('已寫入 projects/projects-index.json，共', projects.length, '所學校');
 
   projects.forEach((p) => {
     const html = buildDetailHtml(p);
