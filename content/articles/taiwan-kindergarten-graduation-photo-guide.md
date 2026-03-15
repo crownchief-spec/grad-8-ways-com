@@ -2,7 +2,7 @@
 title: "台灣幼兒園畢業照攝影服務的常見方案、規格與選擇比較"
 description: "從家長與學校角度整理台灣幼兒園畢業照攝影的服務類型、拍攝規格、方案差異、價格因素與挑選要點，幫助園所做出適合的決策。"
 date: "2025-03-13"
-category: "畢業照攝影"
+cover: "/images/blog/taiwan-kindergarten-graduation-photo-guide/guide-group-individual.jpg"
 tags:
   - 幼兒園畢業照
   - 畢業照方案
@@ -11,7 +11,6 @@ tags:
   - 幼兒園攝影
   - 台灣
 author: "小巴老師攝影團隊"
-draft: true
 ---
 
 ## 文章摘要
@@ -38,7 +37,7 @@ draft: true
 
 這三類是台灣幼兒園畢業照的「基本盤」。方案裡若只寫「團體照＋個人照」，最好再問清楚：團體照有幾種構圖（全班、師生、男女生分組？）、個人照是學士服 only 還是含便服、小組照有沒有、每類大概拍幾張、最後會給多少張電子檔或入冊。
 
-![幼兒園團體照與個人畢業照](/images/articles/taiwan-kindergarten-graduation-photo-guide/guide-group-individual.jpg)
+![幼兒園畢業照團體照與個人照拍攝示意](/images/blog/taiwan-kindergarten-graduation-photo-guide/guide-group-individual.jpg)
 
 <small>攝影師小巴老師拍攝</small>
 
@@ -108,7 +107,7 @@ draft: true
 
 園所可以依「預算」「時間」「家長期待」三者取捨：預算緊就先顧好團體照跟學士服個人照；家長很在意「有一本漂亮的冊子」，就優先確保紀念冊規格；園所若希望照片更有故事感，可以納入便服或主題照，並挑風格偏自然互動的攝影團隊。
 
-![學士服與便服兩套畢業照拍攝](/images/articles/taiwan-kindergarten-graduation-photo-guide/guide-gown-casual.jpg)
+![幼兒園學士服與便服兩套畢業照拍攝](/images/blog/taiwan-kindergarten-graduation-photo-guide/guide-gown-casual.jpg)
 
 <small>攝影師小巴老師拍攝</small>
 
@@ -164,7 +163,7 @@ draft: true
 - **後製**：色調是否一致、膚色是否自然、是否有過度修圖（例如孩子變得不像本人）。可要求看「同一場」的多張成品的色調與精修程度，避免只看一兩張精選。
 - **紀念冊**：若含冊，可要求看過往紀念冊的版型與排版邏輯（個人照頁、團體照頁、生活頁的編排），確認是否符合園所與家長的審美。
 
-![自然互動風格的畢業照作品示例](/images/articles/taiwan-kindergarten-graduation-photo-guide/guide-quality-sample.jpg)
+![幼兒園畢業照自然互動風格作品示例](/images/blog/taiwan-kindergarten-graduation-photo-guide/guide-quality-sample.jpg)
 
 <small>攝影師小巴老師拍攝</small>
 

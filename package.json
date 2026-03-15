@@ -4,7 +4,8 @@
   "scripts": {
     "fetch-icloud": "node scripts/fetch-icloud-photos.js",
     "build:works": "node scripts/build-works.js",
-    "build:projects": "node scripts/build-projects.js"
+    "build:projects": "node scripts/build-projects.js",
+    "build:blog": "node scripts/build-blog.js"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

@@ -2,7 +2,7 @@
 title: "幼兒園畢業典禮流程設計、創意遊戲與感動橋段規劃"
 description: "給幼兒園老師與學校企劃的畢業典禮規劃指南：常見流程、節奏掌控、感動橋段、親子遊戲、舞台設計與攝影紀錄配合要點。"
 date: "2025-03-13"
-category: "畢業典禮"
+cover: "/images/blog/kindergarten-graduation-ceremony-ideas/ceremony-certificate.jpg"
 tags:
   - 幼兒園畢業典禮
   - 畢業典禮流程
@@ -10,7 +10,6 @@ tags:
   - 親子互動
   - 典禮規劃
 author: "小巴老師攝影團隊"
-draft: true
 ---
 
 ## 文章摘要
@@ -77,7 +76,7 @@ draft: true
 
 孩子被唱名、獨自或跟老師一起走上台、從園長手中接過證書、鞠躬或敬禮——這個「被認可、長大了」的瞬間，對家長極具象徵意義。頒證時不妨放慢一點節奏，讓每位孩子至少有 3～5 秒在台上的獨照時間，攝影師跟家長才好拍照。可以設計孩子跟園長或導師的短暫互動（擊掌、擁抱），畫面會更溫暖。場地若允許，讓家長在台下指定區域站立或前移，方便拍到自己孩子上台的畫面，但得事先講好秩序，避免一擁而上。
 
-![幼兒園畢業典禮頒發證書](/images/articles/kindergarten-graduation-ceremony-ideas/ceremony-certificate.jpg)
+![幼兒園畢業典禮頒發畢業證書環節](/images/blog/kindergarten-graduation-ceremony-ideas/ceremony-certificate.jpg)
 
 <small>攝影師小巴老師拍攝</small>
 
@@ -86,7 +85,7 @@ draft: true
 - 獻花、鞠躬、擁抱、或全班一起朗誦謝師詩、唱《感恩的心》等手語歌，都是常見做法。家長看到孩子向老師道謝、老師紅了眼眶，往往會跟著感動。
 謝師不要流於形式化。時間若允許，讓每位孩子有機會親自把花或卡片交給導師、說一句「謝謝老師」或擁抱，而不是全班一起鞠躬就結束。即使每人只有 10～20 秒，累積起來的情感濃度會差很多。若有「老師對孩子說一句話」的設計，事先請老師準備一兩句簡短祝福，在遞證書或謝師時說，家長會覺得「老師真的認識我的孩子」。
 
-![孩子謝師獻花環節](/images/articles/kindergarten-graduation-ceremony-ideas/ceremony-thank-teacher.jpg)
+![幼兒園畢業典禮孩子謝師獻花環節](/images/blog/kindergarten-graduation-ceremony-ideas/ceremony-thank-teacher.jpg)
 
 <small>攝影師小巴老師拍攝</small>
 
@@ -113,7 +112,7 @@ draft: true
 
 事先教一首簡單的親子律動或舞蹈（《恰恰恰》《我愛我的家》等），典禮中段邀請家長跟孩子一起站起來跳；可先由畢業生示範，再請家長加入。動作要簡單、重複性高，沒練過的家長才跟得上；音樂選大家熟悉的，氣氛比較容易帶起來。
 
-![畢業典禮親子舞蹈](/images/articles/kindergarten-graduation-ceremony-ideas/ceremony-parent-child-dance.jpg)
+![幼兒園畢業典禮親子共舞環節](/images/blog/kindergarten-graduation-ceremony-ideas/ceremony-parent-child-dance.jpg)
 
 <small>攝影師小巴老師拍攝</small>
 
@@ -222,7 +221,7 @@ draft: true
 
 幼兒園畢業典禮是一年一度的大事，對孩子、家長跟園所都是情感與記憶的節點。流程設計得當，典禮會順暢、有高潮也有收束；感動橋段留足時間，家長跟老師才能真正沉浸其中；適度的遊戲跟親子互動，則能讓典禮不只嚴肅也有歡笑。園所若同時重視「留下好的照片跟影片」，只要在流程跟動線上稍作配合——頒證時放慢節奏、謝師時保留互動時間、預留大合照時段——專業攝影跟家長自拍都會更有收穫。希望這篇整理能給正在規劃畢業典禮的老師與企劃一點實用參考跟靈感。
 
-![畢業典禮全體大合照](/images/articles/kindergarten-graduation-ceremony-ideas/ceremony-group-photo.jpg)
+![幼兒園畢業典禮全體大合照](/images/blog/kindergarten-graduation-ceremony-ideas/ceremony-group-photo.jpg)
 
 <small>攝影師小巴老師拍攝</small>
 

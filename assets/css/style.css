@@ -283,6 +283,26 @@ p{margin:0 0 12px}
   .section--articles .articles-list-title{margin-top:14px}
   .section--articles .intro-links .card-link{padding:10px 14px}
 }
+.blog-list{display:flex; flex-direction:column; gap:16px; margin-top:20px}
+.blog-card{border:1px solid var(--line); border-radius:var(--r); overflow:hidden; background:var(--surface); box-shadow:var(--shadow)}
+.blog-card-link{display:block; text-decoration:none; color:inherit}
+.blog-card-cover{width:100%; height:200px; object-fit:cover; display:block}
+.blog-card-body{padding:16px 18px}
+.blog-card-title{font-size:18px; margin:0 0 6px; line-height:1.35}
+.blog-card-date{font-size:13px; color:var(--muted); display:block; margin-bottom:8px}
+.blog-card-excerpt{font-size:14px; line-height:1.6; margin:0 0 10px; color:var(--text)}
+.blog-card-cta{font-size:13px; font-weight:700; color:var(--wood);}
+.article-header{margin-bottom:24px}
+.article-header .kicker a{color:var(--muted); text-decoration:none}
+.article-header .kicker a:hover{color:var(--wood)}
+.article-date{display:block; font-size:14px; color:var(--muted); margin-top:6px}
+.article-body.prose{line-height:1.65}
+.article-body.prose h2{font-size:20px; margin:28px 0 10px}
+.article-body.prose h3{font-size:17px; margin:20px 0 8px}
+.article-body.prose p{margin:0 0 14px}
+.article-body.prose ul,.article-body.prose ol{margin:0 0 14px; padding-left:24px}
+.article-body.prose img{max-width:100%; height:auto; border-radius:var(--r2); margin:12px 0}
+.article-body.prose small{display:block; font-size:12px; color:var(--muted); margin-top:4px}
 .subpage h1{font-size:clamp(24px,2.8vw,32px); margin-bottom:8px}
 .subpage h2{margin-top:28px; margin-bottom:10px}
 .subpage h3{margin-top:18px; margin-bottom:8px}

@@ -2,7 +2,7 @@
 title: "幼兒園畢業照服裝的歷史、文化演變與現代拍攝風格"
 description: "從學士服起源談起，說明畢業服裝如何成為象徵、台灣幼兒園常見服裝類型、日式歐美與在地風格差異，以及服裝與場景如何搭配出有故事感的畢業照。"
 date: "2025-03-13"
-category: "畢業照攝影"
+cover: "/images/blog/graduation-photo-costume-history/costume-graduation-gown-group.jpg"
 tags:
   - 幼兒園畢業照
   - 學士服
@@ -10,7 +10,6 @@ tags:
   - 畢業照風格
   - 攝影文化
 author: "小巴老師攝影團隊"
-draft: true
 ---
 
 ## 文章摘要
@@ -72,7 +71,7 @@ draft: true
 
 黑色（或深藍、深灰）長袍、方帽、流蘇，多半是租借或園所統一採購，尺寸按孩子身高區分。顏色以黑、深藍最常見，也有園所用酒紅、綠色等來區隔年度或做園所識別。拍攝上，學士服走的是正式、儀式感強的路線，很適合班級大合照、師生合照、個人證件風這種「一眼就認出是畢業照」的畫面，所以多數園所會把學士服照放在紀念冊前幾頁，當成畢業的主視覺。
 
-![幼兒園學士服畢業照班級團體照](/images/articles/graduation-photo-costume-history/costume-graduation-gown-group.jpg)
+![幼兒園學士服班級團體照，畢業照主視覺](/images/blog/graduation-photo-costume-history/costume-graduation-gown-group.jpg)
 
 <small>攝影師小巴老師拍攝</small>
 
@@ -80,7 +79,7 @@ draft: true
 
 孩子穿自己的日常服裝，不統一款式與顏色，通常出現在「第二套」或戶外、生活感的段落。便服照輕鬆、自然，生活感強，能呈現孩子平時的樣貌跟個性，跟學士服照正好形成對比：正式的那一面 vs 日常的那一面。在玩耍、互動中，也比較容易拍到自然表情。攝影師若擅長引導，便服段落常常能產出那種「多年後翻起來還是會笑」的畫面。
 
-![便服戶外自然互動拍攝](/images/articles/graduation-photo-costume-history/costume-casual-outdoor.jpg)
+![幼兒園畢業照便服戶外自然互動拍攝](/images/blog/graduation-photo-costume-history/costume-casual-outdoor.jpg)
 
 <small>攝影師小巴老師拍攝</small>
 
@@ -190,7 +189,7 @@ draft: true
 
 學士服不見得非在室內白背景前拍不可。帶孩子到校園一角——操場、樹下、樓梯、教室門口——學士服的「正式」跟校園的「熟悉」一對比，畫面既有畢業感，又有「這是我們學校」的歸屬感。光線跟場景選得好，學士服照一樣能很有故事感。
 
-![學士服搭配校園場景拍攝](/images/articles/graduation-photo-costume-history/costume-gown-campus.jpg)
+![幼兒園學士服搭配校園場景拍攝](/images/blog/graduation-photo-costume-history/costume-gown-campus.jpg)
 
 <small>攝影師小巴老師拍攝</small>
 
