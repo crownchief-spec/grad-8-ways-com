@@ -74,11 +74,23 @@ function formatDate(dateStr) {
   return d.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
+/** Blog 頁面在 blog/ 目錄下，圖片改為相對路徑 ../assets/images/blog/ 才能正確載入 */
+function blogImageSrc(absolutePath) {
+  if (!absolutePath || typeof absolutePath !== 'string') return '';
+  return absolutePath.replace(/^\/images\/blog\//, '../assets/images/blog/');
+}
+
+function articleBodyImageSrc(html) {
+  if (!html || typeof html !== 'string') return html;
+  return html.replace(/src="\/images\/blog\//g, 'src="../assets/images/blog/');
+}
+
 function buildIndexHtml(articles) {
   const sorted = [...articles].sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
   const cards = sorted.map((a) => {
+    const coverSrc = blogImageSrc(a.cover) || escapeHtml(a.cover);
     const coverImg = a.cover
-      ? `<img src="${escapeHtml(a.cover)}" alt="${escapeHtml(a.title)}" loading="lazy" class="blog-card-cover" />`
+      ? `<img src="${coverSrc}" alt="${escapeHtml(a.title)}" loading="lazy" class="blog-card-cover" />`
       : '';
     const dateStr = formatDate(a.date);
     return `<article class="blog-card">
@@ -137,8 +149,10 @@ function buildIndexHtml(articles) {
 }
 
 function buildArticleHtml(a) {
-  const bodyHtml = a.body && marked ? marked.parse(a.body, { gfm: true }) : escapeHtml(a.body || '').replace(/\n/g, '<br>');
-  const ogImage = a.cover ? (a.cover.startsWith('http') ? a.cover : SITE_BASE + a.cover) : '';
+  let bodyHtml = a.body && marked ? marked.parse(a.body, { gfm: true }) : escapeHtml(a.body || '').replace(/\n/g, '<br>');
+  bodyHtml = articleBodyImageSrc(bodyHtml);
+  const ogCoverPath = a.cover && !a.cover.startsWith('http') ? a.cover.replace(/^\/images\/blog\//, '/assets/images/blog/') : a.cover;
+  const ogImage = a.cover ? (a.cover.startsWith('http') ? a.cover : SITE_BASE + ogCoverPath) : '';
   const articleUrl = `${SITE_BASE}/blog/${a.slug}.html`;
 
   return `<!doctype html>
