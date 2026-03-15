@@ -485,11 +485,19 @@ p{margin:0 0 12px}
 .hero .project-header--hero .kicker{ color: rgba(255,255,255,.85); }
 .hero .project-header--hero .title{ color: #fff; margin-top: 0; }
 .hero .project-header--hero .project-subtitle{ color: rgba(255,255,255,.9); margin-top: 6px; font-size: 15px; }
-.hero .project-hero-basic{ margin-top: 16px; max-width: 420px; }
-.hero .project-hero-basic .project-card{ background: rgba(0,0,0,.45); border-color: rgba(255,255,255,.2); color: #fff; padding: 14px 16px; }
-.hero .project-hero-basic .project-card h3{ color: rgba(255,255,255,.95); border-bottom-color: rgba(255,255,255,.25); padding-bottom: 8px; margin-bottom: 10px; font-size: 14px; }
-.hero .project-hero-basic .project-table th{ color: rgba(255,255,255,.75); }
-.hero .project-hero-basic .project-table td{ color: #fff; }
+.hero .project-hero-cards{ display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.hero .project-hero-basic{ max-width: 420px; }
+.hero .project-hero-service{ max-width: 420px; }
+.hero .project-hero-basic .project-card,
+.hero .project-hero-service .project-card{ background: rgba(0,0,0,.45); border-color: rgba(255,255,255,.2); color: #fff; padding: 14px 16px; }
+.hero .project-hero-basic .project-card h3,
+.hero .project-hero-service .project-card h3{ color: rgba(255,255,255,.95); border-bottom-color: rgba(255,255,255,.25); padding-bottom: 8px; margin-bottom: 10px; font-size: 14px; }
+.hero .project-hero-basic .project-table th,
+.hero .project-hero-basic .project-table td,
+.hero .project-hero-service .project-table th,
+.hero .project-hero-service .project-table td{ color: rgba(255,255,255,.9); }
+.hero .project-hero-basic .project-table th,
+.hero .project-hero-service .project-table th{ color: rgba(255,255,255,.75); }
 .project-subtitle{ color: var(--muted); margin-top: 4px; font-size: 15px; }
 .project-overview{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 .project-overview .project-resources,

@@ -146,7 +146,10 @@ function buildDetailHtml(p) {
           <h1 class="title">${escapeHtml(projectTitle)}</h1>
           ${projectSubtitle ? `<p class="project-subtitle">${escapeHtml(projectSubtitle)}專案</p>` : ''}
         </header>
-        ${basicBlock ? `<div class="project-hero-basic">${basicBlock}</div>` : ''}
+        <div class="project-hero-cards">
+          ${basicBlock ? `<div class="project-hero-basic">${basicBlock}</div>` : ''}
+          ${serviceBlock ? `<div class="project-hero-service">${serviceBlock}</div>` : ''}
+        </div>
       </div>`;
   const heroBlock = hasHero
     ? `<section class="hero" aria-label="精選照片">
@@ -199,7 +202,7 @@ ${heroBlock}
       <div class="project-overview">
         ${basicBlock}
         ` : '<div class="project-overview">'}
-        ${serviceBlock}
+        ${!hasHero ? serviceBlock : ''}
         ${packageBlock}
         ${albumBlock}
         ${specialBlock}
