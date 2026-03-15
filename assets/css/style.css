@@ -482,8 +482,17 @@ p{margin:0 0 12px}
 
 .project-header{ margin-bottom: 28px; }
 .project-subtitle{ color: var(--muted); margin-top: 4px; font-size: 15px; }
-.project-overview{ display: flex; flex-direction: column; gap: 20px; }
+.project-overview{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.project-overview .project-resources,
+.project-overview .project-log-card{ grid-column: 1 / -1; }
 .project-card{ background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); padding: 20px; }
+.project-card:not(.project-resources):not(.project-log-card){ padding: 12px 14px; font-size: 13px; line-height: 1.4; }
+.project-card:not(.project-resources):not(.project-log-card) h3{ font-size: 14px; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid var(--line); color: var(--wood-dark); }
+.project-card:not(.project-resources):not(.project-log-card) .project-table{ font-size: 12px; }
+.project-card:not(.project-resources):not(.project-log-card) .project-table th{ padding: 4px 10px 4px 0; width: 100px; }
+.project-card:not(.project-resources):not(.project-log-card) .project-table td{ padding: 4px 0; }
+.project-card:not(.project-resources):not(.project-log-card) .project-table ul{ padding-left: 16px; margin-bottom: 0; }
+.project-card:not(.project-resources):not(.project-log-card) .project-table li{ margin-bottom: 2px; }
 .project-card h3{ font-size: 16px; margin: 0 0 14px; padding-bottom: 10px; border-bottom: 1px solid var(--line); color: var(--wood-dark); }
 .project-table{ width: 100%; border-collapse: collapse; font-size: 14px; }
 .project-table th{ text-align: left; padding: 8px 12px 8px 0; color: var(--muted); font-weight: 600; width: 120px; vertical-align: top; }
@@ -495,4 +504,5 @@ p{margin:0 0 12px}
 .project-log.prose h3:first-child{ margin-top: 0; }
 .project-log.prose p{ margin-bottom: 10px; }
 .project-log.prose a{ color: var(--wood); text-decoration: underline; }
-@media (max-width: 640px){ .project-table th{ width: 100px; font-size: 13px; } }
+@media (max-width: 768px){ .project-overview{ grid-template-columns: 1fr; } }
+@media (max-width: 640px){ .project-table th{ width: 100px; font-size: 13px; } .project-card:not(.project-resources):not(.project-log-card) .project-table th{ width: 80px; font-size: 11px; } .project-card:not(.project-resources):not(.project-log-card) .project-table{ font-size: 11px; } }

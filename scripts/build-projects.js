@@ -131,10 +131,10 @@ function buildDetailHtml(p) {
 
   const resources = Array.isArray(p.resources) ? p.resources : [];
   const resourcesBlock = resources.length
-    ? `<div class="project-card project-resources"><h3>常用連結</h3><div class="project-resource-list">${resources.map((r) => `<a class="btn primary" href="${escapeHtml(r.url || '#')}" target="_blank" rel="noopener">${escapeHtml(r.label || '連結')}</a>`).join('')}</div></div>`
+    ? `<div class="project-card project-resources"><h3>下載連結</h3><div class="project-resource-list">${resources.map((r) => `<a class="btn primary" href="${escapeHtml(r.url || '#')}" target="_blank" rel="noopener">${escapeHtml(r.label || '連結')}</a>`).join('')}</div></div>`
     : '';
 
-  const logBlock = p.body ? `<div class="project-card project-log-card"><h3>更新日誌</h3><div class="project-log prose">${bodyHtml}</div></div>` : '';
+  const logBlock = p.body ? `<div class="project-card project-log-card"><h3>進度</h3><div class="project-log prose">${bodyHtml}</div></div>` : '';
 
   const projectTitle = p.title || p.school || '客戶專屬頁面';
   const projectSubtitle = [p.service_category, p.project_year].filter(Boolean).join(' · ') || '';
@@ -143,7 +143,7 @@ function buildDetailHtml(p) {
   const heroBlock = heroImages.length
     ? `<section class="hero" aria-label="精選照片">
   <div class="hero-media hero-carousel" id="heroCarousel" aria-hidden="true">
-${heroImages.map((src, i) => `<img src="../images/projects/${escapeHtml(p.slug)}/${escapeHtml(src)}" alt="精選照片 ${i + 1}" ${i === 0 ? 'class="active"' : 'loading="lazy"'} />`).join('\n')}
+${heroImages.map((src, i) => `<img src="../assets/images/projects/${escapeHtml(p.slug)}/${escapeHtml(src)}" alt="精選照片 ${i + 1}" ${i === 0 ? 'class="active"' : 'loading="lazy"'} />`).join('\n')}
   </div>
   <div class="overlay"></div>
 </section>`

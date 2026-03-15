@@ -11,10 +11,10 @@
 
 ## 專案圖片
 
-- **實體位置**：`public/images/projects/{project-slug}/`（與 front matter 的 `slug` 一致）
-- **Markdown 路徑**：`/images/projects/{project-slug}/image-name.jpg`
+- **實體位置**：`assets/images/projects/{project-slug}/`（與 front matter 的 `slug` 一致）
+- **hero_images 路徑**：僅填檔名，建置時會對應至 `/assets/images/projects/{project-slug}/檔名`
 
-範例：陽光幼兒園（slug: `sunshine-kindergarten`）的照片放在 `public/images/projects/sunshine-kindergarten/`，文中引用為 `/images/projects/sunshine-kindergarten/group-photo.jpg`。
+範例：陽光幼兒園（slug: `sunshine-kindergarten`）的照片放在 `assets/images/projects/sunshine-kindergarten/`。
 
 ## 欄位說明
 
