@@ -503,23 +503,27 @@ p{margin:0 0 12px}
 .hero .project-header--hero .kicker{ color: rgba(255,255,255,.85); }
 .hero .project-header--hero .title{ color: #fff; margin-top: 0; }
 .hero .project-header--hero .project-subtitle{ color: rgba(255,255,255,.9); margin-top: 6px; font-size: 15px; }
-.hero .project-hero-cards{ display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
-.hero .project-hero-basic{ max-width: 420px; }
-.hero .project-hero-service{ max-width: 420px; }
-.hero .project-hero-basic .project-card,
-.hero .project-hero-service .project-card{ background: rgba(0,0,0,.45); border-color: rgba(255,255,255,.2); color: #fff; padding: 14px 16px; }
-.hero .project-hero-basic .project-card h3,
-.hero .project-hero-service .project-card h3{ color: rgba(255,255,255,.95); border-bottom-color: rgba(255,255,255,.25); padding-bottom: 8px; margin-bottom: 10px; font-size: 14px; }
-.hero .project-hero-basic .project-table th,
-.hero .project-hero-basic .project-table td,
-.hero .project-hero-service .project-table th,
-.hero .project-hero-service .project-table td{ color: rgba(255,255,255,.9); }
-.hero .project-hero-basic .project-table th,
-.hero .project-hero-service .project-table th{ color: rgba(255,255,255,.75); }
+.hero .project-hero-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; max-width: 820px; }
+.hero .project-hero-col{ min-width: 0; }
+.hero .project-hero-card{ background: rgba(0,0,0,.45); border-color: rgba(255,255,255,.2); color: #fff; padding: 12px 14px; }
+.hero .project-hero-card h3{ color: rgba(255,255,255,.95); border-bottom-color: rgba(255,255,255,.25); padding-bottom: 6px; margin-bottom: 8px; font-size: 14px; }
+.hero .project-hero-card .project-table{ font-size: 13px; }
+.hero .project-hero-card .project-table th{ padding: 3px 10px 3px 0; color: rgba(255,255,255,.75); }
+.hero .project-hero-card .project-table td{ padding: 3px 0; color: rgba(255,255,255,.92); }
+.hero .project-hero-card .project-table ul{ padding-left: 14px; margin: 2px 0 0; }
+.hero .project-hero-card .project-table li{ margin-bottom: 2px; }
+@media (max-width: 768px){ .hero .project-hero-grid{ grid-template-columns: 1fr; gap: 10px; margin-top: 12px; } }
 .project-subtitle{ color: var(--muted); margin-top: 4px; font-size: 15px; }
 .project-overview{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 .project-overview .project-resources,
 .project-overview .project-log-card{ grid-column: 1 / -1; }
+.project-detail-body{ padding-top: 20px; }
+.project-overview--compact{ gap: 10px; }
+.project-overview--compact .project-log-card,
+.project-overview--compact .project-resources{ margin-bottom: 0; padding: 14px 16px; }
+.project-overview--compact .project-log-card h3,
+.project-overview--compact .project-resources h3{ font-size: 15px; margin-bottom: 10px; padding-bottom: 8px; }
+.project-detail-actions{ margin-top: 20px; }
 .project-card{ background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); padding: 20px; }
 .project-card:not(.project-resources):not(.project-log-card){ padding: 12px 14px; font-size: 13px; line-height: 1.4; }
 .project-card:not(.project-resources):not(.project-log-card) h3{ font-size: 14px; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid var(--line); color: var(--wood-dark); }

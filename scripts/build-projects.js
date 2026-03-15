@@ -78,13 +78,56 @@ function buildIndex(projects) {
 function buildDetailHtml(p) {
   const bodyHtml = p.body && marked ? marked.parse(p.body, { gfm: true }) : (p.body ? `<div class="project-log">${escapeHtml(p.body).replace(/\n/g, '<br>')}</div>` : '');
 
+  /* Hero 左欄：基本資訊（學校、服務類型、學生人數、拍攝日期、聯絡方式、專案年份） */
+  let heroBasicRows = '';
+  if (p.school) heroBasicRows += renderRow('學校名稱', p.school);
+  if (p.service_category) heroBasicRows += renderRow('服務主類別', p.service_category);
+  if (p.service_type) heroBasicRows += renderRow('服務類型', p.service_type);
+  if (p.student_count != null && p.student_count !== '') heroBasicRows += renderRow('學生人數', p.student_count);
+  if (p.class_count != null && p.class_count !== '') heroBasicRows += renderRow('班級數量', p.class_count);
+  if (p.shoot_date) heroBasicRows += renderRow('拍攝日期', p.shoot_date);
+  if (p.backup_date) heroBasicRows += renderRow('備用日期', p.backup_date);
+  if (p.location) heroBasicRows += renderRow('拍攝地點', p.location);
+  if (p.contact_info) heroBasicRows += renderRow('聯絡方式', p.contact_info);
+  if (p.project_year) heroBasicRows += renderRow('專案年份', p.project_year);
+  const heroBasicBlock = heroBasicRows ? `<div class="project-card project-hero-card"><h3>基本資訊</h3><table class="project-table">${heroBasicRows}</table></div>` : '';
+
+  /* Hero 右欄：服務方案（方案與價格 + 紀念冊與加購 + 特殊需求與備註 整合） */
+  let heroSchemeRows = '';
+  if (p.package_name) heroSchemeRows += renderRow('拍攝方案', p.package_name);
+  if (p.package_price) heroSchemeRows += renderRow('方案價格', p.package_price);
+  if (p.shooting_days != null && p.shooting_days !== '') heroSchemeRows += renderRow('拍攝天數', p.shooting_days);
+  if (p.shooting_items && Array.isArray(p.shooting_items) && p.shooting_items.length) {
+    heroSchemeRows += `<tr><th>拍攝內容</th><td><ul>${p.shooting_items.map((i) => `<li>${escapeHtml(i)}</li>`).join('')}</ul></td></tr>`;
+  }
+  if (p.has_album != null && p.has_album !== '') heroSchemeRows += renderRow('是否製作紀念冊', p.has_album === true || p.has_album === 'true' ? '是' : '否');
+  if (p.album_package) heroSchemeRows += renderRow('紀念冊方案', p.album_package);
+  if (p.album_size) heroSchemeRows += renderRow('尺寸', p.album_size);
+  if (p.album_pages) heroSchemeRows += renderRow('頁數', p.album_pages);
+  if (p.album_style) heroSchemeRows += renderRow('版型風格', p.album_style);
+  if (p.album_deadline) heroSchemeRows += renderRow('交件期限', p.album_deadline);
+  if (p.proofing_required != null && p.proofing_required !== '') heroSchemeRows += renderRow('是否需要校稿', p.proofing_required === true || p.proofing_required === 'true' ? '是' : '否');
+  if (p.add_on_video != null && p.add_on_video !== '') heroSchemeRows += renderRow('是否加購影片', p.add_on_video === true || p.add_on_video === 'true' ? '是' : '否');
+  if (p.add_on_usb != null && p.add_on_usb !== '') heroSchemeRows += renderRow('是否加購隨身碟', p.add_on_usb === true || p.add_on_usb === 'true' ? '是' : '否');
+  if (p.add_on_certificate != null && p.add_on_certificate !== '') heroSchemeRows += renderRow('是否加購證書夾', p.add_on_certificate === true || p.add_on_certificate === 'true' ? '是' : '否');
+  if (p.special_requests) heroSchemeRows += renderRow('特殊需求', p.special_requests);
+  if (p.notes) heroSchemeRows += renderRow('其他備註', p.notes);
+  const heroSchemeBlock = heroSchemeRows ? `<div class="project-card project-hero-card"><h3>服務方案</h3><table class="project-table">${heroSchemeRows}</table></div>` : '';
+
+  const resources = Array.isArray(p.resources) ? p.resources : [];
+  const resourcesBlock = resources.length
+    ? `<div class="project-card project-resources"><h3>客戶下載</h3><div class="project-resource-list">${resources.map((r) => `<a class="btn primary" href="${escapeHtml(r.url || '#')}" target="_blank" rel="noopener">${escapeHtml(r.label || '連結')}</a>`).join('')}</div></div>`
+    : '';
+
+  const logBlock = p.body ? `<div class="project-card project-log-card"><h3>專案進度</h3><div class="project-log prose">${bodyHtml}</div></div>` : '';
+
+  /* 無 Hero 時使用的舊區塊（保留一頁一結構） */
   let basicRows = '';
   if (p.school) basicRows += renderRow('學校名稱', p.school);
   if (p.project_password) basicRows += renderRow('專屬密碼', p.project_password);
   if (p.contact_info) basicRows += renderRow('聯絡方式', p.contact_info);
   if (p.project_year) basicRows += renderRow('專案年份', p.project_year);
   const basicBlock = basicRows ? `<div class="project-card"><h3>基本資訊</h3><table class="project-table">${basicRows}</table></div>` : '';
-
   let serviceRows = '';
   if (p.service_category) serviceRows += renderRow('服務主類別', p.service_category);
   if (p.service_type) serviceRows += renderRow('服務次類別', p.service_type);
@@ -94,7 +137,6 @@ function buildDetailHtml(p) {
   if (p.student_count != null && p.student_count !== '') serviceRows += renderRow('畢業生人數', p.student_count);
   if (p.class_count != null && p.class_count !== '') serviceRows += renderRow('班級數量', p.class_count);
   const serviceBlock = serviceRows ? `<div class="project-card"><h3>服務內容</h3><table class="project-table">${serviceRows}</table></div>` : '';
-
   let packageRows = '';
   if (p.package_name) packageRows += renderRow('方案名稱', p.package_name);
   if (p.package_price) packageRows += renderRow('方案價格', p.package_price);
@@ -103,7 +145,6 @@ function buildDetailHtml(p) {
     packageRows += `<tr><th>拍攝內容</th><td><ul>${p.shooting_items.map((i) => `<li>${escapeHtml(i)}</li>`).join('')}</ul></td></tr>`;
   }
   const packageBlock = packageRows ? `<div class="project-card"><h3>方案與價格</h3><table class="project-table">${packageRows}</table></div>` : '';
-
   let albumRows = '';
   if (p.has_album != null && p.has_album !== '') albumRows += renderRow('是否製作紀念冊', p.has_album === true || p.has_album === 'true' ? '是' : '否');
   if (p.album_package) albumRows += renderRow('紀念冊方案', p.album_package);
@@ -116,24 +157,10 @@ function buildDetailHtml(p) {
   if (p.add_on_usb != null && p.add_on_usb !== '') albumRows += renderRow('是否加購隨身碟', p.add_on_usb === true || p.add_on_usb === 'true' ? '是' : '否');
   if (p.add_on_certificate != null && p.add_on_certificate !== '') albumRows += renderRow('是否加購證書夾', p.add_on_certificate === true || p.add_on_certificate === 'true' ? '是' : '否');
   const albumBlock = albumRows ? `<div class="project-card"><h3>紀念冊與加購資訊</h3><table class="project-table">${albumRows}</table></div>` : '';
-
   let specialRows = '';
   if (p.special_requests) specialRows += renderRow('特殊需求', p.special_requests);
   if (p.notes) specialRows += renderRow('其他備註', p.notes);
   const specialBlock = specialRows ? `<div class="project-card"><h3>特殊需求與備註</h3><table class="project-table">${specialRows}</table></div>` : '';
-
-  let progressRows = '';
-  if (p.current_status) progressRows += renderRow('目前狀態', p.current_status);
-  if (p.current_stage) progressRows += renderRow('目前階段', p.current_stage);
-  if (p.next_step) progressRows += renderRow('下一步', p.next_step);
-  const progressBlock = progressRows ? `<div class="project-card"><h3>目前進度</h3><table class="project-table">${progressRows}</table></div>` : '';
-
-  const resources = Array.isArray(p.resources) ? p.resources : [];
-  const resourcesBlock = resources.length
-    ? `<div class="project-card project-resources"><h3>下載連結</h3><div class="project-resource-list">${resources.map((r) => `<a class="btn primary" href="${escapeHtml(r.url || '#')}" target="_blank" rel="noopener">${escapeHtml(r.label || '連結')}</a>`).join('')}</div></div>`
-    : '';
-
-  const logBlock = p.body ? `<div class="project-card project-log-card"><h3>進度</h3><div class="project-log prose">${bodyHtml}</div></div>` : '';
 
   const projectTitle = p.title || p.school || '客戶專屬頁面';
   const projectSubtitle = [p.service_category, p.project_year].filter(Boolean).join(' · ') || '';
@@ -146,9 +173,9 @@ function buildDetailHtml(p) {
           <h1 class="title">${escapeHtml(projectTitle)}</h1>
           ${projectSubtitle ? `<p class="project-subtitle">${escapeHtml(projectSubtitle)}專案</p>` : ''}
         </header>
-        <div class="project-hero-cards">
-          ${basicBlock ? `<div class="project-hero-basic">${basicBlock}</div>` : ''}
-          ${serviceBlock ? `<div class="project-hero-service">${serviceBlock}</div>` : ''}
+        <div class="project-hero-grid">
+          <div class="project-hero-col project-hero-col--basic">${heroBasicBlock}</div>
+          <div class="project-hero-col project-hero-col--scheme">${heroSchemeBlock}</div>
         </div>
       </div>`;
   const heroBlock = hasHero
@@ -193,7 +220,7 @@ ${guardScript}
   <div id="site-header-placeholder"></div>
   <main class="subpage project-detail" id="top">
 ${heroBlock}
-    <div class="container" style="max-width:900px">
+    <div class="container project-detail-body" style="max-width:900px">
       ${!hasHero ? `<header class="project-header">
         <p class="kicker">客戶專屬頁面</p>
         <h1>${escapeHtml(projectTitle)}</h1>
@@ -201,16 +228,19 @@ ${heroBlock}
       </header>
       <div class="project-overview">
         ${basicBlock}
-        ` : '<div class="project-overview">'}
-        ${!hasHero ? serviceBlock : ''}
+        ${serviceBlock}
         ${packageBlock}
         ${albumBlock}
         ${specialBlock}
-        ${progressBlock}
         ${resourcesBlock}
         ${logBlock}
       </div>
-      <div class="actions" style="margin-top:32px">
+      ` : `<div class="project-overview project-overview--compact">
+        ${logBlock}
+        ${resourcesBlock}
+      </div>
+      `}
+      <div class="actions project-detail-actions">
         <a class="btn ghost" href="index.html">回密碼輸入頁</a>
         <a class="btn ghost" href="../index.html">回首頁</a>
       </div>
