@@ -51,6 +51,18 @@ gallery:
   - /assets/images/works/large-campus-kindergarten/021.png
   - /assets/images/works/large-campus-kindergarten/022.png
   - /assets/images/works/large-campus-kindergarten/023.png
+  - /assets/images/works/large-campus-kindergarten/大型校園幼兒園畢業照-自然生動-活潑-24.jpg
+  - /assets/images/works/large-campus-kindergarten/大型校園幼兒園畢業照-自然生動-活潑-25.jpg
+  - /assets/images/works/large-campus-kindergarten/大型校園幼兒園畢業照-自然生動-活潑-26.jpg
+  - /assets/images/works/large-campus-kindergarten/大型校園幼兒園畢業照-自然生動-活潑-27.jpg
+  - /assets/images/works/large-campus-kindergarten/大型校園幼兒園畢業照-自然生動-活潑-28.jpg
+  - /assets/images/works/large-campus-kindergarten/大型校園幼兒園畢業照-自然生動-活潑-29.jpg
+  - /assets/images/works/large-campus-kindergarten/大型校園幼兒園畢業照-自然生動-活潑-30.jpg
+  - /assets/images/works/large-campus-kindergarten/大型校園幼兒園畢業照-自然生動-活潑-31.jpg
+  - /assets/images/works/large-campus-kindergarten/大型校園幼兒園畢業照-自然生動-活潑-32.jpg
+  - /assets/images/works/large-campus-kindergarten/大型校園幼兒園畢業照-自然生動-活潑-33.jpg
+  - /assets/images/works/large-campus-kindergarten/大型校園幼兒園畢業照-自然生動-活潑-34.jpg
+  - /assets/images/works/large-campus-kindergarten/大型校園幼兒園畢業照-自然生動-活潑-35.jpg
 
 video:
 

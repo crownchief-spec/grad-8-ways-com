@@ -71,6 +71,12 @@ gallery:
   - /assets/images/works/new-taipei-international-kindergarten/041.png
   - /assets/images/works/new-taipei-international-kindergarten/042.png
   - /assets/images/works/new-taipei-international-kindergarten/043.png
+  - /assets/images/works/new-taipei-international-kindergarten/新北市國際幼兒園畢業照-自然生動-活潑-44.jpg
+  - /assets/images/works/new-taipei-international-kindergarten/新北市國際幼兒園畢業照-自然生動-活潑-45.jpg
+  - /assets/images/works/new-taipei-international-kindergarten/新北市國際幼兒園畢業照-自然生動-活潑-46.jpg
+  - /assets/images/works/new-taipei-international-kindergarten/新北市國際幼兒園畢業照-自然生動-活潑-47.jpg
+  - /assets/images/works/new-taipei-international-kindergarten/新北市國際幼兒園畢業照-自然生動-活潑-48.jpg
+  - /assets/images/works/new-taipei-international-kindergarten/新北市國際幼兒園畢業照-自然生動-活潑-49.jpg
 video:
 
 tags:
