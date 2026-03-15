@@ -161,9 +161,11 @@ p{margin:0 0 12px}
 .footer-actions{margin-top:10px}
 .footer-actions .btn{font-size:13px; padding:8px 14px}
 .footer-seo{margin-top:14px; padding-top:14px; border-top:1px solid rgba(255,255,255,.15)}
-.footer-seo-header{display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:6px}
+.footer-seo-header{display:flex; flex-wrap:wrap; align-items:flex-start; gap:12px; margin-bottom:6px}
 .footer-seo-title{font-size:14px; font-weight:700; color:rgba(255,255,255,.92); margin:0}
-.btn--footer-project{flex-shrink:0; font-size:13px; padding:8px 14px; background:#fff; color:#1b1208; border:1px solid rgba(255,255,255,.5)}
+.footer-cta-buttons{display:flex; flex-direction:column; gap:8px; flex-shrink:0}
+.footer-cta-buttons .btn{font-size:13px; padding:8px 14px}
+.btn--footer-project{font-size:13px; padding:8px 14px; background:#fff; color:#1b1208; border:1px solid rgba(255,255,255,.5); display:inline-flex; align-items:center; justify-content:center; text-decoration:none; font-weight:700; border-radius:999px; transition:background .15s, border-color .15s}
 .btn--footer-project:hover{background:rgba(255,255,255,.95); color:#1b1208; border-color:#fff}
 .footer-seo-text{font-size:12px; color:rgba(255,255,255,.7); line-height:1.5; margin:0 0 4px}
 .footer-seo-text:last-child{margin-bottom:0}

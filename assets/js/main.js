@@ -254,11 +254,30 @@
     });
   }
 
+  function initVideoPosterFromFirstFrame(){
+    document.querySelectorAll("video[data-poster-first-frame]").forEach(function(video){
+      if(video.poster) return;
+      video.currentTime = 0.001;
+      video.addEventListener("loadeddata", function onLoaded(){
+        video.removeEventListener("loadeddata", onLoaded);
+        try {
+          const c = document.createElement("canvas");
+          c.width = video.videoWidth;
+          c.height = video.videoHeight;
+          const ctx = c.getContext("2d");
+          ctx.drawImage(video, 0, 0);
+          video.poster = c.toDataURL("image/jpeg", 0.85);
+        } catch(e) {}
+      }, { once: true });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", ()=>{
     wireNav();
     initHeroCarousel();
     initMoodSliders();
     initWorksGrid();
     initCeremonyWorksLightbox();
+    initVideoPosterFromFirstFrame();
   });
 })();

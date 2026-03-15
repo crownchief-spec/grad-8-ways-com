@@ -78,32 +78,33 @@ function buildIndex(projects) {
 function buildDetailHtml(p) {
   const bodyHtml = p.body && marked ? marked.parse(p.body, { gfm: true }) : (p.body ? `<div class="project-log">${escapeHtml(p.body).replace(/\n/g, '<br>')}</div>` : '');
 
-  /* Hero 左欄：基本資訊（學校、服務類型、學生人數、拍攝日期、聯絡方式、專案年份） */
+  /* Hero 左欄：基本資訊（精簡，服務主類別+服務類型同一行，不含聯絡方式、專案年份） */
   let heroBasicRows = '';
   if (p.school) heroBasicRows += renderRow('學校名稱', p.school);
-  if (p.service_category) heroBasicRows += renderRow('服務主類別', p.service_category);
-  if (p.service_type) heroBasicRows += renderRow('服務類型', p.service_type);
+  if (p.service_category || p.service_type) {
+    const serviceLine = [p.service_category, p.service_type].filter(Boolean).join('｜');
+    heroBasicRows += renderRow('服務', serviceLine);
+  }
   if (p.student_count != null && p.student_count !== '') heroBasicRows += renderRow('學生人數', p.student_count);
   if (p.class_count != null && p.class_count !== '') heroBasicRows += renderRow('班級數量', p.class_count);
   if (p.shoot_date) heroBasicRows += renderRow('拍攝日期', p.shoot_date);
   if (p.backup_date) heroBasicRows += renderRow('備用日期', p.backup_date);
   if (p.location) heroBasicRows += renderRow('拍攝地點', p.location);
-  if (p.contact_info) heroBasicRows += renderRow('聯絡方式', p.contact_info);
-  if (p.project_year) heroBasicRows += renderRow('專案年份', p.project_year);
   const heroBasicBlock = heroBasicRows ? `<div class="project-card project-hero-card"><h3>基本資訊</h3><table class="project-table">${heroBasicRows}</table></div>` : '';
 
-  /* Hero 右欄：服務方案（方案與價格 + 紀念冊與加購 + 特殊需求與備註 整合） */
+  /* Hero 右欄：服務方案（拍攝內容改為同一行、紀念冊方案含尺寸頁數同一行） */
   let heroSchemeRows = '';
   if (p.package_name) heroSchemeRows += renderRow('拍攝方案', p.package_name);
   if (p.package_price) heroSchemeRows += renderRow('方案價格', p.package_price);
   if (p.shooting_days != null && p.shooting_days !== '') heroSchemeRows += renderRow('拍攝天數', p.shooting_days);
   if (p.shooting_items && Array.isArray(p.shooting_items) && p.shooting_items.length) {
-    heroSchemeRows += `<tr><th>拍攝內容</th><td><ul>${p.shooting_items.map((i) => `<li>${escapeHtml(i)}</li>`).join('')}</ul></td></tr>`;
+    heroSchemeRows += renderRow('拍攝內容', p.shooting_items.map((i) => escapeHtml(i)).join('、'));
   }
   if (p.has_album != null && p.has_album !== '') heroSchemeRows += renderRow('是否製作紀念冊', p.has_album === true || p.has_album === 'true' ? '是' : '否');
-  if (p.album_package) heroSchemeRows += renderRow('紀念冊方案', p.album_package);
-  if (p.album_size) heroSchemeRows += renderRow('尺寸', p.album_size);
-  if (p.album_pages) heroSchemeRows += renderRow('頁數', p.album_pages);
+  if (p.album_package || p.album_size || p.album_pages) {
+    const albumParts = [p.album_package, p.album_size, p.album_pages ? p.album_pages + '頁' : ''].filter(Boolean);
+    heroSchemeRows += renderRow('紀念冊方案', albumParts.join('｜'));
+  }
   if (p.album_style) heroSchemeRows += renderRow('版型風格', p.album_style);
   if (p.album_deadline) heroSchemeRows += renderRow('交件期限', p.album_deadline);
   if (p.proofing_required != null && p.proofing_required !== '') heroSchemeRows += renderRow('是否需要校稿', p.proofing_required === true || p.proofing_required === 'true' ? '是' : '否');
