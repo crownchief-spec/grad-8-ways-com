@@ -50,6 +50,7 @@ const SUBCATEGORY_LABELS = {
   'indoor-styled-night-camp': '全室內 × 白色／粉紅背景 × 夜間場景 × 露營風',
   'tea-ceremony-green-campus': '茶道 × 台中 × 草地 × 樹木',
   'camping-family-travel': '露營 × 家庭 × 旅遊',
+  'japanese-old-building-outdoor': '日式建築 × 外景 × 家庭',
   'campus-life': '校園生活',
   'event': '活動',
 };
