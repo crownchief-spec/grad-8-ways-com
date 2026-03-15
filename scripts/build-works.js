@@ -85,6 +85,7 @@ function parseWork(filePath) {
   return {
     slug,
     title: data.title || '未命名作品',
+    subtitle: data.subtitle || '',
     date: dateDisplay,
     dateISO: dateStr || null,
     category: data.category || '',
@@ -93,10 +94,21 @@ function parseWork(filePath) {
     subcategoryLabel,
     cover: data.cover || '',
     excerpt: data.excerpt || '',
+    metaTitle: data.metaTitle || '',
+    metaDescription: data.metaDescription || '',
     gallery,
+    galleryAltTemplates: Array.isArray(data.galleryAltTemplates) ? data.galleryAltTemplates : [],
+    useMasonry: data.useMasonry === true,
+    ctaTitle: data.ctaTitle || '',
+    ctaText: data.ctaText || '',
+    ctaButton1Text: data.ctaButton1Text || '',
+    ctaButton1Url: data.ctaButton1Url || '',
+    ctaButton2Text: data.ctaButton2Text || '',
+    ctaButton2Url: data.ctaButton2Url || '',
     video: data.video || '',
     tags,
     body: content ? content.trim() : '',
+    noExcerpt: data.noExcerpt === true,
   };
 }
 
@@ -121,8 +133,8 @@ function buildDetailHtml(work) {
   const shareUrl = `${SITE_BASE}/pages/work/${work.slug}.html`;
   const encodedUrl = encodeURIComponent(shareUrl);
   const encodedTitle = encodeURIComponent(work.title);
-  const metaTitle = `幼兒園畢業照攝影 畢業典禮攝影｜${work.title}｜小巴老師｜8-ways.com`;
-  const metaDesc = work.excerpt ? work.excerpt.slice(0, 160) : work.title;
+  const metaTitle = work.metaTitle || `幼兒園畢業照攝影 畢業典禮攝影｜${work.title}｜小巴老師｜8-ways.com`;
+  const metaDesc = work.metaDescription || (work.excerpt ? work.excerpt.slice(0, 160) : work.title);
   const ogImage = pathToAbsolute(work.cover);
 
   const categoryBlock = work.categoryLabel
@@ -130,7 +142,10 @@ function buildDetailHtml(work) {
   const subcategoryBlock = work.subcategoryLabel
     ? ` <span class="work-badge">${work.subcategoryLabel}</span>` : '';
 
-  const excerptBlock = work.excerpt
+  const subtitleBlock = work.subtitle
+    ? `<p class="work-detail-subtitle">${escapeHtml(work.subtitle)}</p>` : '';
+
+  const excerptBlock = !work.noExcerpt && work.excerpt
     ? `<div class="work-excerpt"><p>${escapeHtml(work.excerpt)}</p></div>` : '';
 
   const bodyHtml = work.body && marked
@@ -139,15 +154,33 @@ function buildDetailHtml(work) {
   const bodyBlock = work.body
     ? `<div class="work-body prose">${bodyHtml}</div>` : '';
 
+  const altTemplates = work.galleryAltTemplates && work.galleryAltTemplates.length > 0
+    ? work.galleryAltTemplates
+    : [work.title + ' 作品照片'];
   let galleryHtml = '';
   if (work.gallery && work.gallery.length > 0) {
-    const items = work.gallery.map((src) => {
+    const masonryClass = work.useMasonry ? ' work-gallery--masonry' : '';
+    const items = work.gallery.map((src, idx) => {
       const s = (src || '').replace(/^\//, '');
-      return `<div class="work-gallery-item"><img src="../../${s}" alt="" loading="lazy" /></div>`;
+      const alt = altTemplates[idx % altTemplates.length] || work.title;
+      return `<div class="work-gallery-item"><img src="../../${s}" alt="${escapeHtml(alt)}" loading="lazy" /></div>`;
     }).join('\n');
-    galleryHtml = `<div class="work-gallery" aria-label="作品相簿">\n${items}\n</div>`;
+    galleryHtml = `<div class="work-gallery${masonryClass}" aria-label="作品相簿">\n${items}\n</div>`;
   }
   const galleryBlock = galleryHtml;
+
+  let ctaBlock = '';
+  if (work.ctaTitle && work.ctaTitle.trim()) {
+    const btn1 = work.ctaButton1Url && work.ctaButton1Text
+      ? `<a class="btn primary" href="${escapeHtml(work.ctaButton1Url)}" target="_blank" rel="noopener">${escapeHtml(work.ctaButton1Text)}</a>` : '';
+    const btn2 = work.ctaButton2Url && work.ctaButton2Text
+      ? `<a class="btn ghost" href="${escapeHtml(work.ctaButton2Url)}">${escapeHtml(work.ctaButton2Text)}</a>` : '';
+    ctaBlock = `<div class="work-cta">
+  <h2>${escapeHtml(work.ctaTitle)}</h2>
+  ${work.ctaText ? `<p>${escapeHtml(work.ctaText)}</p>` : ''}
+  <div class="work-cta-buttons">${btn1}${btn2}</div>
+</div>`;
+  }
 
   let videoBlock = '';
   if (work.video && work.video.trim()) {
@@ -168,6 +201,7 @@ function buildDetailHtml(work) {
     '{{ogImage}}': ogImage,
     '{{shareUrl}}': shareUrl,
     '{{title}}': escapeHtml(work.title),
+    '{{subtitleBlock}}': subtitleBlock,
     '{{date}}': escapeHtml(work.date),
     '{{dateISO}}': work.dateISO || work.date,
     '{{categoryBlock}}': categoryBlock,
@@ -176,6 +210,7 @@ function buildDetailHtml(work) {
     '{{coverPath}}': coverPath,
     '{{bodyBlock}}': bodyBlock,
     '{{galleryBlock}}': galleryBlock,
+    '{{ctaBlock}}': ctaBlock,
     '{{videoBlock}}': videoBlock,
     '{{facebookShareUrl}}': facebookShareUrl,
     '{{lineShareUrl}}': lineShareUrl,

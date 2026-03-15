@@ -1,34 +1,152 @@
 ---
-title: 蒙特梭利的活潑與公園外景
+title: 蒙特梭利森林幼兒園畢業照拍攝案例
+subtitle: 校園互動 × 公園外景自然風格
 date: 2024-12-13
 
 category: graduation-photo
 subcategory: kindergarten
 
-cover: /assets/images/works/montessori-forest-park-01.jpg
-excerpt: 與蒙特梭利森林幼兒園合作的畢業照專案，校內捕捉孩子互動、上課與遊戲的自然瞬間，外景至大安森林公園留下活潑的戶外照，並納入親子家庭照。小巴老師以引導代替擺拍，保留約三成「不看鏡頭」的畫面，讓每張照片都自然生動，園所與家長都很滿意。
+cover: /assets/images/works/montessori-forest-park-outdoor/001.jpg
+excerpt: 台北蒙特梭利森林幼兒園畢業照案例，校園互動、大安森林公園外景與親子家庭照，自然互動式拍攝留下孩子最真實的畢業回憶。
+
+metaTitle: 蒙特梭利森林幼兒園畢業照拍攝案例｜校園互動與戶外外景自然攝影
+metaDescription: 分享台北蒙特梭利森林幼兒園畢業照拍攝案例，結合校園互動情境、大安森林公園外景與親子家庭照，以自然互動方式留下孩子最真實的畢業回憶。
+
+noExcerpt: true
+useMasonry: true
+ctaTitle: 想為孩子留下自然又充滿回憶的畢業照嗎？
+ctaText: 我們擅長以自然互動的方式拍攝幼兒園畢業照，結合校園情境、戶外外景與親子家庭照，讓每個孩子都能留下最真實的畢業回憶。
+ctaButton1Text: 加入 Line 詢問拍攝方案
+ctaButton1Url: https://line.me/ti/p/~0911252302
+ctaButton2Text: 查看更多畢業照拍攝案例
+ctaButton2Url: /pages/works.html
+galleryAltTemplates:
+  - 蒙特梭利森林幼兒園畢業照 校園互動
+  - 幼兒園畢業照 公園外景拍攝
+  - 幼兒園親子家庭照 畢業攝影
+  - 蒙特梭利幼兒園 自然風格畢業照
+  - 幼兒園畢業照 自然互動
 
 gallery:
-  - /assets/images/works/montessori-forest-park-01.jpg
-  - /assets/images/works/montessori-forest-park-02.jpg
-  - /assets/images/works/montessori-forest-park-03.jpg
-  - /assets/images/works/montessori-forest-park-04.jpg
-  - /assets/images/works/montessori-forest-park-05.jpg
-  - /assets/images/works/montessori-forest-park-06.jpg
-  - /assets/images/works/montessori-forest-park-07.jpg
-  - /assets/images/works/montessori-forest-park-08.jpg
-  - /assets/images/works/montessori-forest-park-09.jpg
-  - /assets/images/works/montessori-forest-park-10.jpg
-  - /assets/images/works/montessori-forest-park-11.jpg
-  - /assets/images/works/montessori-forest-park-12.jpg
-  - /assets/images/works/montessori-forest-park-13.jpg
-  - /assets/images/works/montessori-forest-park-14.jpg
-  - /assets/images/works/montessori-forest-park-15.jpg
-  - /assets/images/works/montessori-forest-park-16.jpg
-  - /assets/images/works/montessori-forest-park-17.jpg
-  - /assets/images/works/montessori-forest-park-18.jpg
-  - /assets/images/works/montessori-forest-park-19.jpg
-  - /assets/images/works/montessori-forest-park-20.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/001.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/002.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/003.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/004.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/005.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/006.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/007.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/008.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/009.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/010.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/011.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/012.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/013.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/014.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/015.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/016.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/017.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/018.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/019.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/020.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/021.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/022.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/023.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/024.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/025.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/026.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/027.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/028.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/029.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/030.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/031.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/032.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/033.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/034.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/035.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/036.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/037.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/038.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/039.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/040.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/041.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/042.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/043.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/044.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/045.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/046.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/047.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/048.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/049.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/050.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/051.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/052.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/053.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/054.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/055.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/056.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/057.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/058.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/059.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/060.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/061.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/062.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/063.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/064.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/065.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/066.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/067.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/068.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/069.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/070.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/071.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/072.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/073.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/074.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/075.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/076.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/077.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/078.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/079.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/080.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/081.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/082.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/083.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/084.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/085.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/086.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/087.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/088.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/089.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/090.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/091.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/092.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/093.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/094.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/095.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/096.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/097.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/098.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/099.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/100.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/101.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/102.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/103.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/104.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/105.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/106.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/107.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/108.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/109.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/110.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/111.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/112.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/113.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/114.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/115.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/116.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/117.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/118.jpg
+  - /assets/images/works/montessori-forest-park-outdoor/119.jpg
 video:
 
 tags:
@@ -42,9 +160,59 @@ tags:
 draft: false
 ---
 
-這次與台北市私立蒙特梭利森林幼兒園的合作，從一開始就讓人很期待：園所重視孩子的自然與活潑，不希望畢業照只有「站好、看鏡頭」的制式畫面，而是希望留下互動、遊戲、閱讀與實作的真實瞬間。我們在校內安排了上課與 DIY 情境的側拍，也捕捉孩子們遊戲與共讀的畫面；室外則帶班到大安森林公園出外景，讓孩子在草地與樹蔭下盡情跑跳，拍出自然生動的團體照與個人照。更特別的是，這次專案還納入了親子家庭照，把親子寫真與畢業照結合在一起，讓家長也能入鏡，留下與孩子一起的溫馨畫面。
+<ul class="work-case-info">
+<li><strong>拍攝學校：</strong>台北市私立蒙特梭利森林幼兒園</li>
+<li><strong>拍攝類型：</strong>幼兒園畢業照攝影</li>
+<li><strong>拍攝場景：</strong>校園互動 / DIY活動 / 公園外景</li>
+<li><strong>拍攝特色：</strong>自然互動式拍攝、不強迫看鏡頭</li>
+<li><strong>發布日期：</strong>2024 / 12 / 13</li>
+</ul>
 
-在拍攝前，我們與園所溝通了一個很重要的觀念：不必每張都看鏡頭。小巴老師認為，孩子專注在遊戲、與同學互動、或望向遠方的表情，往往比「一二三笑一個」更真實、更有故事感。因此我們約定約三成左右的畫面可以是不看鏡頭的瞬間，結果成品裡的笑容與氛圍都更自然，園所與畢業生家長回饋也非常好。若您的學校也期待這樣的畢業照風格，歡迎與我們聯繫。
+<div class="work-case-summary">
+<h3>案例重點</h3>
+<p><strong>拍攝學校：</strong>台北市私立蒙特梭利森林幼兒園<br/>
+<strong>拍攝內容：</strong>校園互動 / DIY / 閱讀 / 公園外景 / 親子家庭照<br/>
+<strong>拍攝地點：</strong>校園 + 大安森林公園<br/>
+<strong>拍攝風格：</strong>自然互動式攝影<br/>
+<strong>特色：</strong>保留孩子自然表情與互動瞬間</p>
+</div>
+
+## 這次拍攝的背景
+
+園方希望畢業照不要過於制式，而是保留孩子之間的互動與自然情緒。
+
+## 校園情境拍攝
+
+校園內我們安排了多種情境拍攝：
+
+- **DIY活動** — 孩子動手做的瞬間
+- **閱讀時間** — 共讀與專注的畫面
+- **教室互動** — 與同學、老師的日常互動
+- **遊戲探索** — 自由玩耍與探索
+
+呈現孩子在校園中的日常。
+
+## 公園外景拍攝
+
+外景至大安森林公園，讓畫面更加開放與自然：
+
+- **大安森林公園** — 綠意與開闊空間
+- **草地奔跑** — 孩子盡情跑跳的活力
+- **自然互動** — 在戶外環境中的真實互動
+
+## 親子家庭合影
+
+本次拍攝加入親子家庭照，讓家長也能一起入鏡，留下與孩子共同的畢業紀念。
+
+## 自然互動式拍攝風格
+
+拍攝時我們與園所溝通以下理念：
+
+- 不強迫每張照片都看鏡頭
+- 保留孩子自然互動瞬間
+- 約三成畫面為自然視線（不看鏡頭）
+
+讓成品裡的笑容與氛圍更自然，園所與家長回饋也非常好。
 
 ---
 
