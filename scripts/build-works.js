@@ -43,7 +43,9 @@ const SUBCATEGORY_LABELS = {
   'family': '家庭',
   'group-family': '團體家庭',
   'outdoor': '戶外',
+  'outdoor-campus': '戶外草地外景 × 校園情境拍攝',
   'outdoor-campus-family': '戶外草地外景 × 校園情境拍攝 × 家庭合影',
+  'indoor-classroom': '全室內 × 上課情境照',
   'campus-life': '校園生活',
   'event': '活動',
 };
