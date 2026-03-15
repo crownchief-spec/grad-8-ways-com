@@ -6,7 +6,7 @@ date: 2025-04-16
 category: family-graduation
 subcategory: camping-family-travel
 
-cover: /assets/images/works/family-camping-graduation/001.jpg
+cover: /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-01.jpg
 excerpt: 台中畢業生家長相約在露營區舉辦家庭畢業照拍攝，氣氛輕鬆如結合露營旅行的攝影聚會。孩子們穿著便服與畢業服在草地與帳篷間自然互動，並以空拍記錄營區全景；師生合照與家庭合照讓整場更像溫馨聚會，烤棉花糖、賞螢等活動也一併留下，成為特別又充滿回憶的幼兒園畢業紀念。
 
 metaTitle: 家庭旅遊聯誼 × 露營畢業照｜露營區家庭畢業照 × 師生家庭合照
@@ -28,34 +28,75 @@ galleryAltTemplates:
   - 畢業照 露營區 空拍 自然生動
 
 gallery:
-  - /assets/images/works/family-camping-graduation/008.jpg
-  - /assets/images/works/family-camping-graduation/015.jpg
-  - /assets/images/works/family-camping-graduation/003.jpg
-  - /assets/images/works/family-camping-graduation/020.jpg
-  - /assets/images/works/family-camping-graduation/011.jpg
-  - /assets/images/works/family-camping-graduation/006.jpg
-  - /assets/images/works/family-camping-graduation/001.jpg
-  - /assets/images/works/family-camping-graduation/017.jpg
-  - /assets/images/works/family-camping-graduation/024.jpg
-  - /assets/images/works/family-camping-graduation/013.jpg
-  - /assets/images/works/family-camping-graduation/027.jpg
-  - /assets/images/works/family-camping-graduation/005.jpg
-  - /assets/images/works/family-camping-graduation/012.jpg
-  - /assets/images/works/family-camping-graduation/019.jpg
-  - /assets/images/works/family-camping-graduation/009.jpg
-  - /assets/images/works/family-camping-graduation/004.jpg
-  - /assets/images/works/family-camping-graduation/018.jpg
-  - /assets/images/works/family-camping-graduation/010.jpg
-  - /assets/images/works/family-camping-graduation/023.jpg
-  - /assets/images/works/family-camping-graduation/007.jpg
-  - /assets/images/works/family-camping-graduation/021.jpg
-  - /assets/images/works/family-camping-graduation/014.jpg
-  - /assets/images/works/family-camping-graduation/002.jpg
-  - /assets/images/works/family-camping-graduation/026.jpg
-  - /assets/images/works/family-camping-graduation/016.jpg
-  - /assets/images/works/family-camping-graduation/022.jpg
-  - /assets/images/works/family-camping-graduation/025.jpg
-  - /assets/images/works/family-camping-graduation/028.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-65.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-26.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-18.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-40.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-67.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-56.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-66.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-54.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-50.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-09.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-49.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-63.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-61.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-34.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-48.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-24.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-06.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-42.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-20.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-08.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-15.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-44.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-53.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-30.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-17.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-52.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-19.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-10.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-04.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-43.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-51.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-27.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-28.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-35.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-14.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-64.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-12.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-38.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-39.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-41.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-23.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-57.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-05.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-21.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-32.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-59.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-31.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-55.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-46.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-45.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-29.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-37.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-07.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-58.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-69.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-25.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-60.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-01.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-62.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-68.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-22.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-13.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-47.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-33.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-36.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-16.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-11.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-03.jpg
+  - /assets/images/works/family-camping-graduation/露營畢業照-自然生動-活潑-02.jpg
 
 video:
 

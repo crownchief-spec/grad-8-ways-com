@@ -6,7 +6,7 @@ date: 2025-03-13
 category: graduation-photo
 subcategory: indoor-styled-night-camp
 
-cover: /assets/images/works/thoughtful-setup-kindergarten/001.jpg
+cover: /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-01.jpg
 excerpt: 與園所老師事前充分溝通場景與背景，完成白色背景學士服、粉紅背景數字氣球、畫板書籍教具情境，以及室內夜間露營星空場景，為孩子留下多元又充滿創意與回憶的畢業照。
 
 metaTitle: 用心佈景的幼兒園畢業照｜全室內白色粉紅背景 × 夜間露營星空場景
@@ -28,26 +28,51 @@ galleryAltTemplates:
   - 幼兒園畢業照 用心佈景 創意回憶
 
 gallery:
-  - /assets/images/works/thoughtful-setup-kindergarten/007.jpg
-  - /assets/images/works/thoughtful-setup-kindergarten/013.jpg
-  - /assets/images/works/thoughtful-setup-kindergarten/002.jpg
-  - /assets/images/works/thoughtful-setup-kindergarten/019.jpg
-  - /assets/images/works/thoughtful-setup-kindergarten/011.jpg
-  - /assets/images/works/thoughtful-setup-kindergarten/004.jpg
-  - /assets/images/works/thoughtful-setup-kindergarten/016.jpg
-  - /assets/images/works/thoughtful-setup-kindergarten/009.jpg
-  - /assets/images/works/thoughtful-setup-kindergarten/001.jpg
-  - /assets/images/works/thoughtful-setup-kindergarten/015.jpg
-  - /assets/images/works/thoughtful-setup-kindergarten/008.jpg
-  - /assets/images/works/thoughtful-setup-kindergarten/020.jpg
-  - /assets/images/works/thoughtful-setup-kindergarten/005.jpg
-  - /assets/images/works/thoughtful-setup-kindergarten/012.jpg
-  - /assets/images/works/thoughtful-setup-kindergarten/018.jpg
-  - /assets/images/works/thoughtful-setup-kindergarten/003.jpg
-  - /assets/images/works/thoughtful-setup-kindergarten/010.jpg
-  - /assets/images/works/thoughtful-setup-kindergarten/017.jpg
-  - /assets/images/works/thoughtful-setup-kindergarten/006.jpg
-  - /assets/images/works/thoughtful-setup-kindergarten/014.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-17.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-18.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-31.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-24.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-42.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-08.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-27.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-41.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-26.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-12.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-44.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-20.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-39.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-09.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-37.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-34.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-29.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-05.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-07.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-23.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-11.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-25.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-35.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-36.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-33.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-43.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-04.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-45.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-10.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-01.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-13.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-38.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-15.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-19.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-28.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-32.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-06.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-22.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-16.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-03.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-40.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-21.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-02.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-14.jpg
+  - /assets/images/works/thoughtful-setup-kindergarten/幼兒園畢業照-自然生動-活潑-30.jpg
 
 video:
 
