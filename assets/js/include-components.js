@@ -1,9 +1,23 @@
 (function(){
   var pathname = typeof location !== "undefined" ? location.pathname : "";
-var base = "";
-  if (pathname.indexOf("/pages/work/") !== -1) base = "../../";
-  else if (pathname.indexOf("/projects/") !== -1) base = "../";
-  else if (pathname.indexOf("/pages/") !== -1 || pathname.indexOf("/blog") === 0 || pathname.indexOf("/case") === 0) base = "../";
+
+  function getBasePath() {
+    if (pathname.indexOf("/pages/work/") !== -1) return "../../";
+    if (pathname.indexOf("/projects/") !== -1) {
+      var segs = pathname.split("/").filter(Boolean);
+      if (segs.length >= 3 && segs[segs.length - 1] === "index.html") {
+        return "../../";
+      }
+      return "../";
+    }
+    if (pathname.indexOf("/pages/") !== -1 || pathname.indexOf("/blog") === 0 || pathname.indexOf("/case") === 0) return "../";
+    return "";
+  }
+
+  var base = getBasePath();
+  var isProjectsSection = pathname.indexOf("/projects/") !== -1;
+  var headerComponent = isProjectsSection ? "components/header-projects.html" : "components/header.html";
+  var footerComponent = isProjectsSection ? "components/footer-projects.html" : "components/footer.html";
 
   function inject(placeholderId, url, runNavAfter) {
     var el = document.getElementById(placeholderId);
@@ -88,11 +102,11 @@ var base = "";
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function() {
-      inject("site-header-placeholder", "components/header.html", true);
-      inject("site-footer-placeholder", "components/footer.html", false);
+      inject("site-header-placeholder", headerComponent, true);
+      inject("site-footer-placeholder", footerComponent, false);
     });
   } else {
-    inject("site-header-placeholder", "components/header.html", true);
-    inject("site-footer-placeholder", "components/footer.html", false);
+    inject("site-header-placeholder", headerComponent, true);
+    inject("site-footer-placeholder", footerComponent, false);
   }
 })();

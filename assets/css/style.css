@@ -50,6 +50,17 @@ p{margin:0 0 12px}
   background:#222; 
   color:#f5f5f5;
 }
+/* 客戶專屬 /projects/：精簡 footer，不含案例輪播與 SEO 長文 */
+.site-footer--projects{padding-top:8px}
+.site-footer--projects .footer-grid--project{
+  padding:20px 0 12px;
+  max-width:520px;
+  margin:0 auto;
+  text-align:center;
+}
+.site-footer--projects .footer-grid--project .footer-title{margin-top:0}
+.site-footer--projects .footer-cta-buttons{justify-content:center; flex-wrap:wrap}
+.site-footer--projects .footer-bottom{padding:12px 0 20px; border-top:1px solid rgba(255,255,255,.12)}
 .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0; column-gap:16px}
 .brand{display:flex; align-items:center; gap:10px; text-decoration:none; font-weight:900}
 .brand img{height:32px; width:auto; display:block}
