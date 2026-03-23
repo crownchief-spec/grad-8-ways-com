@@ -705,6 +705,15 @@ p{margin:0 0 12px}
   transform: scale(1.03);
   filter: saturate(1.03);
 }
+@media (max-width: 768px){
+  .project-mosaic .work-gallery--masonry{
+    column-count: 2 !important;
+    column-gap: 10px;
+  }
+  .project-mosaic .work-gallery--masonry .work-gallery-item{
+    margin-bottom: 10px;
+  }
+}
 .project-lightbox {
   position: fixed;
   inset: 0;

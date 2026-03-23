@@ -83,6 +83,15 @@ function extractProgressSection(markdownBody) {
   return '';
 }
 
+function extractShootContent(markdownBody) {
+  if (!markdownBody) return '';
+  const body = String(markdownBody).replace(/\r\n/g, '\n');
+  const section2 = body.match(/^##\s*2[^\n]*\n([\s\S]*?)(?=^##\s|\Z)/m);
+  const src = section2 && section2[1] ? section2[1] : body;
+  const shootLine = src.match(/^\s*-\s*拍攝內容[:：]\s*(.+)$/m);
+  return shootLine && shootLine[1] ? shootLine[1].trim() : '';
+}
+
 function buildIndex(projects) {
   const lookup = {};
   const records = [];
@@ -145,7 +154,10 @@ function buildDetailHtml(p, options = {}) {
   const guardEntryHref = options.guardEntryHref || 'index.html';
   const resources = Array.isArray(p.resources) ? p.resources : [];
   const schoolName = p.school || p.title || '客戶專屬頁面';
-  const pageNote = p.page_note ? String(p.page_note).trim() : '以下為本次拍攝照片。';
+  const pageNote = p.page_note ? String(p.page_note).trim() : '';
+  const serviceText = p.service_type || p.service_category || p.package_name || '';
+  const packageText = p.package || p.package_price || p.price || '';
+  const shootContent = p.shoot_content || extractShootContent(p.body) || '';
   const progressBody = extractProgressSection(p.body);
   const bodyHtml = progressBody && marked
     ? marked.parse(progressBody, { gfm: true })
@@ -172,7 +184,7 @@ function buildDetailHtml(p, options = {}) {
   const galleryBlock = imageItems.length
     ? `<section class="project-section project-mosaic" aria-label="精選照片">
         <h2>精選照片</h2>
-        <p class="project-page-note">${escapeHtml(pageNote)}</p>
+        ${pageNote ? `<p class="project-page-note">${escapeHtml(pageNote)}</p>` : ''}
         <div class="work-gallery work-gallery--masonry project-mosaic-grid" id="projectMosaic">
           ${imageItems.map((it) => `<div class="work-gallery-item"><img src="./images/${escapeHtml(it.filename)}" alt="${escapeHtml(it.alt)}" title="${escapeHtml(it.title)}" loading="lazy" /></div>`).join('')}
         </div>
@@ -236,7 +248,9 @@ ${heroImagesHtml}
         </header>
         <div class="project-hero-panel">
           ${shootDateLine}
-          <p>${escapeHtml(pageNote)}</p>
+          ${serviceText ? `<p><strong>服務資訊：</strong>${escapeHtml(serviceText)}</p>` : ''}
+          ${packageText ? `<p><strong>方案：</strong>${escapeHtml(packageText)}</p>` : ''}
+          ${shootContent ? `<p><strong>畢業照內容：</strong>${escapeHtml(shootContent)}</p>` : ''}
         </div>
       </div>
     </section>
