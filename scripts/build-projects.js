@@ -106,30 +106,75 @@ function buildIndex(projects) {
   return { lookup, projects: records };
 }
 
+function normalizeImageItems(p, schoolName) {
+  const rawItems = Array.isArray(p.image_items) ? p.image_items : [];
+  const normalized = rawItems
+    .map((item, i) => {
+      if (!item) return null;
+      if (typeof item === 'string') {
+        const filename = item.replace(/^\.?\/?images\//i, '');
+        if (!filename) return null;
+        return {
+          filename,
+          alt: `${schoolName} 精選照片 ${i + 1}`,
+          title: `${schoolName} 精選照片 ${i + 1}`,
+        };
+      }
+      const filename = item.filename ? String(item.filename).replace(/^\.?\/?images\//i, '') : '';
+      if (!filename) return null;
+      return {
+        filename,
+        alt: item.alt ? String(item.alt) : `${schoolName} 精選照片 ${i + 1}`,
+        title: item.title ? String(item.title) : `${schoolName} 精選照片 ${i + 1}`,
+      };
+    })
+    .filter(Boolean);
+
+  if (normalized.length) return normalized;
+
+  const hero = Array.isArray(p.hero_images) ? p.hero_images.filter(Boolean) : [];
+  return hero.map((src, i) => ({
+    filename: String(src).replace(/^\.?\/?images\//i, ''),
+    alt: `${schoolName} 精選照片 ${i + 1}`,
+    title: `${schoolName} 精選照片 ${i + 1}`,
+  }));
+}
+
 function buildDetailHtml(p, options = {}) {
   const assetPrefix = options.assetPrefix || '../../';
   const guardEntryHref = options.guardEntryHref || 'index.html';
   const resources = Array.isArray(p.resources) ? p.resources : [];
   const schoolName = p.school || p.title || '客戶專屬頁面';
   const pageNote = p.page_note ? String(p.page_note).trim() : '以下為本次拍攝照片。';
-  const serviceText = p.service_type || p.service_category || p.package_name || '';
-  const packageText = p.package || p.package_price || p.price || '';
   const progressBody = extractProgressSection(p.body);
   const bodyHtml = progressBody && marked
     ? marked.parse(progressBody, { gfm: true })
     : (progressBody ? `<div class="project-log">${escapeHtml(progressBody).replace(/\n/g, '<br>')}</div>` : '');
-  const heroImages = Array.isArray(p.hero_images) ? p.hero_images.filter((src) => src) : [];
+  const imageItems = normalizeImageItems(p, schoolName);
+  const imageMetaMap = {};
+  imageItems.forEach((it) => {
+    imageMetaMap[it.filename] = it;
+  });
+  const heroImages = Array.isArray(p.hero_images) && p.hero_images.length
+    ? p.hero_images.filter(Boolean).map((src) => String(src).replace(/^\.?\/?images\//i, ''))
+    : imageItems.slice(0, 5).map((it) => it.filename);
   const shootDateLine = p.shoot_date ? `<p class="project-shoot-date"><strong>拍攝日期：</strong>${escapeHtml(String(p.shoot_date))}</p>` : '';
   const heroImagesHtml = heroImages.length
-    ? heroImages.map((src, i) => `<img src="./${escapeHtml(src)}" alt="${escapeHtml(schoolName)} 精選照片 ${i + 1}" ${i === 0 ? 'class="active"' : 'loading="lazy"'} />`).join('\n')
+    ? heroImages.map((src, i) => {
+      const meta = imageMetaMap[src] || {
+        alt: `${schoolName} 精選照片 ${i + 1}`,
+        title: `${schoolName} 精選照片 ${i + 1}`,
+      };
+      return `<img src="./images/${escapeHtml(src)}" alt="${escapeHtml(meta.alt)}" title="${escapeHtml(meta.title)}" ${i === 0 ? 'class="active"' : 'loading="lazy"'} />`;
+    }).join('\n')
     : `<img src="${assetPrefix}assets/images/logo/eightways-logo-square-gold.png" alt="${escapeHtml(schoolName)}" class="active" />`;
 
-  const galleryBlock = heroImages.length
+  const galleryBlock = imageItems.length
     ? `<section class="project-section project-mosaic" aria-label="精選照片">
         <h2>精選照片</h2>
         <p class="project-page-note">${escapeHtml(pageNote)}</p>
         <div class="work-gallery work-gallery--masonry project-mosaic-grid" id="projectMosaic">
-          ${heroImages.map((src, i) => `<div class="work-gallery-item"><img src="./${escapeHtml(src)}" alt="${escapeHtml(schoolName)} 精選照片 ${i + 1}" loading="lazy" /></div>`).join('')}
+          ${imageItems.map((it) => `<div class="work-gallery-item"><img src="./images/${escapeHtml(it.filename)}" alt="${escapeHtml(it.alt)}" title="${escapeHtml(it.title)}" loading="lazy" /></div>`).join('')}
         </div>
       </section>`
     : '';
@@ -140,6 +185,14 @@ function buildDetailHtml(p, options = {}) {
         <div class="project-resource-list">${resources.map((r) => `<a class="btn primary" href="${escapeHtml(r.url || '#')}" target="_blank" rel="noopener">${escapeHtml(r.label || '連結')}</a>`).join('')}</div>
       </section>`
     : '';
+  const downloadResource = resources.find((r) => r && r.url && String(r.url).trim());
+  const heroDownloadLabel = downloadResource && downloadResource.label
+    ? String(downloadResource.label).trim()
+    : '照片雲端下載';
+  const heroDownloadHref = downloadResource ? String(downloadResource.url).trim() : '';
+  const heroDownloadBtn = heroDownloadHref
+    ? `<a class="btn primary project-hero-download-btn" href="${escapeHtml(heroDownloadHref)}" target="_blank" rel="noopener">${escapeHtml(heroDownloadLabel)}</a>`
+    : `<span class="btn primary project-hero-download-btn is-disabled" aria-disabled="true">${escapeHtml(heroDownloadLabel)}</span>`;
 
   const noindex = p.noindex !== false;
   const isProtected = !!(p.project_password && String(p.project_password).trim());
@@ -183,12 +236,14 @@ ${heroImagesHtml}
         </header>
         <div class="project-hero-panel">
           ${shootDateLine}
-          ${serviceText ? `<p><strong>服務內容：</strong>${escapeHtml(serviceText)}</p>` : ''}
-          ${packageText ? `<p><strong>方案內容：</strong>${escapeHtml(packageText)}</p>` : ''}
+          <p>${escapeHtml(pageNote)}</p>
         </div>
       </div>
     </section>
     <div class="container project-detail-body project-detail-body--album" style="max-width:1000px">
+      <div class="project-hero-download-wrap" aria-label="雲端下載入口">
+        ${heroDownloadBtn}
+      </div>
       <section class="project-section project-logs" aria-label="進度日誌">
         <h2>進度日誌</h2>
         <div class="project-card project-log-card">
@@ -200,8 +255,11 @@ ${heroImagesHtml}
     </div>
   </main>
   <div class="project-lightbox" id="projectLightbox" aria-hidden="true">
+    <button type="button" id="projectLightboxPrev" class="project-lightbox-nav prev" aria-label="上一張">‹</button>
+    <button type="button" id="projectLightboxNext" class="project-lightbox-nav next" aria-label="下一張">›</button>
     <button type="button" id="projectLightboxClose" aria-label="關閉">×</button>
     <img id="projectLightboxImage" src="" alt="" />
+    <p id="projectLightboxCaption" class="project-lightbox-caption"></p>
   </div>
   <div id="site-footer-placeholder"></div>
   <script src="${assetPrefix}assets/js/include-components.js" defer></script>
@@ -212,7 +270,12 @@ ${heroImagesHtml}
       var lightbox = document.getElementById('projectLightbox');
       var lightboxImg = document.getElementById('projectLightboxImage');
       var closeBtn = document.getElementById('projectLightboxClose');
-      if (!gallery || !lightbox || !lightboxImg || !closeBtn) return;
+      var prevBtn = document.getElementById('projectLightboxPrev');
+      var nextBtn = document.getElementById('projectLightboxNext');
+      var caption = document.getElementById('projectLightboxCaption');
+      if (!gallery || !lightbox || !lightboxImg || !closeBtn || !prevBtn || !nextBtn || !caption) return;
+      var imgs = Array.prototype.slice.call(gallery.querySelectorAll('img'));
+      var currentIndex = 0;
 
       function closeLightbox() {
         lightbox.classList.remove('is-open');
@@ -220,21 +283,40 @@ ${heroImagesHtml}
         lightboxImg.src = '';
       }
 
-      gallery.querySelectorAll('img').forEach(function(img) {
+      function openAt(index) {
+        if (!imgs.length) return;
+        currentIndex = (index + imgs.length) % imgs.length;
+        var img = imgs[currentIndex];
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || '精選照片';
+        caption.textContent = img.title || img.alt || '';
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+      }
+
+      imgs.forEach(function(img, index) {
         img.addEventListener('click', function() {
-          lightboxImg.src = img.src;
-          lightboxImg.alt = img.alt || '精選照片';
-          lightbox.classList.add('is-open');
-          lightbox.setAttribute('aria-hidden', 'false');
+          openAt(index);
         });
       });
 
       closeBtn.addEventListener('click', closeLightbox);
+      prevBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        openAt(currentIndex - 1);
+      });
+      nextBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        openAt(currentIndex + 1);
+      });
       lightbox.addEventListener('click', function(e) {
         if (e.target === lightbox) closeLightbox();
       });
       document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('is-open')) return;
         if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') openAt(currentIndex - 1);
+        if (e.key === 'ArrowRight') openAt(currentIndex + 1);
       });
     })();
   </script>
@@ -280,18 +362,26 @@ function main() {
   projects.forEach((p) => {
     const slugDir = path.join(PROJECTS_DIR, p.slug);
     ensureDir(slugDir);
+    const projectImageDir = path.join(slugDir, 'images');
+    ensureDir(projectImageDir);
 
-    // 將舊資產目錄中的照片移動到專案資料夾，讓 index 與照片同層
+    // 將舊資產目錄中的照片移動到專案資料夾 images 子目錄
     const legacyDir = path.join(LEGACY_PROJECT_IMAGES_DIR, p.slug);
     const legacyImages = listImageFiles(legacyDir);
     legacyImages.forEach((filename) => {
       const src = path.join(legacyDir, filename);
-      const dest = path.join(slugDir, filename);
+      const dest = path.join(projectImageDir, filename);
       if (!fs.existsSync(dest)) moveFileSafe(src, dest);
     });
     if (fs.existsSync(legacyDir) && listImageFiles(legacyDir).length === 0) {
       try { fs.rmdirSync(legacyDir); } catch (e) {}
     }
+    const rootImages = listImageFiles(slugDir);
+    rootImages.forEach((filename) => {
+      const src = path.join(slugDir, filename);
+      const dest = path.join(projectImageDir, filename);
+      if (!fs.existsSync(dest)) moveFileSafe(src, dest);
+    });
 
     const html = buildDetailHtml(p, {
       assetPrefix: '../../',

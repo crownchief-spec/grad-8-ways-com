@@ -287,6 +287,25 @@ p{margin:0 0 12px}
   color:#fff;
   padding:40px 0 36px;
 }
+.project-detail .hero{
+  min-height: 52vh;
+}
+@media (max-width: 768px){
+  .project-detail .hero{
+    min-height: auto;
+    padding: 14px 0;
+  }
+  .project-detail .hero .inner{
+    padding: 18px 0 16px;
+  }
+  .project-detail .hero .project-header--hero{
+    margin-bottom: 12px;
+  }
+  .project-detail .hero .project-hero-panel{
+    margin-top: 8px;
+    padding: 12px 14px;
+  }
+}
 .hero .title{max-width:24ch}
 .hero .subtitle{max-width:72ch; opacity:.92}
 
@@ -621,6 +640,19 @@ p{margin:0 0 12px}
 
 /* 客戶專屬相簿頁：聚焦學校內容 */
 .project-detail-body--album{ padding-top: 28px; padding-bottom: 40px; }
+.project-hero-download-wrap{
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+.project-hero-download-btn{
+  min-width: 180px;
+}
+.project-hero-download-btn.is-disabled{
+  opacity: .45;
+  pointer-events: none;
+  cursor: not-allowed;
+  box-shadow: none;
+}
 .project-header--album h1{ margin: 0; }
 .project-shoot-date{ margin: 10px 0 0; color: var(--text); }
 .project-page-note{ margin: 8px 0 0; color: var(--muted); }
@@ -666,6 +698,13 @@ p{margin:0 0 12px}
 .project-logs .project-card { padding: 16px 18px; }
 .project-mosaic { margin-top: 24px; }
 .project-mosaic .work-gallery-item { cursor: zoom-in; }
+.project-mosaic .work-gallery-item img {
+  transition: transform .25s ease, filter .25s ease;
+}
+.project-mosaic .work-gallery-item:hover img {
+  transform: scale(1.03);
+  filter: saturate(1.03);
+}
 .project-lightbox {
   position: fixed;
   inset: 0;
@@ -678,6 +717,18 @@ p{margin:0 0 12px}
 }
 .project-lightbox.is-open { display: flex; }
 .project-lightbox img { max-width: min(1100px, 94vw); max-height: 88vh; border-radius: 10px; }
+.project-lightbox-caption {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.5);
+  color: #fff;
+  font-size: 13px;
+}
 .project-lightbox button {
   position: absolute;
   top: 18px;
@@ -691,3 +742,13 @@ p{margin:0 0 12px}
   font-size: 22px;
   cursor: pointer;
 }
+.project-lightbox .project-lightbox-nav {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  font-size: 38px;
+  background: rgba(0,0,0,.36);
+}
+.project-lightbox .project-lightbox-nav.prev { left: 18px; right: auto; }
+.project-lightbox .project-lightbox-nav.next { right: 18px; }
