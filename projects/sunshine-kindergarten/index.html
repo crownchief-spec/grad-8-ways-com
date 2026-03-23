@@ -84,7 +84,7 @@
         var img = imgs[currentIndex];
         lightboxImg.src = img.src;
         lightboxImg.alt = img.alt || '精選照片';
-        caption.textContent = img.title || img.alt || '';
+        caption.textContent = img.dataset.caption || img.title || img.alt || '';
         lightbox.classList.add('is-open');
         lightbox.setAttribute('aria-hidden', 'false');
       }

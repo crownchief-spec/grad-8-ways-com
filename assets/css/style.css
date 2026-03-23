@@ -692,6 +692,14 @@ p{margin:0 0 12px}
   transform: scale(1.03);
   filter: saturate(1.03);
 }
+.project-image-title{
+  margin: 0;
+  padding: 8px 8px 10px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--text);
+  background: #fff;
+}
 @media (max-width: 768px){
   .project-mosaic .work-gallery--masonry{
     column-count: 2 !important;

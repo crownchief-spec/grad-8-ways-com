@@ -125,16 +125,20 @@ function normalizeImageItems(p, schoolName) {
         if (!filename) return null;
         return {
           filename,
-          alt: `${schoolName} 精選照片 ${i + 1}`,
-          title: `${schoolName} 精選照片 ${i + 1}`,
+          alt: `${schoolName} 畢業照精選 ${i + 1}`,
+          title: `${schoolName} 畢業照精選 ${i + 1}`,
+          caption: `${schoolName} 畢業照精選紀錄`,
+          description: `${schoolName} 幼兒園畢業照攝影畫面`,
         };
       }
       const filename = item.filename ? String(item.filename).replace(/^\.?\/?images\//i, '') : '';
       if (!filename) return null;
       return {
         filename,
-        alt: item.alt ? String(item.alt) : `${schoolName} 精選照片 ${i + 1}`,
-        title: item.title ? String(item.title) : `${schoolName} 精選照片 ${i + 1}`,
+        alt: item.alt ? String(item.alt) : `${schoolName} 畢業照精選 ${i + 1}`,
+        title: item.title ? String(item.title) : `${schoolName} 畢業照精選 ${i + 1}`,
+        caption: item.caption ? String(item.caption) : (item.description ? String(item.description) : `${schoolName} 幼兒園畢業照攝影畫面`),
+        description: item.description ? String(item.description) : (item.caption ? String(item.caption) : `${schoolName} 幼兒園畢業照攝影畫面`),
       };
     })
     .filter(Boolean);
@@ -144,8 +148,10 @@ function normalizeImageItems(p, schoolName) {
   const hero = Array.isArray(p.hero_images) ? p.hero_images.filter(Boolean) : [];
   return hero.map((src, i) => ({
     filename: String(src).replace(/^\.?\/?images\//i, ''),
-    alt: `${schoolName} 精選照片 ${i + 1}`,
-    title: `${schoolName} 精選照片 ${i + 1}`,
+    alt: `${schoolName} 畢業照精選 ${i + 1}`,
+    title: `${schoolName} 畢業照精選 ${i + 1}`,
+    caption: `${schoolName} 畢業照精選紀錄`,
+    description: `${schoolName} 幼兒園畢業照攝影畫面`,
   }));
 }
 
@@ -185,7 +191,7 @@ function buildDetailHtml(p, options = {}) {
         <h2>精選照片</h2>
         ${pageNote ? `<p class="project-page-note">${escapeHtml(pageNote)}</p>` : ''}
         <div class="work-gallery work-gallery--masonry project-mosaic-grid" id="projectMosaic">
-          ${imageItems.map((it) => `<div class="work-gallery-item"><img src="./images/${escapeHtml(it.filename)}" alt="${escapeHtml(it.alt)}" title="${escapeHtml(it.title)}" loading="lazy" /></div>`).join('')}
+          ${imageItems.map((it) => `<div class="work-gallery-item"><img src="./images/${escapeHtml(it.filename)}" alt="${escapeHtml(it.alt)}" title="${escapeHtml(it.title)}" data-caption="${escapeHtml(it.caption || it.description || it.title)}" loading="lazy" /><p class="project-image-title">${escapeHtml(it.title)}</p></div>`).join('')}
         </div>
       </section>`
     : '';
@@ -283,7 +289,7 @@ ${heroImagesHtml}
         var img = imgs[currentIndex];
         lightboxImg.src = img.src;
         lightboxImg.alt = img.alt || '精選照片';
-        caption.textContent = img.title || img.alt || '';
+        caption.textContent = img.dataset.caption || img.title || img.alt || '';
         lightbox.classList.add('is-open');
         lightbox.setAttribute('aria-hidden', 'false');
       }
