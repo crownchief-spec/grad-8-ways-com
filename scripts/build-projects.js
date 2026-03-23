@@ -23,6 +23,7 @@ try {
 
 const CONTENT_DIR = path.join(__dirname, '../content/projects');
 const PROJECTS_DIR = path.join(__dirname, '../projects');
+const LEGACY_PROJECT_IMAGES_DIR = path.join(__dirname, '../assets/images/projects');
 
 function ensureDir(dir) {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
@@ -33,6 +34,20 @@ function listMarkdown(dir) {
   return fs.readdirSync(dir)
     .filter((f) => f.endsWith('.md') && !f.startsWith('_') && f !== 'README.md')
     .map((f) => path.join(dir, f));
+}
+
+function listImageFiles(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir).filter((f) => /\.(jpg|jpeg|png|webp|gif)$/i.test(f));
+}
+
+function moveFileSafe(src, dest) {
+  try {
+    fs.renameSync(src, dest);
+  } catch (e) {
+    fs.copyFileSync(src, dest);
+    fs.unlinkSync(src);
+  }
 }
 
 function escapeHtml(s) {
@@ -92,7 +107,7 @@ function buildIndex(projects) {
 }
 
 function buildDetailHtml(p, options = {}) {
-  const assetPrefix = options.assetPrefix || '../';
+  const assetPrefix = options.assetPrefix || '../../';
   const guardEntryHref = options.guardEntryHref || 'index.html';
   const resources = Array.isArray(p.resources) ? p.resources : [];
   const schoolName = p.school || p.title || '客戶專屬頁面';
@@ -106,7 +121,7 @@ function buildDetailHtml(p, options = {}) {
   const heroImages = Array.isArray(p.hero_images) ? p.hero_images.filter((src) => src) : [];
   const shootDateLine = p.shoot_date ? `<p class="project-shoot-date"><strong>拍攝日期：</strong>${escapeHtml(String(p.shoot_date))}</p>` : '';
   const heroImagesHtml = heroImages.length
-    ? heroImages.map((src, i) => `<img src="${assetPrefix}assets/images/projects/${escapeHtml(p.slug)}/${escapeHtml(src)}" alt="${escapeHtml(schoolName)} 精選照片 ${i + 1}" ${i === 0 ? 'class="active"' : 'loading="lazy"'} />`).join('\n')
+    ? heroImages.map((src, i) => `<img src="./${escapeHtml(src)}" alt="${escapeHtml(schoolName)} 精選照片 ${i + 1}" ${i === 0 ? 'class="active"' : 'loading="lazy"'} />`).join('\n')
     : `<img src="${assetPrefix}assets/images/logo/eightways-logo-square-gold.png" alt="${escapeHtml(schoolName)}" class="active" />`;
 
   const galleryBlock = heroImages.length
@@ -114,7 +129,7 @@ function buildDetailHtml(p, options = {}) {
         <h2>精選照片</h2>
         <p class="project-page-note">${escapeHtml(pageNote)}</p>
         <div class="work-gallery work-gallery--masonry project-mosaic-grid" id="projectMosaic">
-          ${heroImages.map((src, i) => `<div class="work-gallery-item"><img src="${assetPrefix}assets/images/projects/${escapeHtml(p.slug)}/${escapeHtml(src)}" alt="${escapeHtml(schoolName)} 精選照片 ${i + 1}" loading="lazy" /></div>`).join('')}
+          ${heroImages.map((src, i) => `<div class="work-gallery-item"><img src="./${escapeHtml(src)}" alt="${escapeHtml(schoolName)} 精選照片 ${i + 1}" loading="lazy" /></div>`).join('')}
         </div>
       </section>`
     : '';
@@ -241,19 +256,30 @@ function main() {
   console.log('已寫入 projects/projects-index.json，共', projects.length, '所學校');
 
   projects.forEach((p) => {
-    const html = buildDetailHtml(p, {
-      assetPrefix: '../',
-      guardEntryHref: 'index.html',
-    });
-    fs.writeFileSync(path.join(PROJECTS_DIR, p.slug + '.html'), html, 'utf8');
     const slugDir = path.join(PROJECTS_DIR, p.slug);
     ensureDir(slugDir);
-    const prettyHtml = buildDetailHtml(p, {
+
+    // 將舊資產目錄中的照片移動到專案資料夾，讓 index 與照片同層
+    const legacyDir = path.join(LEGACY_PROJECT_IMAGES_DIR, p.slug);
+    const legacyImages = listImageFiles(legacyDir);
+    legacyImages.forEach((filename) => {
+      const src = path.join(legacyDir, filename);
+      const dest = path.join(slugDir, filename);
+      if (!fs.existsSync(dest)) moveFileSafe(src, dest);
+    });
+    if (fs.existsSync(legacyDir) && listImageFiles(legacyDir).length === 0) {
+      try { fs.rmdirSync(legacyDir); } catch (e) {}
+    }
+
+    const html = buildDetailHtml(p, {
       assetPrefix: '../../',
       guardEntryHref: '../index.html',
     });
-    fs.writeFileSync(path.join(slugDir, 'index.html'), prettyHtml, 'utf8');
-    console.log('  生成', p.slug + '.html');
+    fs.writeFileSync(path.join(slugDir, 'index.html'), html, 'utf8');
+
+    const legacyHtml = path.join(PROJECTS_DIR, p.slug + '.html');
+    if (fs.existsSync(legacyHtml)) fs.unlinkSync(legacyHtml);
+    console.log('  生成', p.slug + '/index.html');
   });
   console.log('建置完成。');
 }
