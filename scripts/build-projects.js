@@ -242,6 +242,28 @@ ${heroImagesHtml}
 </html>`;
 }
 
+function buildLegacyRedirectHtml(p) {
+  const slug = escapeHtml(p.slug);
+  const title = escapeHtml(p.school || p.title || '客戶專屬頁面');
+  return `<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>${title}｜頁面搬移中</title>
+  <meta http-equiv="refresh" content="0; url=./${slug}/" />
+  <link rel="canonical" href="./${slug}/" />
+  <meta name="robots" content="noindex, nofollow" />
+  <script>
+    location.replace('./${slug}/');
+  </script>
+</head>
+<body>
+  <p>頁面已移動，正在前往 <a href="./${slug}/">./${slug}/</a> ...</p>
+</body>
+</html>`;
+}
+
 function main() {
   ensureDir(PROJECTS_DIR);
   const files = listMarkdown(CONTENT_DIR);
@@ -276,10 +298,9 @@ function main() {
       guardEntryHref: '../index.html',
     });
     fs.writeFileSync(path.join(slugDir, 'index.html'), html, 'utf8');
-
     const legacyHtml = path.join(PROJECTS_DIR, p.slug + '.html');
-    if (fs.existsSync(legacyHtml)) fs.unlinkSync(legacyHtml);
-    console.log('  生成', p.slug + '/index.html');
+    fs.writeFileSync(legacyHtml, buildLegacyRedirectHtml(p), 'utf8');
+    console.log('  生成', p.slug + '/index.html', '與', p.slug + '.html(redirect)');
   });
   console.log('建置完成。');
 }
