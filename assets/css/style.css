@@ -618,3 +618,36 @@ p{margin:0 0 12px}
 .project-log.prose a{ color: var(--wood); text-decoration: underline; }
 @media (max-width: 768px){ .project-overview{ grid-template-columns: 1fr; } }
 @media (max-width: 640px){ .project-table th{ width: 100px; font-size: 13px; } .project-card:not(.project-resources):not(.project-log-card) .project-table th{ width: 80px; font-size: 11px; } .project-card:not(.project-resources):not(.project-log-card) .project-table{ font-size: 11px; } }
+
+/* 客戶專屬相簿頁：聚焦學校內容 */
+.project-detail-body--album{ padding-top: 28px; padding-bottom: 40px; }
+.project-header--album h1{ margin: 0; }
+.project-section{ margin: 22px 0 0; }
+.project-section h2{ margin: 0 0 10px; font-size: 20px; color: var(--wood-dark); }
+.project-info-list{ margin: 0; padding-left: 20px; color: var(--text); }
+.project-info-list li{ margin: 4px 0; }
+.project-gallery-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.project-gallery-item{
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #f2f2f2;
+}
+.project-gallery-item img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+@media (max-width: 900px){
+  .project-gallery-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px){
+  .project-gallery-grid{ grid-template-columns: 1fr; }
+}

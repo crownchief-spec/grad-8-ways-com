@@ -15,9 +15,8 @@
   }
 
   var base = getBasePath();
-  var isProjectsSection = pathname.indexOf("/projects/") !== -1;
-  var headerComponent = isProjectsSection ? "components/header-projects.html" : "components/header.html";
-  var footerComponent = isProjectsSection ? "components/footer-projects.html" : "components/footer.html";
+  var headerComponent = "components/header.html";
+  var footerComponent = "components/footer.html";
 
   function inject(placeholderId, url, runNavAfter) {
     var el = document.getElementById(placeholderId);
