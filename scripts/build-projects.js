@@ -53,7 +53,8 @@ function parseProject(filePath) {
   const raw = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(raw);
   const slug = data.slug || path.basename(filePath, '.md');
-  const project_password = data.project_password != null ? String(data.project_password).trim() : '';
+  const passwordRaw = data.project_password != null ? data.project_password : data.password;
+  const project_password = passwordRaw != null ? String(passwordRaw).trim() : '';
   const school = data.school ? String(data.school).trim() : '';
   return {
     slug,
@@ -66,16 +67,32 @@ function parseProject(filePath) {
 
 function buildIndex(projects) {
   const lookup = {};
+  const records = [];
   projects.forEach((p) => {
-    if (p.school) lookup[String(p.school).trim()] = p.slug;
+    records.push({
+      slug: p.slug,
+      school: p.school ? String(p.school).trim() : '',
+      password: p.project_password != null ? String(p.project_password).trim() : '',
+    });
+    if (p.school) {
+      const school = String(p.school).trim();
+      lookup[school] = p.slug;
+      lookup[school.toLowerCase()] = p.slug;
+    }
     if (p.project_password != null && String(p.project_password).trim() !== '') {
-      lookup[String(p.project_password).trim()] = p.slug;
+      const pwd = String(p.project_password).trim();
+      lookup[pwd] = p.slug;
+      lookup[pwd.toLowerCase()] = p.slug;
     }
   });
-  return lookup;
+  return { lookup, projects: records };
 }
 
-function buildDetailHtml(p) {
+function buildDetailHtml(p, options = {}) {
+  const assetPrefix = options.assetPrefix || '../';
+  const backToProjectsHref = options.backToProjectsHref || 'index.html';
+  const backToHomeHref = options.backToHomeHref || '../index.html';
+  const guardEntryHref = options.guardEntryHref || 'index.html';
   const bodyHtml = p.body && marked ? marked.parse(p.body, { gfm: true }) : (p.body ? `<div class="project-log">${escapeHtml(p.body).replace(/\n/g, '<br>')}</div>` : '');
 
   /* Hero 左欄：基本資訊（精簡，服務主類別+服務類型同一行，不含聯絡方式、專案年份） */
@@ -88,14 +105,16 @@ function buildDetailHtml(p) {
   if (p.student_count != null && p.student_count !== '') heroBasicRows += renderRow('學生人數', p.student_count);
   if (p.class_count != null && p.class_count !== '') heroBasicRows += renderRow('班級數量', p.class_count);
   if (p.shoot_date) heroBasicRows += renderRow('拍攝日期', p.shoot_date);
+  if (p.contact_person || p.contact_name) heroBasicRows += renderRow('聯絡人', p.contact_person || p.contact_name);
+  if (p.contact_method || p.contact_info) heroBasicRows += renderRow('聯絡方式', p.contact_method || p.contact_info);
   if (p.backup_date) heroBasicRows += renderRow('備用日期', p.backup_date);
   if (p.location) heroBasicRows += renderRow('拍攝地點', p.location);
   const heroBasicBlock = heroBasicRows ? `<div class="project-card project-hero-card"><h3>基本資訊</h3><table class="project-table">${heroBasicRows}</table></div>` : '';
 
   /* Hero 右欄：服務方案（拍攝內容改為同一行、紀念冊方案含尺寸頁數同一行） */
   let heroSchemeRows = '';
-  if (p.package_name) heroSchemeRows += renderRow('拍攝方案', p.package_name);
-  if (p.package_price) heroSchemeRows += renderRow('方案價格', p.package_price);
+  if (p.package_name || p.package) heroSchemeRows += renderRow('拍攝方案', p.package_name || p.package);
+  if (p.package_price || p.price) heroSchemeRows += renderRow('方案價格', p.package_price || p.price);
   if (p.shooting_days != null && p.shooting_days !== '') heroSchemeRows += renderRow('拍攝天數', p.shooting_days);
   if (p.shooting_items && Array.isArray(p.shooting_items) && p.shooting_items.length) {
     heroSchemeRows += renderRow('拍攝內容', p.shooting_items.map((i) => escapeHtml(i)).join('、'));
@@ -111,7 +130,7 @@ function buildDetailHtml(p) {
   if (p.add_on_video != null && p.add_on_video !== '') heroSchemeRows += renderRow('是否加購影片', p.add_on_video === true || p.add_on_video === 'true' ? '是' : '否');
   if (p.add_on_usb != null && p.add_on_usb !== '') heroSchemeRows += renderRow('是否加購隨身碟', p.add_on_usb === true || p.add_on_usb === 'true' ? '是' : '否');
   if (p.add_on_certificate != null && p.add_on_certificate !== '') heroSchemeRows += renderRow('是否加購證書夾', p.add_on_certificate === true || p.add_on_certificate === 'true' ? '是' : '否');
-  if (p.special_requests) heroSchemeRows += renderRow('特殊需求', p.special_requests);
+  if (p.special_requests || p.special_requirements) heroSchemeRows += renderRow('特殊需求', p.special_requests || p.special_requirements);
   if (p.notes) heroSchemeRows += renderRow('其他備註', p.notes);
   const heroSchemeBlock = heroSchemeRows ? `<div class="project-card project-hero-card"><h3>服務方案</h3><table class="project-table">${heroSchemeRows}</table></div>` : '';
 
@@ -182,7 +201,7 @@ function buildDetailHtml(p) {
   const heroBlock = hasHero
     ? `<section class="hero" aria-label="精選照片">
   <div class="hero-media hero-carousel" id="heroCarousel" aria-hidden="true">
-${heroImages.map((src, i) => `<img src="../assets/images/projects/${escapeHtml(p.slug)}/${escapeHtml(src)}" alt="精選照片 ${i + 1}" ${i === 0 ? 'class="active"' : 'loading="lazy"'} />`).join('\n')}
+${heroImages.map((src, i) => `<img src="${assetPrefix}assets/images/projects/${escapeHtml(p.slug)}/${escapeHtml(src)}" alt="精選照片 ${i + 1}" ${i === 0 ? 'class="active"' : 'loading="lazy"'} />`).join('\n')}
   </div>
   <div class="overlay"></div>
   ${heroInner}
@@ -201,7 +220,7 @@ ${heroImages.map((src, i) => `<img src="../assets/images/projects/${escapeHtml(p
     var list = raw ? JSON.parse(raw) : [];
     if (list.indexOf(slug) >= 0) return;
   } catch (e) {}
-  location.replace('index.html?required=' + encodeURIComponent(slug) + '&msg=' + encodeURIComponent('此頁面需要輸入密碼才能查看'));
+  location.replace('${guardEntryHref}?required=' + encodeURIComponent(slug) + '&msg=' + encodeURIComponent('此頁面需要輸入密碼才能查看'));
 })();
 </script>`
     : '';
@@ -212,8 +231,8 @@ ${heroImages.map((src, i) => `<img src="../assets/images/projects/${escapeHtml(p
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>幼兒園畢業照攝影 畢業典禮攝影｜${escapeHtml(projectTitle)}｜小巴老師｜8-ways.com</title>
-  <link rel="icon" type="image/png" href="../assets/images/logo/eightways-logo-square-gold.png" />
-  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="icon" type="image/png" href="${assetPrefix}assets/images/logo/eightways-logo-square-gold.png" />
+  <link rel="stylesheet" href="${assetPrefix}assets/css/style.css" />
   ${noindex ? '<meta name="robots" content="noindex, nofollow" />' : ''}
 </head>
 <body data-project-slug="${escapeHtml(p.slug)}" data-project-protected="${isProtected ? 'true' : 'false'}">
@@ -242,14 +261,14 @@ ${heroBlock}
       </div>
       `}
       <div class="actions project-detail-actions">
-        <a class="btn ghost" href="index.html">回密碼輸入頁</a>
-        <a class="btn ghost" href="../index.html">回首頁</a>
+        <a class="btn ghost" href="${backToProjectsHref}">回密碼輸入頁</a>
+        <a class="btn ghost" href="${backToHomeHref}">回首頁</a>
       </div>
     </div>
   </main>
   <div id="site-footer-placeholder"></div>
-  <script src="../assets/js/include-components.js" defer></script>
-  <script src="../assets/js/main.js" defer></script>
+  <script src="${assetPrefix}assets/js/include-components.js" defer></script>
+  <script src="${assetPrefix}assets/js/main.js" defer></script>
 </body>
 </html>`;
 }
@@ -258,18 +277,32 @@ function main() {
   ensureDir(PROJECTS_DIR);
   const files = listMarkdown(CONTENT_DIR);
   const projects = files.map(parseProject);
-  const lookup = buildIndex(projects);
+  const indexData = buildIndex(projects);
 
   fs.writeFileSync(
     path.join(PROJECTS_DIR, 'projects-index.json'),
-    JSON.stringify(lookup, null, 2),
+    JSON.stringify(indexData, null, 2),
     'utf8'
   );
   console.log('已寫入 projects/projects-index.json，共', projects.length, '所學校');
 
   projects.forEach((p) => {
-    const html = buildDetailHtml(p);
+    const html = buildDetailHtml(p, {
+      assetPrefix: '../',
+      backToProjectsHref: 'index.html',
+      backToHomeHref: '../index.html',
+      guardEntryHref: 'index.html',
+    });
     fs.writeFileSync(path.join(PROJECTS_DIR, p.slug + '.html'), html, 'utf8');
+    const slugDir = path.join(PROJECTS_DIR, p.slug);
+    ensureDir(slugDir);
+    const prettyHtml = buildDetailHtml(p, {
+      assetPrefix: '../../',
+      backToProjectsHref: '../index.html',
+      backToHomeHref: '../../index.html',
+      guardEntryHref: '../index.html',
+    });
+    fs.writeFileSync(path.join(slugDir, 'index.html'), prettyHtml, 'utf8');
     console.log('  生成', p.slug + '.html');
   });
   console.log('建置完成。');

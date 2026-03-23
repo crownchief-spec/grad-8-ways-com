@@ -24,6 +24,7 @@
       </form>
       <p class="project-query-required hidden" id="projectQueryRequired" role="status">此頁面需要輸入密碼才能查看</p>
       <p class="project-query-error hidden" id="projectQueryError" role="alert">密碼錯誤，請重新輸入。</p>
+      <div class="project-query-result hidden" id="projectQueryResult" aria-live="polite"></div>
       <div class="actions" style="margin-top:32px">
         <a class="btn ghost" href="../index.html">回首頁</a>
       </div>
@@ -38,7 +39,9 @@
   var input = document.getElementById('projectQuery');
   var errEl = document.getElementById('projectQueryError');
   var requiredEl = document.getElementById('projectQueryRequired');
+  var resultEl = document.getElementById('projectQueryResult');
   var index = null;
+  var projectRecords = [];
   var requiredSlug = null;
   var requiredMsg = '此頁面需要輸入密碼才能查看';
 
@@ -61,6 +64,10 @@
   function hideError() {
     if (errEl) errEl.classList.add('hidden');
     if (requiredEl) requiredEl.classList.add('hidden');
+    if (resultEl) {
+      resultEl.classList.add('hidden');
+      resultEl.innerHTML = '';
+    }
     input.removeAttribute('aria-invalid');
   }
 
@@ -71,6 +78,71 @@
       if (list.indexOf(slug) < 0) list.push(slug);
       sessionStorage.setItem('verified_projects', JSON.stringify(list));
     } catch (e) {}
+  }
+
+  function navigateToSlug(slug) {
+    if (!slug) return;
+    addVerified(slug);
+    location.href = slug + '/';
+  }
+
+  function escapeHtml(s) {
+    return String(s || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function normalizeIndex(raw) {
+    if (!raw || Array.isArray(raw)) return { lookup: {}, projects: [] };
+    if (raw.lookup && raw.projects) return raw;
+
+    var legacyLookup = raw;
+    var projectMap = {};
+    Object.keys(legacyLookup).forEach(function(key) {
+      var slug = legacyLookup[key];
+      if (!slug) return;
+      if (!projectMap[slug]) projectMap[slug] = { slug: slug, school: '', password: '' };
+      if (key && /[\u4e00-\u9fa5]/.test(key)) {
+        projectMap[slug].school = key;
+      } else {
+        projectMap[slug].password = key;
+      }
+    });
+    return {
+      lookup: legacyLookup,
+      projects: Object.keys(projectMap).map(function(slug) { return projectMap[slug]; })
+    };
+  }
+
+  function getFuzzyMatches(q) {
+    var keyword = q.toLowerCase();
+    return projectRecords.filter(function(p) {
+      var school = (p.school || '').toLowerCase();
+      var password = (p.password || '').toLowerCase();
+      return school.indexOf(keyword) >= 0 || password.indexOf(keyword) >= 0;
+    });
+  }
+
+  function renderMatchList(matches) {
+    if (!resultEl) return;
+    resultEl.classList.remove('hidden');
+    resultEl.innerHTML =
+      '<p style="margin:12px 0 10px;">找到多筆相似結果，請選擇：</p>' +
+      '<div class="project-resource-list">' +
+      matches.map(function(m) {
+        var label = m.school || m.slug;
+        return '<button type="button" class="btn ghost project-select-btn" data-slug="' + escapeHtml(m.slug) + '">' + escapeHtml(label) + '</button>';
+      }).join('') +
+      '</div>';
+
+    var buttons = resultEl.querySelectorAll('.project-select-btn');
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        navigateToSlug(btn.getAttribute('data-slug') || '');
+      });
+    });
   }
 
   form.addEventListener('submit', function(e) {
@@ -88,17 +160,33 @@
     var slug = index[q] || index[q.toLowerCase()];
     if (requiredSlug) {
       if (slug === requiredSlug) {
-        addVerified(slug);
-        location.href = requiredSlug + '.html';
+        navigateToSlug(requiredSlug);
         return;
+      }
+      var requiredProject = projectRecords.find(function(p) { return p.slug === requiredSlug; });
+      if (requiredProject) {
+        var requiredSchool = (requiredProject.school || '').toLowerCase();
+        if (requiredSchool && requiredSchool.indexOf(q.toLowerCase()) >= 0) {
+          navigateToSlug(requiredSlug);
+          return;
+        }
       }
       showError();
       input.focus();
       return;
     }
     if (slug) {
-      addVerified(slug);
-      location.href = slug + '.html';
+      navigateToSlug(slug);
+      return;
+    }
+
+    var fuzzyMatches = getFuzzyMatches(q);
+    if (fuzzyMatches.length === 1) {
+      navigateToSlug(fuzzyMatches[0].slug);
+      return;
+    }
+    if (fuzzyMatches.length > 1) {
+      renderMatchList(fuzzyMatches);
       return;
     }
     showError();
@@ -108,10 +196,13 @@
   fetch('projects-index.json')
     .then(function(r) { return r.json(); })
     .then(function(data) {
-      index = data;
+      var normalized = normalizeIndex(data);
+      index = normalized.lookup || {};
+      projectRecords = Array.isArray(normalized.projects) ? normalized.projects : [];
     })
     .catch(function() {
       index = {};
+      projectRecords = [];
     });
 })();
   </script>
