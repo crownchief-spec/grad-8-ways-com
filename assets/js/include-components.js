@@ -5,6 +5,15 @@
     if (pathname.indexOf("/pages/work/") !== -1) return "../../";
     if (pathname.indexOf("/projects/") !== -1) {
       var segs = pathname.split("/").filter(Boolean);
+      if (
+        segs.length >= 2 &&
+        segs[0] === "projects" &&
+        segs[1] &&
+        segs[1] !== "index.html" &&
+        !/\.html$/i.test(segs[1])
+      ) {
+        return "../../";
+      }
       if (segs.length >= 3 && segs[segs.length - 1] === "index.html") {
         return "../../";
       }
