@@ -14,12 +14,6 @@ try {
   console.error('請先執行 npm install gray-matter marked');
   process.exit(1);
 }
-let marked;
-try {
-  marked = require('marked');
-} catch (e) {
-  marked = null;
-}
 
 const CONTENT_DIR = path.join(__dirname, '../content/projects');
 const PROJECTS_DIR = path.join(__dirname, '../projects');
@@ -42,11 +36,6 @@ function escapeHtml(s) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
-}
-
-function renderRow(label, value) {
-  if (value == null || value === '') return '';
-  return `<tr><th>${escapeHtml(label)}</th><td>${escapeHtml(String(value))}</td></tr>`;
 }
 
 function parseProject(filePath) {
@@ -93,12 +82,9 @@ function buildDetailHtml(p, options = {}) {
   const guardEntryHref = options.guardEntryHref || 'index.html';
   const resources = Array.isArray(p.resources) ? p.resources : [];
   const schoolName = p.school || p.title || '客戶專屬頁面';
+  const pageNote = p.page_note ? String(p.page_note).trim() : '以下為本次拍攝照片。';
   const heroImages = Array.isArray(p.hero_images) ? p.hero_images.filter((src) => src) : [];
-  const infoItems = [];
-  if (p.shoot_date) infoItems.push(`<li><strong>拍攝日期：</strong>${escapeHtml(p.shoot_date)}</li>`);
-  if (p.class_count != null && p.class_count !== '') infoItems.push(`<li><strong>班級：</strong>${escapeHtml(String(p.class_count))}</li>`);
-  if (p.student_count != null && p.student_count !== '') infoItems.push(`<li><strong>學生人數：</strong>${escapeHtml(String(p.student_count))}</li>`);
-  if (p.location) infoItems.push(`<li><strong>拍攝地點：</strong>${escapeHtml(p.location)}</li>`);
+  const shootDateLine = p.shoot_date ? `<p class="project-shoot-date"><strong>拍攝日期：</strong>${escapeHtml(String(p.shoot_date))}</p>` : '';
 
   const galleryBlock = heroImages.length
     ? `<section class="project-section" aria-label="照片展示區">
@@ -149,13 +135,10 @@ ${guardScript}
   <main class="subpage project-detail" id="top">
     <div class="container project-detail-body project-detail-body--album" style="max-width:1000px">
       <header class="project-header project-header--album">
-        <p class="kicker">客戶專屬頁面</p>
         <h1>${escapeHtml(schoolName)}</h1>
+        ${shootDateLine}
+        <p class="project-page-note">${escapeHtml(pageNote)}</p>
       </header>
-      <section class="project-section" aria-label="拍攝資訊">
-        <h2>拍攝資訊</h2>
-        ${infoItems.length ? `<ul class="project-info-list">${infoItems.join('')}</ul>` : '<p class="small">資訊整理中</p>'}
-      </section>
       ${galleryBlock}
       ${resourcesBlock}
     </div>
@@ -183,8 +166,6 @@ function main() {
   projects.forEach((p) => {
     const html = buildDetailHtml(p, {
       assetPrefix: '../',
-      backToProjectsHref: 'index.html',
-      backToHomeHref: '../index.html',
       guardEntryHref: 'index.html',
     });
     fs.writeFileSync(path.join(PROJECTS_DIR, p.slug + '.html'), html, 'utf8');
@@ -192,8 +173,6 @@ function main() {
     ensureDir(slugDir);
     const prettyHtml = buildDetailHtml(p, {
       assetPrefix: '../../',
-      backToProjectsHref: '../index.html',
-      backToHomeHref: '../../index.html',
       guardEntryHref: '../index.html',
     });
     fs.writeFileSync(path.join(slugDir, 'index.html'), prettyHtml, 'utf8');

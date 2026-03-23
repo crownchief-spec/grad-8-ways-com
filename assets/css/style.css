@@ -622,10 +622,10 @@ p{margin:0 0 12px}
 /* 客戶專屬相簿頁：聚焦學校內容 */
 .project-detail-body--album{ padding-top: 28px; padding-bottom: 40px; }
 .project-header--album h1{ margin: 0; }
+.project-shoot-date{ margin: 10px 0 0; color: var(--text); }
+.project-page-note{ margin: 8px 0 0; color: var(--muted); }
 .project-section{ margin: 22px 0 0; }
 .project-section h2{ margin: 0 0 10px; font-size: 20px; color: var(--wood-dark); }
-.project-info-list{ margin: 0; padding-left: 20px; color: var(--text); }
-.project-info-list li{ margin: 4px 0; }
 .project-gallery-grid{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
