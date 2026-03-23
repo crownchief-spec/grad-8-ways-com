@@ -14,6 +14,12 @@ try {
   console.error('請先執行 npm install gray-matter marked');
   process.exit(1);
 }
+let marked;
+try {
+  marked = require('marked');
+} catch (e) {
+  marked = null;
+}
 
 const CONTENT_DIR = path.join(__dirname, '../content/projects');
 const PROJECTS_DIR = path.join(__dirname, '../projects');
@@ -54,6 +60,14 @@ function parseProject(filePath) {
   };
 }
 
+function extractProgressSection(markdownBody) {
+  if (!markdownBody) return '';
+  const body = String(markdownBody).replace(/\r\n/g, '\n');
+  const match = body.match(/^##\s*4[^\n]*\n([\s\S]*?)(?=^##\s|\Z)/m);
+  if (match && match[1]) return match[1].trim();
+  return '';
+}
+
 function buildIndex(projects) {
   const lookup = {};
   const records = [];
@@ -83,14 +97,24 @@ function buildDetailHtml(p, options = {}) {
   const resources = Array.isArray(p.resources) ? p.resources : [];
   const schoolName = p.school || p.title || '客戶專屬頁面';
   const pageNote = p.page_note ? String(p.page_note).trim() : '以下為本次拍攝照片。';
+  const serviceText = p.service_type || p.service_category || p.package_name || '';
+  const packageText = p.package || p.package_price || p.price || '';
+  const progressBody = extractProgressSection(p.body);
+  const bodyHtml = progressBody && marked
+    ? marked.parse(progressBody, { gfm: true })
+    : (progressBody ? `<div class="project-log">${escapeHtml(progressBody).replace(/\n/g, '<br>')}</div>` : '');
   const heroImages = Array.isArray(p.hero_images) ? p.hero_images.filter((src) => src) : [];
   const shootDateLine = p.shoot_date ? `<p class="project-shoot-date"><strong>拍攝日期：</strong>${escapeHtml(String(p.shoot_date))}</p>` : '';
+  const heroImagesHtml = heroImages.length
+    ? heroImages.map((src, i) => `<img src="${assetPrefix}assets/images/projects/${escapeHtml(p.slug)}/${escapeHtml(src)}" alt="${escapeHtml(schoolName)} 精選照片 ${i + 1}" ${i === 0 ? 'class="active"' : 'loading="lazy"'} />`).join('\n')
+    : `<img src="${assetPrefix}assets/images/logo/eightways-logo-square-gold.png" alt="${escapeHtml(schoolName)}" class="active" />`;
 
   const galleryBlock = heroImages.length
-    ? `<section class="project-section" aria-label="照片展示區">
-        <h2>照片展示區</h2>
-        <div class="project-gallery-grid">
-          ${heroImages.map((src, i) => `<a class="project-gallery-item" href="${assetPrefix}assets/images/projects/${escapeHtml(p.slug)}/${escapeHtml(src)}" target="_blank" rel="noopener"><img src="${assetPrefix}assets/images/projects/${escapeHtml(p.slug)}/${escapeHtml(src)}" alt="${escapeHtml(schoolName)} 精選照片 ${i + 1}" loading="lazy" /></a>`).join('')}
+    ? `<section class="project-section project-mosaic" aria-label="精選照片">
+        <h2>精選照片</h2>
+        <p class="project-page-note">${escapeHtml(pageNote)}</p>
+        <div class="work-gallery work-gallery--masonry project-mosaic-grid" id="projectMosaic">
+          ${heroImages.map((src, i) => `<div class="work-gallery-item"><img src="${assetPrefix}assets/images/projects/${escapeHtml(p.slug)}/${escapeHtml(src)}" alt="${escapeHtml(schoolName)} 精選照片 ${i + 1}" loading="lazy" /></div>`).join('')}
         </div>
       </section>`
     : '';
@@ -133,19 +157,72 @@ function buildDetailHtml(p, options = {}) {
 ${guardScript}
   <div id="site-header-placeholder"></div>
   <main class="subpage project-detail" id="top">
+    <section class="hero" aria-label="${escapeHtml(schoolName)} 精選照片">
+      <div class="hero-media hero-carousel" id="heroCarousel" aria-hidden="true">
+${heroImagesHtml}
+      </div>
+      <div class="overlay"></div>
+      <div class="container inner">
+        <header class="project-header project-header--hero">
+          <h1 class="title">${escapeHtml(schoolName)}</h1>
+        </header>
+        <div class="project-hero-panel">
+          ${shootDateLine}
+          ${serviceText ? `<p><strong>服務內容：</strong>${escapeHtml(serviceText)}</p>` : ''}
+          ${packageText ? `<p><strong>方案內容：</strong>${escapeHtml(packageText)}</p>` : ''}
+        </div>
+      </div>
+    </section>
     <div class="container project-detail-body project-detail-body--album" style="max-width:1000px">
-      <header class="project-header project-header--album">
-        <h1>${escapeHtml(schoolName)}</h1>
-        ${shootDateLine}
-        <p class="project-page-note">${escapeHtml(pageNote)}</p>
-      </header>
+      <section class="project-section project-logs" aria-label="進度日誌">
+        <h2>進度日誌</h2>
+        <div class="project-card project-log-card">
+          <div class="project-log prose">${bodyHtml || '<p class="small">目前尚無進度紀錄。</p>'}</div>
+        </div>
+      </section>
       ${galleryBlock}
       ${resourcesBlock}
     </div>
   </main>
+  <div class="project-lightbox" id="projectLightbox" aria-hidden="true">
+    <button type="button" id="projectLightboxClose" aria-label="關閉">×</button>
+    <img id="projectLightboxImage" src="" alt="" />
+  </div>
   <div id="site-footer-placeholder"></div>
   <script src="${assetPrefix}assets/js/include-components.js" defer></script>
   <script src="${assetPrefix}assets/js/main.js" defer></script>
+  <script>
+    (function() {
+      var gallery = document.getElementById('projectMosaic');
+      var lightbox = document.getElementById('projectLightbox');
+      var lightboxImg = document.getElementById('projectLightboxImage');
+      var closeBtn = document.getElementById('projectLightboxClose');
+      if (!gallery || !lightbox || !lightboxImg || !closeBtn) return;
+
+      function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImg.src = '';
+      }
+
+      gallery.querySelectorAll('img').forEach(function(img) {
+        img.addEventListener('click', function() {
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt || '精選照片';
+          lightbox.classList.add('is-open');
+          lightbox.setAttribute('aria-hidden', 'false');
+        });
+      });
+
+      closeBtn.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeLightbox();
+      });
+    })();
+  </script>
 </body>
 </html>`;
 }

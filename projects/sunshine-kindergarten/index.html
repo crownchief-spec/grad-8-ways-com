@@ -22,12 +22,29 @@
 </script>
   <div id="site-header-placeholder"></div>
   <main class="subpage project-detail" id="top">
+    <section class="hero" aria-label="小太陽幼兒園 精選照片">
+      <div class="hero-media hero-carousel" id="heroCarousel" aria-hidden="true">
+<img src="../../assets/images/logo/eightways-logo-square-gold.png" alt="小太陽幼兒園" class="active" />
+      </div>
+      <div class="overlay"></div>
+      <div class="container inner">
+        <header class="project-header project-header--hero">
+          <h1 class="title">小太陽幼兒園</h1>
+        </header>
+        <div class="project-hero-panel">
+          <p class="project-shoot-date"><strong>拍攝日期：</strong>2026-03-18</p>
+          <p><strong>服務內容：</strong>幼兒園畢業照</p>
+          <p><strong>方案內容：</strong>NT$18,800</p>
+        </div>
+      </div>
+    </section>
     <div class="container project-detail-body project-detail-body--album" style="max-width:1000px">
-      <header class="project-header project-header--album">
-        <h1>小太陽幼兒園</h1>
-        <p class="project-shoot-date"><strong>拍攝日期：</strong>2026-03-18</p>
-        <p class="project-page-note">以下為本次拍攝照片。</p>
-      </header>
+      <section class="project-section project-logs" aria-label="進度日誌">
+        <h2>進度日誌</h2>
+        <div class="project-card project-log-card">
+          <div class="project-log prose"><p class="small">目前尚無進度紀錄。</p></div>
+        </div>
+      </section>
       
       <section class="project-section" aria-label="客戶下載">
         <h2>客戶下載</h2>
@@ -35,8 +52,44 @@
       </section>
     </div>
   </main>
+  <div class="project-lightbox" id="projectLightbox" aria-hidden="true">
+    <button type="button" id="projectLightboxClose" aria-label="關閉">×</button>
+    <img id="projectLightboxImage" src="" alt="" />
+  </div>
   <div id="site-footer-placeholder"></div>
   <script src="../../assets/js/include-components.js" defer></script>
   <script src="../../assets/js/main.js" defer></script>
+  <script>
+    (function() {
+      var gallery = document.getElementById('projectMosaic');
+      var lightbox = document.getElementById('projectLightbox');
+      var lightboxImg = document.getElementById('projectLightboxImage');
+      var closeBtn = document.getElementById('projectLightboxClose');
+      if (!gallery || !lightbox || !lightboxImg || !closeBtn) return;
+
+      function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImg.src = '';
+      }
+
+      gallery.querySelectorAll('img').forEach(function(img) {
+        img.addEventListener('click', function() {
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt || '精選照片';
+          lightbox.classList.add('is-open');
+          lightbox.setAttribute('aria-hidden', 'false');
+        });
+      });
+
+      closeBtn.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeLightbox();
+      });
+    })();
+  </script>
 </body>
 </html>

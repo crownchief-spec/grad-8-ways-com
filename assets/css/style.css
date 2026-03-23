@@ -626,6 +626,18 @@ p{margin:0 0 12px}
 .project-page-note{ margin: 8px 0 0; color: var(--muted); }
 .project-section{ margin: 22px 0 0; }
 .project-section h2{ margin: 0 0 10px; font-size: 20px; color: var(--wood-dark); }
+.project-hero-panel {
+  max-width: 780px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 14px;
+  padding: 16px 18px;
+  color: #fff;
+  margin-top: 14px;
+}
+.project-hero-panel p { margin: 0 0 6px; color: rgba(255,255,255,.95); }
+.project-hero-panel p:last-child { margin-bottom: 0; }
+.project-hero-panel .project-shoot-date { margin-top: 0; color: rgba(255,255,255,.95); }
 .project-gallery-grid{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -650,4 +662,32 @@ p{margin:0 0 12px}
 }
 @media (max-width: 560px){
   .project-gallery-grid{ grid-template-columns: 1fr; }
+}
+.project-logs .project-card { padding: 16px 18px; }
+.project-mosaic { margin-top: 24px; }
+.project-mosaic .work-gallery-item { cursor: zoom-in; }
+.project-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.86);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+}
+.project-lightbox.is-open { display: flex; }
+.project-lightbox img { max-width: min(1100px, 94vw); max-height: 88vh; border-radius: 10px; }
+.project-lightbox button {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  border: 0;
+  background: rgba(255,255,255,.2);
+  color: #fff;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  font-size: 22px;
+  cursor: pointer;
 }
