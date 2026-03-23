@@ -7,31 +7,148 @@
   <link rel="icon" type="image/png" href="../../assets/images/logo/eightways-logo-square-gold.png" />
   <link rel="stylesheet" href="../../assets/css/style.css" />
   <meta name="robots" content="noindex, nofollow" />
+  <style>
+    .project-hero-panel {
+      max-width: 780px;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 14px;
+      padding: 16px 18px;
+      color: #fff;
+      margin-top: 14px;
+    }
+    .project-hero-panel p { margin: 0 0 6px; color: rgba(255,255,255,.95); }
+    .project-hero-panel p:last-child { margin-bottom: 0; }
+    .project-logs { margin-top: 24px; }
+    .project-logs article { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .project-logs article:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+    .project-logs h3 { margin: 0 0 6px; font-size: 18px; }
+    .project-mosaic { margin-top: 24px; }
+    .project-mosaic .work-gallery-item { cursor: zoom-in; }
+    .project-lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.86);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 24px;
+    }
+    .project-lightbox.is-open { display: flex; }
+    .project-lightbox img { max-width: min(1100px, 94vw); max-height: 88vh; border-radius: 10px; }
+    .project-lightbox button {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      border: 0;
+      background: rgba(255,255,255,.2);
+      color: #fff;
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      font-size: 22px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body data-project-slug="2026-03-18kangning" data-project-protected="false">
 
   <div id="site-header-placeholder"></div>
   <main class="subpage project-detail" id="top">
-    <div class="container project-detail-body project-detail-body--album" style="max-width:1000px">
-      <header class="project-header project-header--album">
-        <h1>康寧幼兒園</h1>
-        <p class="project-shoot-date"><strong>拍攝日期：</strong>2026-03-18</p>
-        <p class="project-page-note">以下為本次拍攝照片。</p>
-      </header>
-      <section class="project-section" aria-label="照片展示區">
-        <h2>照片展示區</h2>
-        <div class="project-gallery-grid">
-          <a class="project-gallery-item" href="../../assets/images/projects/2026-03-18kangning/kangning-kindergarten-graduation-boy-diploma-pointing.jpg" target="_blank" rel="noopener"><img src="../../assets/images/projects/2026-03-18kangning/kangning-kindergarten-graduation-boy-diploma-pointing.jpg" alt="康寧幼兒園 精選照片 1" loading="lazy" /></a><a class="project-gallery-item" href="../../assets/images/projects/2026-03-18kangning/kangning-kindergarten-graduation-boy-waving.jpg" target="_blank" rel="noopener"><img src="../../assets/images/projects/2026-03-18kangning/kangning-kindergarten-graduation-boy-waving.jpg" alt="康寧幼兒園 精選照片 2" loading="lazy" /></a><a class="project-gallery-item" href="../../assets/images/projects/2026-03-18kangning/kangning-kindergarten-graduation-girl-waving.jpg" target="_blank" rel="noopener"><img src="../../assets/images/projects/2026-03-18kangning/kangning-kindergarten-graduation-girl-waving.jpg" alt="康寧幼兒園 精選照片 3" loading="lazy" /></a><a class="project-gallery-item" href="../../assets/images/projects/2026-03-18kangning/kangning-kindergarten-graduation-boy-holding-diploma.jpg" target="_blank" rel="noopener"><img src="../../assets/images/projects/2026-03-18kangning/kangning-kindergarten-graduation-boy-holding-diploma.jpg" alt="康寧幼兒園 精選照片 4" loading="lazy" /></a><a class="project-gallery-item" href="../../assets/images/projects/2026-03-18kangning/kangning-kindergarten-graduation-class-group-photo.jpg" target="_blank" rel="noopener"><img src="../../assets/images/projects/2026-03-18kangning/kangning-kindergarten-graduation-class-group-photo.jpg" alt="康寧幼兒園 精選照片 5" loading="lazy" /></a>
+    <section class="hero" aria-label="康寧幼兒園精選照片">
+      <div class="hero-media hero-carousel" id="heroCarousel" aria-hidden="true">
+        <img src="../../assets/images/projects/2026-03-18kangning/kangning-kindergarten-graduation-boy-diploma-pointing.jpg" alt="康寧幼兒園 精選照片 1" class="active" />
+        <img src="../../assets/images/projects/2026-03-18kangning/kangning-kindergarten-graduation-boy-waving.jpg" alt="康寧幼兒園 精選照片 2" loading="lazy" />
+        <img src="../../assets/images/projects/2026-03-18kangning/kangning-kindergarten-graduation-girl-waving.jpg" alt="康寧幼兒園 精選照片 3" loading="lazy" />
+        <img src="../../assets/images/projects/2026-03-18kangning/kangning-kindergarten-graduation-boy-holding-diploma.jpg" alt="康寧幼兒園 精選照片 4" loading="lazy" />
+        <img src="../../assets/images/projects/2026-03-18kangning/kangning-kindergarten-graduation-class-group-photo.jpg" alt="康寧幼兒園 精選照片 5" loading="lazy" />
+      </div>
+      <div class="overlay"></div>
+      <div class="container inner">
+        <header class="project-header project-header--hero">
+          <p class="kicker">客戶專屬頁面</p>
+          <h1 class="title">康寧幼兒園</h1>
+        </header>
+        <div class="project-hero-panel">
+          <p><strong>拍攝日期：</strong>2026-03-18</p>
+          <p><strong>服務內容：</strong>畢業照</p>
+          <p><strong>方案：</strong>$1680/人（攝影電子檔+相本）｜$980/人（攝影電子檔）</p>
+          <p><strong>拍攝：</strong>學士服、便服、小組、班級大合照、側拍工作、上課照（共六套服裝）</p>
         </div>
+      </div>
+    </section>
+
+    <div class="container project-detail-body project-detail-body--album" style="max-width:1000px">
+      <section class="project-section project-logs" aria-label="進度日誌">
+        <h2>進度日誌</h2>
+        <article>
+          <h3>2026-03-10</h3>
+          <p>拍攝完成。</p>
+        </article>
+        <article>
+          <h3>2026-03-18</h3>
+          <p>第一次校稿。</p>
+        </article>
+        <article>
+          <h3>2026-03-23</h3>
+          <p>上傳雲端硬碟。</p>
+          <p><a href="https://drive.google.com/drive/folders/1OIrM4hR6JWV4DNGVTGbLO-VpT0Q_vW5p?usp=drive_link" target="_blank" rel="noopener">照片雲端下載</a></p>
+          <p class="small">照片數量多，建議利用晚上長時間下載到電腦，挑片選擇。</p>
+        </article>
       </section>
-      <section class="project-section" aria-label="客戶下載">
-        <h2>客戶下載</h2>
-        <div class="project-resource-list"><a class="btn primary" href="https://drive.google.com/drive/folders/1OIrM4hR6JWV4DNGVTGbLO-VpT0Q_vW5p?usp=drive_link" target="_blank" rel="noopener">雲端照片下載</a></div>
+
+      <section class="project-section project-mosaic" aria-label="精選照片">
+        <h2>精選照片</h2>
+        <p class="project-page-note">參考作品集排版，點擊小圖可查看大圖。</p>
+        <div class="work-gallery work-gallery--masonry" id="kangningMosaic">
+          <div class="work-gallery-item"><img src="../../assets/images/projects/2026-03-18kangning/kangning-kindergarten-graduation-boy-diploma-pointing.jpg" alt="康寧幼兒園 精選照片 1" loading="lazy" /></div>
+          <div class="work-gallery-item"><img src="../../assets/images/projects/2026-03-18kangning/kangning-kindergarten-graduation-boy-waving.jpg" alt="康寧幼兒園 精選照片 2" loading="lazy" /></div>
+          <div class="work-gallery-item"><img src="../../assets/images/projects/2026-03-18kangning/kangning-kindergarten-graduation-girl-waving.jpg" alt="康寧幼兒園 精選照片 3" loading="lazy" /></div>
+          <div class="work-gallery-item"><img src="../../assets/images/projects/2026-03-18kangning/kangning-kindergarten-graduation-boy-holding-diploma.jpg" alt="康寧幼兒園 精選照片 4" loading="lazy" /></div>
+          <div class="work-gallery-item"><img src="../../assets/images/projects/2026-03-18kangning/kangning-kindergarten-graduation-class-group-photo.jpg" alt="康寧幼兒園 精選照片 5" loading="lazy" /></div>
+        </div>
       </section>
     </div>
   </main>
+  <div class="project-lightbox" id="projectLightbox" aria-hidden="true">
+    <button type="button" id="projectLightboxClose" aria-label="關閉">×</button>
+    <img id="projectLightboxImage" src="" alt="" />
+  </div>
   <div id="site-footer-placeholder"></div>
   <script src="../../assets/js/include-components.js" defer></script>
   <script src="../../assets/js/main.js" defer></script>
+  <script>
+    (function() {
+      var gallery = document.getElementById('kangningMosaic');
+      var lightbox = document.getElementById('projectLightbox');
+      var lightboxImg = document.getElementById('projectLightboxImage');
+      var closeBtn = document.getElementById('projectLightboxClose');
+      if (!gallery || !lightbox || !lightboxImg || !closeBtn) return;
+
+      function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImg.src = '';
+      }
+
+      gallery.querySelectorAll('img').forEach(function(img) {
+        img.addEventListener('click', function() {
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt || '精選照片';
+          lightbox.classList.add('is-open');
+          lightbox.setAttribute('aria-hidden', 'false');
+        });
+      });
+
+      closeBtn.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeLightbox();
+      });
+    })();
+  </script>
 </body>
 </html>
