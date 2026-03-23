@@ -640,19 +640,6 @@ p{margin:0 0 12px}
 
 /* 客戶專屬相簿頁：聚焦學校內容 */
 .project-detail-body--album{ padding-top: 28px; padding-bottom: 40px; }
-.project-hero-download-wrap{
-  margin-top: 4px;
-  margin-bottom: 8px;
-}
-.project-hero-download-btn{
-  min-width: 180px;
-}
-.project-hero-download-btn.is-disabled{
-  opacity: .45;
-  pointer-events: none;
-  cursor: not-allowed;
-  box-shadow: none;
-}
 .project-header--album h1{ margin: 0; }
 .project-shoot-date{ margin: 10px 0 0; color: var(--text); }
 .project-page-note{ margin: 8px 0 0; color: var(--muted); }

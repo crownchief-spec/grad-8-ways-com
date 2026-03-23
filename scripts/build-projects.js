@@ -152,7 +152,6 @@ function normalizeImageItems(p, schoolName) {
 function buildDetailHtml(p, options = {}) {
   const assetPrefix = options.assetPrefix || '../../';
   const guardEntryHref = options.guardEntryHref || 'index.html';
-  const resources = Array.isArray(p.resources) ? p.resources : [];
   const schoolName = p.school || p.title || '客戶專屬頁面';
   const pageNote = p.page_note ? String(p.page_note).trim() : '';
   const serviceText = p.service_type || p.service_category || p.package_name || '';
@@ -190,21 +189,6 @@ function buildDetailHtml(p, options = {}) {
         </div>
       </section>`
     : '';
-
-  const resourcesBlock = resources.length
-    ? `<section class="project-section" aria-label="客戶下載">
-        <h2>客戶下載</h2>
-        <div class="project-resource-list">${resources.map((r) => `<a class="btn primary" href="${escapeHtml(r.url || '#')}" target="_blank" rel="noopener">${escapeHtml(r.label || '連結')}</a>`).join('')}</div>
-      </section>`
-    : '';
-  const downloadResource = resources.find((r) => r && r.url && String(r.url).trim());
-  const heroDownloadLabel = downloadResource && downloadResource.label
-    ? String(downloadResource.label).trim()
-    : '照片雲端下載';
-  const heroDownloadHref = downloadResource ? String(downloadResource.url).trim() : '';
-  const heroDownloadBtn = heroDownloadHref
-    ? `<a class="btn primary project-hero-download-btn" href="${escapeHtml(heroDownloadHref)}" target="_blank" rel="noopener">${escapeHtml(heroDownloadLabel)}</a>`
-    : `<span class="btn primary project-hero-download-btn is-disabled" aria-disabled="true">${escapeHtml(heroDownloadLabel)}</span>`;
 
   const noindex = p.noindex !== false;
   const isProtected = !!(p.project_password && String(p.project_password).trim());
@@ -255,9 +239,6 @@ ${heroImagesHtml}
       </div>
     </section>
     <div class="container project-detail-body project-detail-body--album" style="max-width:1000px">
-      <div class="project-hero-download-wrap" aria-label="雲端下載入口">
-        ${heroDownloadBtn}
-      </div>
       <section class="project-section project-logs" aria-label="進度日誌">
         <h2>進度日誌</h2>
         <div class="project-card project-log-card">
@@ -265,7 +246,6 @@ ${heroImagesHtml}
         </div>
       </section>
       ${galleryBlock}
-      ${resourcesBlock}
     </div>
   </main>
   <div class="project-lightbox" id="projectLightbox" aria-hidden="true">
