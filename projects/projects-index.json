@@ -1,16 +1,10 @@
 {
   "lookup": {
     "1208": "sunshine-kindergarten",
-    "板橋江翠幼兒園": "2026-03-13Banqiao",
     "康寧幼兒園": "2026-03-18kangning",
     "小太陽幼兒園": "sunshine-kindergarten"
   },
   "projects": [
-    {
-      "slug": "2026-03-13Banqiao",
-      "school": "板橋江翠幼兒園",
-      "password": ""
-    },
     {
       "slug": "2026-03-18kangning",
       "school": "康寧幼兒園",
