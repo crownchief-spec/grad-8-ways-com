@@ -914,6 +914,38 @@ p{margin:0 0 12px}
   border: 0;
   display: block;
 }
+.yearbook-flow-disclosure{
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0 14px;
+  margin-top: 12px;
+  background: var(--surface);
+}
+.yearbook-flow-disclosure summary{
+  cursor: pointer;
+  font-weight: 700;
+  padding: 14px 6px;
+  list-style: none;
+}
+.yearbook-flow-disclosure summary::-webkit-details-marker{ display: none; }
+.yearbook-flow-disclosure[open] summary{
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 10px;
+}
+.yearbook-flow-disclosure-hint{
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.92em;
+}
+.yearbook-flow-disclosure-body{
+  padding: 0 6px 14px;
+}
+.yearbook-flow-disclosure-body > p:first-child{
+  margin-top: 0;
+}
+.yearbook-flow-disclosure-body .yearbook-checklist{
+  margin-top: 12px;
+}
 .yearbook-faq details{
   border: 1px solid var(--line);
   border-radius: 10px;
