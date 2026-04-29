@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/pages/work/montessori-", "destination": "/", "permanent": false },
+    { "source": "/pages/work/montessori-/", "destination": "/", "permanent": false }
+  ]
+}

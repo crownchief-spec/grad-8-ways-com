@@ -1,0 +1,5 @@
+# Apache：舊／截斷的作品網址導向首頁（若主機啟用 mod_rewrite）
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^pages/work/montessori-/?$ / [R=302,L]
+</IfModule>
