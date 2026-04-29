@@ -824,20 +824,27 @@ p{margin:0 0 12px}
   vertical-align: top;
 }
 .yearbook-layout-table-wrap th{ background: rgba(184,137,91,.12); font-weight: 700; }
-.yearbook-layout-cards{ display: none; }
+.yearbook-layout-list{ display: none; }
+.yearbook-layout-compact{
+  list-style: disc;
+  margin: 10px 0 0;
+  padding-left: 1.2em;
+  font-size: 13px;
+  line-height: 1.42;
+  color: var(--text);
+}
+.yearbook-layout-compact li{
+  margin: 0 0 5px;
+  padding: 0;
+}
+.yearbook-layout-compact strong{
+  color: var(--wood-dark);
+  font-weight: 700;
+}
 @media (max-width: 768px){
   .yearbook-layout-table-wrap{ display: none; }
-  .yearbook-layout-cards{ display: block; }
+  .yearbook-layout-list{ display: block; }
 }
-.yearbook-layout-card-item{
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 14px 16px;
-  margin-bottom: 12px;
-  background: var(--surface);
-  font-size: 14px;
-}
-.yearbook-layout-card-item strong{ display: block; margin-bottom: 6px; color: var(--wood-dark); }
 .yearbook-checklist{
   list-style: none;
   margin: 16px 0 0;
