@@ -309,6 +309,64 @@
     });
   }
 
+  function initYearbookFlowLightbox(){
+    const mainGrid = document.getElementById("yearbook-flow-zoom-grid");
+    const faqGrid = document.getElementById("yearbook-faq-zoom-grid");
+    const fromMain = mainGrid ? Array.from(mainGrid.querySelectorAll("img")) : [];
+    const fromFaq = faqGrid ? Array.from(faqGrid.querySelectorAll("img")) : [];
+    const items = fromMain.concat(fromFaq);
+    if(!items.length) return;
+    const lightbox = document.getElementById("yearbook-flow-lightbox");
+    const lightboxImg = document.getElementById("yearbook-flow-lightbox-img");
+    const btnPrev = document.getElementById("yearbook-flow-lightbox-prev");
+    const btnNext = document.getElementById("yearbook-flow-lightbox-next");
+    let currentIndex = 0;
+    function openAt(index){
+      if(!lightbox || !lightboxImg) return;
+      currentIndex = (index + items.length) % items.length;
+      const img = items[currentIndex];
+      lightboxImg.src = img.currentSrc || img.src;
+      lightboxImg.alt = img.alt || "";
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+    function close(){
+      if(!lightbox) return;
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+    function goPrev(){ openAt(currentIndex - 1); }
+    function goNext(){ openAt(currentIndex + 1); }
+    items.forEach((img, idx)=>{
+      const wrap = img.closest(".yearbook-zoomable") || img;
+      wrap.addEventListener("click", ()=> openAt(idx));
+      wrap.addEventListener("keydown", e=>{
+        if(e.key === "Enter" || e.key === " "){
+          e.preventDefault();
+          openAt(idx);
+        }
+      });
+      wrap.setAttribute("role", "button");
+      wrap.setAttribute("tabindex", "0");
+      wrap.setAttribute("aria-label", "點擊放大圖片");
+    });
+    if(lightbox){
+      lightbox.querySelectorAll("[data-lightbox-close]").forEach(el=>{ el.addEventListener("click", close); });
+      lightbox.addEventListener("click", close);
+      lightbox.querySelector(".lightbox-inner")?.addEventListener("click", e=> e.stopPropagation());
+    }
+    btnPrev?.addEventListener("click", e=>{ e.preventDefault(); e.stopPropagation(); goPrev(); });
+    btnNext?.addEventListener("click", e=>{ e.preventDefault(); e.stopPropagation(); goNext(); });
+    document.addEventListener("keydown", e=>{
+      if(!lightbox || !lightbox.classList.contains("is-open")) return;
+      if(e.key === "Escape"){ close(); }
+      if(e.key === "ArrowLeft"){ e.preventDefault(); goPrev(); }
+      if(e.key === "ArrowRight"){ e.preventDefault(); goNext(); }
+    });
+  }
+
   function initVideoPosterFromFirstFrame(){
     document.querySelectorAll("video[data-poster-first-frame]").forEach(function(video){
       if(video.poster) return;
@@ -334,6 +392,7 @@
     initWorksGrid();
     initCeremonyWorksLightbox();
     initWorkDetailGalleryLightbox();
+    initYearbookFlowLightbox();
     initVideoPosterFromFirstFrame();
   });
 })();
