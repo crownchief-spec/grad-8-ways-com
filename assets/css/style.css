@@ -804,6 +804,11 @@ p{margin:0 0 12px}
 }
 .yearbook-flow-spec-card ul{ margin: 0; padding-left: 1.2em; }
 .yearbook-flow-spec-card li{ margin: 6px 0; }
+.yearbook-flow-spec-list{
+  margin: 6px 0 14px;
+  padding-left: 1.25em;
+}
+.yearbook-flow-spec-list li{ margin: 2px 0 4px; }
 .yearbook-layout-table-wrap{
   overflow-x: auto;
   margin: 18px 0;
