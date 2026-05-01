@@ -1029,3 +1029,106 @@ p{margin:0 0 12px}
 @media (max-width: 768px){
   .yearbook-three-compare{ grid-template-columns: 1fr; }
 }
+
+/* 首頁｜森林系畢業寫真合作企劃 */
+.home-forest-collab{
+  background:linear-gradient(135deg, rgba(184,137,91,.12) 0%, rgba(239,238,226,.95) 50%, rgba(246,241,231,1) 100%);
+  border:1px solid rgba(184,137,91,.22);
+  border-radius:var(--r);
+  padding:28px 24px;
+  margin-top:20px;
+  box-shadow:var(--shadow);
+}
+.home-forest-collab h2{margin-bottom:10px; color:var(--wood-dark)}
+.home-forest-points{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px 20px;
+  margin:16px 0 20px;
+  padding:0;
+  list-style:none;
+}
+.home-forest-points li{
+  font-size:14px;
+  color:var(--text);
+  margin:0;
+}
+
+/* 森林系畢業寫真專頁 */
+.page-forest-graduation .forest-hero-price{
+  margin:0 0 14px;
+  color:rgba(255,255,255,.92);
+  font-size:clamp(15px,1.9vw,17px);
+  line-height:1.35;
+}
+.page-forest-graduation .forest-hero-price strong{
+  display:inline-block;
+  font-size:clamp(26px,4.2vw,36px);
+  font-weight:800;
+  color:#fff;
+  text-shadow:0 2px 12px rgba(0,0,0,.35);
+  letter-spacing:-0.02em;
+}
+.page-forest-graduation .forest-hero-price-note{
+  display:block;
+  margin-top:6px;
+  font-size:13px;
+  opacity:.88;
+}
+@media(min-width:640px){
+  .page-forest-graduation .forest-hero-price-note{display:inline; margin-left:8px; margin-top:0}
+}
+.page-forest-graduation .forest-highlight-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
+@media(max-width:640px){
+  .page-forest-graduation .forest-highlight-grid{grid-template-columns:1fr}
+}
+.page-forest-graduation .forest-highlight-card{margin:0}
+.page-forest-graduation .forest-highlight-ico{
+  font-size:22px;
+  line-height:1;
+  margin-bottom:8px;
+}
+.page-forest-graduation .forest-highlight-title{
+  font-size:16px;
+  margin:0 0 8px;
+  line-height:1.25;
+  color:var(--wood-dark);
+}
+.page-forest-graduation .forest-pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(min(100%, 360px), 1fr));
+  gap:16px;
+  margin-top:20px;
+}
+.page-forest-graduation .forest-pricing-card{margin:0}
+.page-forest-graduation .forest-pricing-name{
+  font-size:16px;
+  margin:0 0 10px;
+  line-height:1.35;
+  color:var(--wood-dark);
+}
+.page-forest-graduation .forest-pricing-prices{
+  margin:0 0 10px;
+  line-height:1.2;
+}
+.page-forest-graduation .price-old{
+  text-decoration:line-through;
+  color:var(--muted);
+  font-size:14px;
+  margin-right:10px;
+}
+.page-forest-graduation .price-sale{
+  font-size:clamp(22px,3vw,28px);
+  font-weight:800;
+  color:var(--wood-dark);
+}
+.page-forest-graduation .forest-table-scroll{
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  margin:16px 0;
+}
+.page-forest-graduation .forest-addon-table{min-width:520px}
