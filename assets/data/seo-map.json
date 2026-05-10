@@ -145,13 +145,13 @@
   {
     "file": "pages/graduation-ceremony-pricing.html",
     "route": "/pages/graduation-ceremony-pricing.html",
-    "title": "幼兒園畢業照攝影 畢業典禮攝影｜畢業典禮攝影方案｜小巴老師｜8-ways.com",
-    "description": "幼兒園畢業照攝影、畢業典禮攝影。畢業典禮方案：全程拍照、精華短片、多機錄影。照片全給，可搭配畢業照或畢業旅行紀錄。",
-    "canonical": "https://grad.8-ways.com/pages/graduation-ceremony-pricing.html",
+    "title": "頁面已整合｜小巴老師｜8-ways.com",
+    "description": "畢業典禮攝影方案與價格已整合至畢業典禮攝影服務頁。",
+    "canonical": "https://grad.8-ways.com/pages/graduation-ceremony.html#pricing",
     "heroImage": "TODO: 缺 hero image",
     "ogImage": "https://grad.8-ways.com/assets/images/hero/graduation-hero-01.jpg?v=pages-graduation-ceremony-pricing-html",
-    "schemaType": "Service,WebPage",
-    "noindex": "no"
+    "schemaType": "WebPage",
+    "noindex": "yes"
   },
   {
     "file": "pages/graduation-ceremony-works.html",
