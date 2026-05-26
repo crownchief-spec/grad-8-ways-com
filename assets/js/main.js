@@ -312,9 +312,11 @@
   function initYearbookFlowLightbox(){
     const mainGrid = document.getElementById("yearbook-flow-zoom-grid");
     const faqGrid = document.getElementById("yearbook-faq-zoom-grid");
+    const edgeCropGrid = document.getElementById("yearbook-faq-edge-crop-grid");
     const fromMain = mainGrid ? Array.from(mainGrid.querySelectorAll("img")) : [];
     const fromFaq = faqGrid ? Array.from(faqGrid.querySelectorAll("img")) : [];
-    const items = fromMain.concat(fromFaq);
+    const fromEdgeCrop = edgeCropGrid ? Array.from(edgeCropGrid.querySelectorAll("img")) : [];
+    const items = fromMain.concat(fromFaq).concat(fromEdgeCrop);
     if(!items.length) return;
     const lightbox = document.getElementById("yearbook-flow-lightbox");
     const lightboxImg = document.getElementById("yearbook-flow-lightbox-img");
