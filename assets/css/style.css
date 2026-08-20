@@ -723,6 +723,104 @@ p{margin:0 0 12px}
 .project-log.prose p{ margin-bottom: 10px; }
 .project-log.prose a{ color: var(--wood); text-decoration: underline; }
 @media (max-width: 768px){ .project-overview{ grid-template-columns: 1fr; } }
+
+/* Graduation photography: four customer-facing service features */
+.graduation-feature-section{
+  padding:clamp(48px,7vw,84px) 0;
+  background:linear-gradient(180deg,#fffaf2 0%,#fff 100%);
+}
+.graduation-feature-intro{max-width:780px; margin:0 auto 30px; text-align:center}
+.graduation-feature-intro .eyebrow,
+.service-detail-hero .eyebrow{
+  margin:0 0 9px; color:#8b6333; font-size:.82rem; font-weight:800;
+  letter-spacing:.12em; text-transform:uppercase;
+}
+.graduation-feature-intro h2{margin:0 0 12px; font-size:clamp(1.85rem,4vw,2.8rem)}
+.graduation-feature-intro p{margin:0; color:var(--muted); line-height:1.85}
+.graduation-feature-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px}
+.graduation-feature-card{
+  display:flex; flex-direction:column; min-width:0; overflow:hidden; color:inherit;
+  border:1px solid rgba(139,99,51,.18); border-radius:22px; background:#fff;
+  box-shadow:0 18px 50px rgba(75,54,31,.09); text-decoration:none;
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.graduation-feature-card:hover,.graduation-feature-card:focus-visible{
+  transform:translateY(-4px); border-color:rgba(139,99,51,.5);
+  box-shadow:0 22px 58px rgba(75,54,31,.15);
+}
+.graduation-feature-card-media{position:relative; aspect-ratio:16/9; overflow:hidden; background:#eee4d7}
+.graduation-feature-card-media img{width:100%;height:100%;display:block;object-fit:cover}
+.graduation-feature-card-media img.portrait-safe{object-fit:contain;background:#f3eadf}
+.graduation-feature-number{
+  position:absolute; top:14px; left:14px; display:grid; place-items:center; width:42px; height:42px;
+  border-radius:50%; background:rgba(255,255,255,.92); color:#6e4b24; font-weight:900;
+  box-shadow:0 5px 18px rgba(0,0,0,.15);
+}
+.graduation-feature-card-body{display:flex; flex:1; flex-direction:column; padding:24px}
+.graduation-feature-card h3{margin:0 0 10px; font-size:clamp(1.25rem,2.4vw,1.65rem); line-height:1.35}
+.graduation-feature-card p{margin:0 0 18px; color:var(--muted); line-height:1.8}
+.graduation-feature-card .learn-more{margin-top:auto; color:#735027; font-weight:800}
+.service-trial-label{
+  display:inline-flex; align-self:flex-start; margin:0 0 10px; padding:5px 10px; border-radius:999px;
+  background:#fff0d3; color:#77501d; font-size:.78rem; font-weight:800;
+}
+.service-detail-page{background:#fffdf9}
+.service-detail-hero{padding:clamp(58px,9vw,105px) 0 52px; background:linear-gradient(135deg,#f5eadb,#fffaf2)}
+.service-detail-hero .container{max-width:920px}
+.service-detail-hero h1{max-width:850px; margin:0 0 18px; font-size:clamp(2.15rem,5.5vw,4.25rem); line-height:1.12}
+.service-detail-hero .lead{max-width:760px; margin:0; font-size:clamp(1.05rem,2vw,1.25rem); line-height:1.9; color:#554a3d}
+.service-detail-nav{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px}
+.service-detail-section{padding:clamp(44px,7vw,76px) 0}
+.service-detail-section.alt{background:#f8f3eb}
+.service-detail-section .container{max-width:980px}
+.service-detail-section h2{margin:0 0 16px; font-size:clamp(1.65rem,3.5vw,2.45rem)}
+.service-detail-section .section-lead{max-width:780px; margin:0 0 26px; color:var(--muted); line-height:1.85}
+.service-point-grid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px}
+.service-point{
+  padding:22px; border:1px solid rgba(139,99,51,.16); border-radius:18px; background:#fff;
+  box-shadow:0 10px 30px rgba(75,54,31,.06);
+}
+.service-point strong{display:block; margin-bottom:7px; font-size:1.08rem}
+.service-point p{margin:0; color:var(--muted); line-height:1.75}
+.service-note{
+  margin:24px 0; padding:20px 22px; border-left:5px solid #b8895b; border-radius:12px;
+  background:#fff5e3; color:#473b2f; line-height:1.8;
+}
+.service-note strong{display:block; margin-bottom:4px}
+.service-photo-grid{display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:12px}
+.service-photo-grid figure{margin:0; overflow:hidden; border-radius:16px; background:#eee4d7}
+.service-photo-grid figure:nth-child(1),.service-photo-grid figure:nth-child(4){grid-column:span 7}
+.service-photo-grid figure:nth-child(2),.service-photo-grid figure:nth-child(3){grid-column:span 5}
+.service-photo-grid img{width:100%;height:100%;min-height:260px;display:block;object-fit:cover}
+.service-video-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px}
+.service-video-card{padding:14px; border-radius:18px; background:#fff; box-shadow:0 14px 36px rgba(75,54,31,.1)}
+.service-video-card video{width:100%; height:auto; display:block; border-radius:12px; background:#1e1b17}
+.selection-demo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.selection-demo-card{position:relative;overflow:hidden;border:2px solid transparent;border-radius:16px;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.07)}
+.selection-demo-card.is-selected{border-color:#4e775e}
+.selection-demo-card img{width:100%;aspect-ratio:4/3;display:block;object-fit:contain;background:#eee8df}
+.selection-demo-card .selection-caption{display:flex;justify-content:space-between;gap:10px;padding:12px;font-size:.86rem}
+.selection-demo-card .selected-mark{color:#2f6747;font-weight:900}
+.student-page-demo{overflow:hidden;border:1px solid rgba(139,99,51,.2);border-radius:24px;background:#fff;box-shadow:0 22px 60px rgba(75,54,31,.12)}
+.student-page-demo-head{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:center;padding:24px;background:linear-gradient(120deg,#ebe1d2,#fff8ec)}
+.student-page-demo-head img{width:100%;aspect-ratio:4/5;object-fit:contain;border-radius:16px;background:#e7dfd4}
+.student-page-demo-head h3{font-size:clamp(1.6rem,4vw,2.6rem);margin:0 0 10px}
+.student-page-demo-head p{margin:0;color:var(--muted);line-height:1.8}
+.student-page-demo-body{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:20px}
+.student-page-demo-body .demo-file{padding:16px;border-radius:14px;background:#f8f4ed}
+.student-page-demo-body strong{display:block;margin-bottom:6px}
+.student-page-demo-body span{color:var(--muted);font-size:.88rem}
+.service-final-cta{text-align:center;padding:clamp(48px,7vw,78px) 0;background:#2d2924;color:#fff}
+.service-final-cta h2{margin:0 0 12px;color:#fff}
+.service-final-cta p{max-width:700px;margin:0 auto 22px;color:rgba(255,255,255,.76);line-height:1.8}
+@media(max-width:760px){
+  .graduation-feature-grid,.service-point-grid,.service-video-grid,.selection-demo{grid-template-columns:1fr}
+  .graduation-feature-card-body{padding:20px}
+  .service-photo-grid figure,.service-photo-grid figure:nth-child(n){grid-column:1/-1}
+  .service-photo-grid img{min-height:0;max-height:520px;object-fit:contain}
+  .student-page-demo-head{grid-template-columns:110px 1fr;gap:16px;padding:18px}
+  .student-page-demo-body{grid-template-columns:1fr}
+}
 @media (max-width: 640px){ .project-table th{ width: 100px; font-size: 13px; } .project-card:not(.project-resources):not(.project-log-card) .project-table th{ width: 80px; font-size: 11px; } .project-card:not(.project-resources):not(.project-log-card) .project-table{ font-size: 11px; } }
 
 /* 客戶專屬相簿頁：聚焦學校內容 */
