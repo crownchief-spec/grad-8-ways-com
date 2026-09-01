@@ -35,7 +35,6 @@ album_style: "森林系版型"
 proofing_required: true
 
 add_on_video: true
-add_on_usb: false
 add_on_certificate: true
 
 special_requests: "希望多拍家庭照與校園互動畫面，另有形象影片需求。"

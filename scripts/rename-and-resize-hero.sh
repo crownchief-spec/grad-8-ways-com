@@ -26,16 +26,9 @@ for f in "$HERO_DIR"/2024-*.jpg "$HERO_DIR"/2025-*.jpg "$HERO_DIR"/2026-*.jpg; d
   i=$((i+1))
 done
 
-# 隨身碟木質2.JPG -> graduation-gift-wood-usb.jpg
-for f in "$HERO_DIR"/隨身碟*.JPG "$HERO_DIR"/隨身碟*.jpg; do
-  [[ -f "$f" ]] || continue
-  mv "$f" "$HERO_DIR/graduation-gift-wood-usb.jpg"
-  echo "  -> graduation-gift-wood-usb.jpg"
-done
-
 # Resize: max 1920px (sips on macOS)
 if command -v sips >/dev/null 2>&1; then
-  for f in "$HERO_DIR"/graduation-hero-*.jpg "$HERO_DIR"/graduation-gift-wood-usb.jpg; do
+  for f in "$HERO_DIR"/graduation-hero-*.jpg; do
     [[ -f "$f" ]] || continue
     sips -Z $MAX_WIDTH "$f"
     echo "  Resized: $(basename "$f")"

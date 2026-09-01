@@ -30,7 +30,6 @@ album_style:
 proofing_required:
 
 add_on_video:
-add_on_usb:
 add_on_certificate:
 
 special_requests:

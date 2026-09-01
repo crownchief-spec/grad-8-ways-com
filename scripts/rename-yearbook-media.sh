@@ -25,7 +25,6 @@ mv -n "$DIR/畢業紀念冊實體介紹2.jpg" "$DIR/graduation-yearbook-physical
 mv -n "$DIR/畢業紀念冊實體介紹3.jpg" "$DIR/graduation-yearbook-physical-3.jpg" 2>/dev/null || true
 mv -n "$DIR/畢業照 大合照換頭_720x480_MP4.mp4" "$DIR/graduation-group-photo-head-swap.mp4" 2>/dev/null || true
 mv -n "$DIR/畢業照 畢冊製作 替換照片_720x480_MP4.mp4" "$DIR/graduation-yearbook-replace-photo.mp4" 2>/dev/null || true
-mv -n "$DIR/成品 木質隨身碟.jpg" "$DIR/graduation-wood-usb-product.jpg" 2>/dev/null || true
 
 # Resize images
 if command -v sips >/dev/null 2>&1; then
