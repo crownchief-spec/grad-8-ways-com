@@ -3,8 +3,8 @@
   "short_name": "8-ways",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#b08b57",
+  "background_color": "#f2ece1",
+  "theme_color": "#4e5748",
   "icons": [
     {
       "src": "/assets/images/logo/eightways-logo-square-gold.png",

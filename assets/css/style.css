@@ -1,8 +1,20 @@
 :root{
-  --bg:#f6f1e7; --surface:#fff; --text:#1f2328; --muted:#5b6168;
-  --wood:#b8895b; --wood-dark:#8a5f38; --line:rgba(0,0,0,.08);
-  --shadow:0 10px 30px rgba(0,0,0,.10); --r:18px; --r2:14px; --container:1120px;
-  --focus: 0 0 0 3px rgba(184,137,91,.35);
+  /* JOY FOREST editorial palette */
+  --dusty-sage:#9ea58c;
+  --eucalyptus:#7f8770;
+  --eucalyptus-dark:#4e5748;
+  --pale-sage:#c4c8b5;
+  --warm-white:#f2ece1;
+  --oat-milk:#d6c3a5;
+  --fog-gold:#b39a64;
+  --earth:#75613d;
+  --bg:var(--warm-white); --surface:#fffdf8; --text:#34372f; --muted:#65695f;
+  --wood:var(--fog-gold); --wood-dark:var(--earth); --line:rgba(78,87,72,.20);
+  --border:var(--line); --text-muted:var(--muted);
+  --shadow:0 8px 28px rgba(78,87,72,.10); --r:20px; --r2:14px; --container:1120px;
+  --shadow-hover:0 14px 38px rgba(78,87,72,.16);
+  --focus:0 0 0 3px rgba(179,154,100,.34);
+  --font-hand:"Klee","Xingkai TC","DFKai-SB","BiauKai","標楷體",ui-serif,serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -1867,4 +1879,237 @@ p{margin:0 0 12px}
   }
   .forest-joyforest-gallery__item{padding:8px}
   .forest-joyforest-gallery__img{min-height:200px; aspect-ratio:3/2}
+}
+
+/* ──────────────────────────────────────────────────────────────
+   2026 JOY FOREST editorial graduation refresh
+   配色：暖米白、鼠尾草綠、燕麥奶茶、霧金
+   插圖：畢業帽、證書、書本（SVG，適合各尺寸螢幕）
+   ────────────────────────────────────────────────────────────── */
+html{background:var(--eucalyptus-dark)}
+body{
+  background-color:var(--warm-white);
+  background-image:
+    radial-gradient(circle at 8% 9%,rgba(196,200,181,.50),transparent 23rem),
+    radial-gradient(circle at 94% 26%,rgba(214,195,165,.34),transparent 28rem);
+  background-attachment:fixed;
+}
+::selection{background:rgba(179,154,100,.36);color:var(--eucalyptus-dark)}
+h1,h2,h3,h4{color:var(--eucalyptus-dark);text-wrap:balance}
+h1,h2{font-family:var(--font-hand);letter-spacing:.035em}
+.small,.kicker{color:var(--muted)}
+.kicker{font-weight:800;color:var(--earth)}
+
+.site-header{
+  background:rgba(242,236,225,.91);
+  border-bottom:1px solid rgba(78,87,72,.16);
+  box-shadow:0 6px 24px rgba(78,87,72,.06);
+}
+.brand-text,.footer-title{font-family:var(--font-hand);letter-spacing:.04em}
+@media(min-width:981px){
+  .menu>a,.nav-dropdown>.nav-parent{position:relative}
+  .menu>a::after,.nav-dropdown>.nav-parent::after{
+    content:"";position:absolute;left:14px;right:14px;bottom:5px;height:2px;
+    border-radius:99px;background:var(--fog-gold);transform:scaleX(0);transform-origin:center;
+    transition:transform .18s ease;
+  }
+  .menu>a:hover::after,.menu>a[aria-current="page"]::after,
+  .nav-dropdown:hover>.nav-parent::after{transform:scaleX(1)}
+}
+
+.hero{background:var(--eucalyptus-dark)}
+.hero .overlay{
+  background:
+    radial-gradient(circle at 78% 20%,rgba(179,154,100,.22),transparent 38%),
+    linear-gradient(90deg,rgba(48,56,44,.92) 0%,rgba(78,87,72,.72) 45%,rgba(48,56,44,.28) 100%);
+}
+.hero .inner{position:relative}
+.hero .inner::before{
+  content:"";display:block;width:min(17rem,46vw);aspect-ratio:520/150;margin:0 0 1rem;
+  background:url("/assets/images/brand/graduation-doodle-cap.svg") center/contain no-repeat;
+  filter:brightness(0) invert(1);opacity:.82;
+}
+.hero .title,.hero h1{
+  color:#fffdf8;font-family:var(--font-hand);font-weight:800;letter-spacing:.045em;
+  text-shadow:0 3px 20px rgba(30,37,28,.34);
+}
+.hero .subtitle,.hero p{color:rgba(255,253,248,.92)}
+.hero-kicker{color:rgba(255,253,248,.88)!important}
+.btn.hero-ghost{color:rgba(255,253,248,.94);border-color:rgba(255,253,248,.50);background:rgba(255,253,248,.06)}
+.btn.hero-ghost:hover{color:#fffdf8;background:rgba(255,253,248,.16);border-color:rgba(255,253,248,.76)}
+
+.section,.mood-section{position:relative;isolation:isolate;overflow:hidden}
+.section>.container,.mood-section>.container{position:relative;z-index:2}
+main>.section:nth-of-type(even):not(.hero),
+.mood-section,
+.section[style*="background:#efeee2"],
+.section[style*="background: #efeee2"]{
+  background:linear-gradient(135deg,rgba(196,200,181,.42),rgba(242,236,225,.72))!important;
+}
+main>.section:nth-of-type(even):not(.hero)::after,
+.mood-section::after{
+  content:"";position:absolute;z-index:0;right:max(-2rem,calc((100vw - var(--container))/2 - 9rem));bottom:-2rem;
+  width:clamp(12rem,25vw,23rem);aspect-ratio:440/310;
+  background:url("/assets/images/brand/graduation-doodle-diploma.svg") center/contain no-repeat;
+  opacity:.10;pointer-events:none;
+}
+main>.section:first-child:not(.hero)::before,
+.subpage>main>.section:first-child::before,
+.subpage>.section:first-of-type::before{
+  content:"";position:absolute;z-index:0;right:clamp(-3rem,2vw,1rem);top:1rem;
+  width:clamp(10rem,19vw,18rem);aspect-ratio:440/310;
+  background:url("/assets/images/brand/graduation-doodle-diploma.svg") center/contain no-repeat;
+  opacity:.075;pointer-events:none;
+}
+.section>.container>h2:first-child::after,
+.mood-section>.container>h2:first-child::after,
+.section-heading::after{
+  content:"";display:block;width:5.75rem;height:1.7rem;margin:.35rem 0 .85rem;
+  background:url("/assets/images/brand/graduation-doodle-cap.svg") left center/contain no-repeat;
+  opacity:.72;
+}
+.section--sage{background:linear-gradient(135deg,rgba(196,200,181,.44),rgba(242,236,225,.78))!important}
+.section--warm-glass{background:rgba(255,253,248,.56)!important}
+.section--editorial-cta{background:linear-gradient(180deg,rgba(214,195,165,.28),rgba(196,200,181,.42))!important}
+.section-rule{border:0;border-top:1px solid var(--line);margin:24px 0}
+.heading-card{font-size:18px;margin-bottom:8px}
+.heading-card--tight{margin-bottom:6px}
+.heading-compact{font-size:17px;margin:0 0 6px}
+.heading-compact--spacious{margin-bottom:10px}
+.heading-section-sm{font-size:1.15rem;margin:0 0 10px}
+.heading-plan{font-size:16px;margin:0 0 6px}
+.heading-redirect{margin-top:0;font-size:1.35rem}
+.heading-flow-lead{margin-top:0;font-size:1.15rem}
+.heading-flow-card{margin-top:0;font-size:1rem}
+.faq-question{margin:0 0 6px;color:var(--eucalyptus-dark)}
+.fine-print{margin:0;color:var(--muted);line-height:1.65}
+.note-spaced{margin-top:28px;color:var(--muted)}
+.text-accent{color:var(--fog-gold)!important;font-weight:700}
+.link-card{display:block;color:inherit;text-decoration:none}
+.card--accent{background:rgba(214,195,165,.22);border-color:rgba(179,154,100,.42)}
+.portrait-photo{max-width:220px;width:60%;border-radius:999px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.media-cover{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r2)}
+.media-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:var(--eucalyptus-dark);border-radius:var(--r2)}
+.media-embed>iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.flow-guide-image{width:100%;height:auto;border-radius:8px;border:1px solid var(--line)}
+.flow-guide-image--narrow{max-width:min(520px,100%);display:block}
+.flow-guide-caption{margin-top:8px;color:var(--muted)}
+.code-example{background:var(--surface);border:1px solid var(--line);padding:14px;border-radius:8px;font-size:13px;overflow-x:auto}
+.yearbook-flow-spec-card--cta{margin-top:36px;background:linear-gradient(180deg,rgba(214,195,165,.25),transparent)}
+
+/* 服務特色與詳細介紹頁的共用外殼，同樣只吃全站變數 */
+.graduation-feature-section{background:linear-gradient(180deg,var(--warm-white),rgba(196,200,181,.34))}
+.graduation-feature-intro .eyebrow,.service-detail-hero .eyebrow{color:var(--earth)}
+.graduation-feature-card{
+  border-color:var(--line);background:var(--surface);box-shadow:var(--shadow)
+}
+.graduation-feature-card:hover,.graduation-feature-card:focus-visible{
+  border-color:rgba(127,135,112,.5);box-shadow:var(--shadow-hover)
+}
+.graduation-feature-card-media{background:var(--pale-sage)}
+.graduation-feature-card-media img.portrait-safe{background:var(--warm-white)}
+.graduation-feature-number{background:rgba(255,253,248,.94);color:var(--earth)}
+.graduation-feature-card .learn-more{color:var(--earth)}
+.service-trial-label{background:rgba(214,195,165,.45);color:var(--earth)}
+.service-detail-page{background:var(--warm-white)}
+.service-detail-hero{
+  position:relative;isolation:isolate;overflow:hidden;
+  background:linear-gradient(135deg,rgba(214,195,165,.58),rgba(196,200,181,.38),var(--warm-white))
+}
+.service-detail-hero::after{
+  content:"";position:absolute;z-index:-1;right:clamp(-4rem,2vw,2rem);bottom:-3.5rem;
+  width:clamp(15rem,30vw,28rem);aspect-ratio:440/310;
+  background:url("/assets/images/brand/graduation-doodle-diploma.svg") center/contain no-repeat;
+  opacity:.10;pointer-events:none
+}
+.service-detail-hero .container{position:relative;z-index:1}
+.service-detail-hero .lead{color:var(--muted)}
+.service-detail-section{position:relative;isolation:isolate;overflow:hidden}
+.service-detail-section.alt{background:linear-gradient(135deg,rgba(196,200,181,.40),rgba(242,236,225,.72))}
+.service-detail-section h2::after{
+  content:"";display:block;width:5.75rem;height:1.7rem;margin:.35rem 0 .85rem;
+  background:url("/assets/images/brand/graduation-doodle-cap.svg") left center/contain no-repeat;opacity:.72
+}
+.service-point,.service-video-card,.selection-demo-card,.student-page-demo{
+  border-color:var(--line);background:var(--surface);box-shadow:var(--shadow)
+}
+.service-note{border-left-color:var(--fog-gold);background:rgba(214,195,165,.28);color:var(--text)}
+.service-photo-grid figure{background:var(--pale-sage)}
+
+.card,
+.blog-card,
+.project-card,
+.feature-card,
+.package-card,
+.service-card,
+.gallery-card,
+.forest-joyforest-gallery__item{
+  background:rgba(255,253,248,.94);
+  border-color:var(--line);
+  box-shadow:var(--shadow);
+  border-radius:var(--r);
+}
+.card,.blog-card,.project-card,.feature-card,.package-card,.service-card,
+.forest-joyforest-gallery__item{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.card:hover,.blog-card:hover,.project-card:hover,.feature-card:hover,.package-card:hover,.service-card:hover{
+  transform:translateY(-2px);box-shadow:var(--shadow-hover);border-color:rgba(127,135,112,.38)
+}
+.grid-2>.card-link,.grid-3>.card-link{
+  background:rgba(255,253,248,.9);border:1px solid var(--line);border-radius:var(--r2);
+  padding:12px 16px;box-shadow:0 5px 18px rgba(78,87,72,.07);color:var(--eucalyptus-dark)
+}
+.card-link,.badge,.tag,.chip{
+  background:rgba(158,165,140,.16);border-color:rgba(127,135,112,.30);color:var(--eucalyptus-dark)
+}
+.card-link:hover{background:rgba(158,165,140,.28);border-color:var(--eucalyptus)}
+
+.btn.primary{
+  background:var(--eucalyptus-dark);color:#fffdf8;
+  box-shadow:0 10px 26px rgba(78,87,72,.24)
+}
+.btn.primary:hover{background:#606a58;box-shadow:var(--shadow-hover)}
+.btn.ghost{background:rgba(255,253,248,.58);border-color:rgba(78,87,72,.28);color:var(--eucalyptus-dark)}
+.btn.ghost:hover{background:rgba(196,200,181,.42)}
+.forest-service-button,.forest-service-button--light{
+  background:var(--oat-milk);color:var(--eucalyptus-dark);border-color:var(--fog-gold);
+  box-shadow:0 10px 25px rgba(117,97,61,.18)
+}
+.forest-service-button:hover{background:#e2d1b6}
+
+input,select,textarea{
+  background:#fffdf8;border-color:rgba(78,87,72,.28);color:var(--text)
+}
+input:focus,select:focus,textarea:focus{border-color:var(--fog-gold);box-shadow:var(--focus)}
+table{background:rgba(255,253,248,.92);border-color:var(--line)}
+th{background:rgba(196,200,181,.38);color:var(--eucalyptus-dark)}
+
+.site-footer{
+  position:relative;overflow:hidden;background:var(--eucalyptus-dark);color:#fffdf8;
+  border-top:6px solid var(--fog-gold)
+}
+.site-footer::before{
+  content:"";position:absolute;right:max(1rem,calc((100vw - var(--container))/2));top:2rem;
+  width:clamp(12rem,24vw,21rem);aspect-ratio:520/250;
+  background:url("/assets/images/brand/graduation-doodle-books.svg") center/contain no-repeat;
+  filter:brightness(0) invert(1);opacity:.10;pointer-events:none
+}
+.site-footer h2,.site-footer h3,.site-footer h4,.site-footer .footer-title{color:#fffdf8}
+.site-footer a{color:#fffdf8}
+.footer-bottom{border-color:rgba(255,255,255,.16)}
+
+@media(max-width:980px){
+  body{background-attachment:scroll}
+  .hero .overlay{background:linear-gradient(180deg,rgba(48,56,44,.80),rgba(48,56,44,.50))}
+  .hero .inner::before{width:min(13rem,58vw)}
+  .site-footer::before{right:-3rem;top:1.5rem;width:14rem}
+}
+@media(max-width:640px){
+  .section{padding:44px 0}
+  .section.tight{padding:30px 0}
+  main>.section:nth-of-type(even):not(.hero)::after,.mood-section::after{right:-5rem;bottom:-1rem;width:13rem}
+  .section>.container>h2:first-child::after,.mood-section>.container>h2:first-child::after{width:4.8rem;height:1.35rem}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
 }
