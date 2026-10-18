@@ -1977,6 +1977,13 @@ main>.section:first-child:not(.hero)::before,
 .heading-compact{font-size:17px;margin:0 0 6px}
 .heading-compact--spacious{margin-bottom:10px}
 .heading-section-sm{font-size:1.15rem;margin:0 0 10px}
+.minimum-student-count{
+  display:inline-block;
+  font-size:1.5em;
+  line-height:1;
+  font-weight:900;
+  color:var(--eucalyptus-dark);
+}
 .heading-plan{font-size:16px;margin:0 0 6px}
 .heading-redirect{margin-top:0;font-size:1.35rem}
 .heading-flow-lead{margin-top:0;font-size:1.15rem}
