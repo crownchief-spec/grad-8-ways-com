@@ -1,0 +1,2 @@
+# 作品集縮圖腳本依賴（scripts/generate_thumbs.py）
+Pillow>=9.0.0
