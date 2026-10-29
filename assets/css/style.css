@@ -1422,6 +1422,16 @@ p{margin:0 0 12px}
   font-weight: 800;
   color: var(--wood-dark);
 }
+.yearbook-flow-compact-list{
+  margin: 10px 0 14px;
+  padding-left: 1.25em;
+  font-size: .92rem;
+  line-height: 1.55;
+}
+.yearbook-flow-compact-list li{
+  margin: 0 0 7px;
+  padding: 0;
+}
 .yearbook-two-col{
   display: grid;
   grid-template-columns: 1fr 1fr;
