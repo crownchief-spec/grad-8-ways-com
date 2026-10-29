@@ -1,1 +1,0 @@
-# grad-8-ways-com

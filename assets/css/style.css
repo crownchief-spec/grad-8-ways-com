@@ -2074,6 +2074,28 @@ main>.section:first-child:not(.hero)::before,
   color:var(--eucalyptus-dark);
 }
 .heading-plan{font-size:16px;margin:0 0 6px}
+.plan-comparison-figure{margin:12px 0 10px}
+.plan-comparison-figure img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:16px;
+  filter:drop-shadow(0 10px 20px rgba(58,61,51,.08));
+}
+.plan-comparison-note{
+  margin:8px 0 14px;
+  padding:9px 12px;
+  border-left:4px solid var(--fog-gold);
+  border-radius:0 10px 10px 0;
+  background:rgba(185,154,100,.1);
+  font-size:.82rem;
+  line-height:1.5;
+}
+@media(max-width:640px){
+  .plan-comparison-figure{margin:9px -6px 8px}
+  .plan-comparison-figure img{border-radius:12px}
+  .plan-comparison-note{font-size:.78rem}
+}
 .heading-redirect{margin-top:0;font-size:1.35rem}
 .heading-flow-lead{margin-top:0;font-size:1.15rem}
 .heading-flow-card{margin-top:0;font-size:1rem}
