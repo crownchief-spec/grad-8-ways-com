@@ -1379,6 +1379,42 @@ p{margin:0 0 12px}
   vertical-align: top;
 }
 .yearbook-layout-table-wrap th{ background: rgba(184,137,91,.12); font-weight: 700; }
+.yearbook-page-ratio-note{
+  margin: 16px 0;
+}
+.yearbook-page-type-legend{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 -4px;
+}
+.yearbook-page-type-badge{
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1.3;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.yearbook-page-type-badge.is-personal{
+  color: #7a452c;
+  background: #f8dfcf;
+  border: 1px solid #e9bfa5;
+}
+.yearbook-page-type-badge.is-common{
+  color: #365e3e;
+  background: #dfeede;
+  border: 1px solid #b9d6b9;
+}
+.yearbook-layout-table-wrap tr.yearbook-page-type-personal td{
+  background: #fff6ef;
+}
+.yearbook-layout-table-wrap tr.yearbook-page-type-common td{
+  background: #f1f8f0;
+}
 .yearbook-layout-list{ display: none; }
 .yearbook-layout-compact{
   list-style: disc;
@@ -1391,6 +1427,24 @@ p{margin:0 0 12px}
 .yearbook-layout-compact li{
   margin: 0 0 5px;
   padding: 0;
+}
+.yearbook-layout-compact li.yearbook-page-type-personal,
+.yearbook-layout-compact li.yearbook-page-type-common{
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+.yearbook-layout-compact li.yearbook-page-type-personal{
+  background: #fff6ef;
+  border-left: 4px solid #e9bfa5;
+}
+.yearbook-layout-compact li.yearbook-page-type-common{
+  background: #f1f8f0;
+  border-left: 4px solid #b9d6b9;
+}
+.yearbook-layout-compact .yearbook-page-type-badge{
+  margin-right: 7px;
 }
 .yearbook-layout-compact strong{
   color: var(--wood-dark);
