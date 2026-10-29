@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="930" viewBox="0 0 1200 930" role="img" aria-labelledby="title desc">
+  <title id="title">畢業照攝影四種方案比較</title>
+  <desc id="desc">方案一至方案四的價格、拍攝內容、照片下載與紀念冊服務比較。</desc>
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#354034" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .font{font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif}
+      .head{font-size:34px;font-weight:800;fill:#3f493c}
+      .plan{font-size:32px;font-weight:850;fill:#3f493c}
+      .plan-name{font-size:24px;font-weight:650;fill:#687064}
+      .price{font-size:32px;font-weight:850;fill:#8c6f3e}
+      .row-title{font-size:32px;font-weight:850;fill:#3f493c}
+      .row-list{font-size:26px;font-weight:750;fill:#3f493c}
+      .row-sub{font-size:23px;font-weight:520;fill:#6f756b}
+      .check{font-size:44px;font-weight:900;fill:#fff;text-anchor:middle}
+      .dash{font-size:44px;font-weight:750;fill:#aaa99f;text-anchor:middle}
+      .foot{font-size:28px;font-weight:750;fill:#524d40}
+      .line{stroke:#d5d7ce;stroke-width:2}
+    </style>
+  </defs>
+
+  <rect width="1200" height="930" rx="34" fill="#f4f0e7"/>
+  <g filter="url(#shadow)">
+    <rect x="24" y="24" width="1152" height="882" rx="28" fill="#fffdf8"/>
+  </g>
+
+  <path d="M24 52a28 28 0 0 1 28-28h1124v150H24Z" fill="#e8e4d7"/>
+  <path d="M360 24h204v150H360Z" fill="#eee9dd"/>
+  <path d="M564 24h204v150H564Z" fill="#e3eadf"/>
+  <path d="M768 24h204v150H768Z" fill="#dce6d8"/>
+  <path d="M972 24h204v150H972V52a28 28 0 0 0-28-28Z" fill="#d5e1d1"/>
+
+  <g class="font">
+    <text class="head" x="52" y="112">服務內容</text>
+
+    <text class="plan" x="462" y="66" text-anchor="middle">方案一</text>
+    <text class="plan-name" x="462" y="101" text-anchor="middle">電子檔版</text>
+    <text class="price" x="462" y="145" text-anchor="middle">NT$880</text>
+
+    <text class="plan" x="666" y="66" text-anchor="middle">方案二</text>
+    <text class="plan-name" x="666" y="101" text-anchor="middle">經典紀念冊</text>
+    <text class="price" x="666" y="145" text-anchor="middle">NT$1,580</text>
+
+    <text class="plan" x="870" y="66" text-anchor="middle">方案三</text>
+    <text class="plan-name" x="870" y="101" text-anchor="middle">完整紀念冊</text>
+    <text class="price" x="870" y="145" text-anchor="middle">NT$1,780</text>
+
+    <text class="plan" x="1074" y="66" text-anchor="middle">方案四</text>
+    <text class="plan-name" x="1074" y="101" text-anchor="middle">豪華家庭版</text>
+    <text class="price" x="1074" y="145" text-anchor="middle">NT$2,480</text>
+
+    <rect x="24" y="174" width="1152" height="130" fill="#fffdf8"/>
+    <text class="row-list" x="52" y="228">學士服個人、便服個人照</text>
+    <text class="row-list" x="52" y="270">小組照、班級大合照</text>
+
+    <rect x="24" y="304" width="1152" height="130" fill="#f8f6ef"/>
+    <text class="row-title" x="52" y="356">工作／上課側拍</text>
+    <text class="row-sub" x="52" y="396">兩種校園生活情境</text>
+
+    <rect x="24" y="434" width="1152" height="130" fill="#fffdf8"/>
+    <text class="row-title" x="52" y="486">家庭／師生合照</text>
+    <text class="row-sub" x="52" y="526">家庭照＋學生與老師合照</text>
+
+    <rect x="24" y="564" width="1152" height="130" fill="#f8f6ef"/>
+    <text class="row-title" x="52" y="616">可用照片下載</text>
+    <text class="row-sub" x="52" y="656">篩選調色後，全數雲端提供</text>
+
+    <rect x="24" y="694" width="1152" height="130" fill="#eef4eb"/>
+    <text class="row-title" x="52" y="742">紀念冊完整服務</text>
+    <text class="row-sub" x="52" y="778">實體＋數位翻頁＋挑片／文字</text>
+    <text class="row-sub" x="52" y="808">排版校稿＋學生專屬頁面</text>
+
+    <g>
+      <circle cx="462" cy="239" r="27" fill="#6f8068"/><text class="check" x="462" y="255">✓</text>
+      <circle cx="666" cy="239" r="27" fill="#6f8068"/><text class="check" x="666" y="255">✓</text>
+      <circle cx="870" cy="239" r="27" fill="#6f8068"/><text class="check" x="870" y="255">✓</text>
+      <circle cx="1074" cy="239" r="27" fill="#6f8068"/><text class="check" x="1074" y="255">✓</text>
+
+      <text class="dash" x="462" y="384">—</text>
+      <text class="dash" x="666" y="384">—</text>
+      <circle cx="870" cy="369" r="27" fill="#6f8068"/><text class="check" x="870" y="385">✓</text>
+      <circle cx="1074" cy="369" r="27" fill="#6f8068"/><text class="check" x="1074" y="385">✓</text>
+
+      <text class="dash" x="462" y="514">—</text>
+      <text class="dash" x="666" y="514">—</text>
+      <text class="dash" x="870" y="514">—</text>
+      <circle cx="1074" cy="499" r="27" fill="#6f8068"/><text class="check" x="1074" y="515">✓</text>
+
+      <circle cx="462" cy="629" r="27" fill="#6f8068"/><text class="check" x="462" y="645">✓</text>
+      <circle cx="666" cy="629" r="27" fill="#6f8068"/><text class="check" x="666" y="645">✓</text>
+      <circle cx="870" cy="629" r="27" fill="#6f8068"/><text class="check" x="870" y="645">✓</text>
+      <circle cx="1074" cy="629" r="27" fill="#6f8068"/><text class="check" x="1074" y="645">✓</text>
+
+      <text class="dash" x="462" y="774">—</text>
+      <circle cx="666" cy="759" r="27" fill="#6f8068"/><text class="check" x="666" y="775">✓</text>
+      <circle cx="870" cy="759" r="27" fill="#6f8068"/><text class="check" x="870" y="775">✓</text>
+      <circle cx="1074" cy="759" r="27" fill="#6f8068"/><text class="check" x="1074" y="775">✓</text>
+    </g>
+
+    <path class="line" d="M24 174h1152M24 304h1152M24 434h1152M24 564h1152M24 694h1152M360 24v800M564 24v800M768 24v800M972 24v800"/>
+
+    <rect x="24" y="824" width="1152" height="82" rx="0 0 28 28" fill="#eee6d6"/>
+    <circle cx="59" cy="865" r="9" fill="#b99a64"/>
+    <text class="foot" x="82" y="875">方案一不含實體或數位畢業紀念冊；方案二至四包含紀念冊完整服務。</text>
+  </g>
+</svg>
