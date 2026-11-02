@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>畢業紀念冊製作專區｜線上挑片與校稿示範｜小巴老師攝影</title>
+  <meta name="description" content="畢業紀念冊製作專區功能示範：依學校與學生進入，確認攝影師預選照片、替換入冊照片、填寫頁面文字，並追蹤挑片、校稿、數位影片與送印進度。" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <meta name="theme-color" content="#596653" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/graduation-album-client-portal.css?v=20261102-1" />
+</head>
+<body class="album-portal-page">
+  <div id="site-header-placeholder"></div>
+  <main id="top">
+    <section class="portal-hero">
+      <div class="portal-hero__glow portal-hero__glow--one" aria-hidden="true"></div>
+      <div class="portal-hero__glow portal-hero__glow--two" aria-hidden="true"></div>
+      <div class="container portal-hero__inner">
+        <div class="portal-hero__copy">
+          <p class="portal-eyebrow">Graduation Album Workspace</p>
+          <h1>畢業紀念冊製作專區</h1>
+          <p class="portal-hero__lead">照片已先由攝影師與系統預選好。家長不用從零開始挑片，只要逐頁確認；想換照片時，再從同一位學生、同一拍攝主題的候選照片中替換。</p>
+          <div class="portal-hero__actions">
+            <a class="portal-button portal-button--primary" href="#portal-app">進入示範學校</a>
+            <a class="portal-button portal-button--ghost" href="#portal-how">先看怎麼使用</a>
+          </div>
+        </div>
+        <aside class="portal-demo-note" aria-label="功能示範說明">
+          <span class="portal-demo-note__badge">功能示範版</span>
+          <strong>目前全部是虛構資料</strong>
+          <p>照片卡只顯示編號，不含任何真實兒童照片。示範密碼統一為 <code>0100</code>。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="portal-process" id="portal-how" aria-labelledby="portal-process-title">
+      <div class="container">
+        <div class="portal-section-heading">
+          <p class="portal-eyebrow">四個製作階段</p>
+          <h2 id="portal-process-title">先挑照片，完成後才進入排版校稿</h2>
+          <p>挑片期間不會反覆產生整本電子相本，避免等待與資源浪費。照片截止後，才會製作實際版面。</p>
+        </div>
+        <ol class="portal-process__list">
+          <li class="is-current"><span>01</span><strong>挑片與替換</strong><small>約 30 天</small></li>
+          <li><span>02</span><strong>相本排版校稿</strong><small>確認裁切與文字</small></li>
+          <li><span>03</span><strong>數位回顧影片</strong><small>翻頁影片＋語音</small></li>
+          <li><span>04</span><strong>實體相本送印</strong><small>每位學生一本</small></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="portal-app-shell" id="portal-app" aria-labelledby="portal-app-title">
+      <div class="container">
+        <div class="portal-app-titlebar">
+          <div><p class="portal-eyebrow">Interactive Demo</p><h2 id="portal-app-title">線上挑片系統操作示範</h2></div>
+          <button class="portal-text-button" id="reset-demo" type="button">重設示範資料</button>
+        </div>
+        <div class="portal-app" aria-live="polite">
+          <section class="portal-screen is-active" id="school-screen" data-screen="school">
+            <div class="portal-screen__heading"><span class="portal-step-label">步驟 1</span><h3>選擇學校</h3><p>學校名稱可以公開顯示；進入個別學生或家長代表專區時才需要密碼。</p></div>
+            <div class="portal-school-grid" id="school-grid"></div>
+          </section>
+          <section class="portal-screen" id="people-screen" data-screen="people" hidden>
+            <button class="portal-back-button" type="button" data-back="school">← 返回學校列表</button>
+            <div class="portal-screen__heading"><span class="portal-step-label">步驟 2</span><h3 id="people-school-name">選擇學生</h3><p>「學校／家長代表」負責共同頁面；每位學生只處理自己個人化的頁面。</p></div>
+            <div class="portal-role-explainer">
+              <div><span class="portal-role-icon">共</span><strong>學校／家長代表</strong><small>挑大合照、芳名錄、小組照與共同版型</small></div>
+              <div><span class="portal-role-icon portal-role-icon--personal">個</span><strong>學生家長</strong><small>挑封面、個人學士服、便服與家庭照</small></div>
+            </div>
+            <div class="portal-person-grid" id="person-grid"></div>
+          </section>
+          <section class="portal-screen" id="login-screen" data-screen="login" hidden>
+            <button class="portal-back-button" type="button" data-back="people">← 返回學生列表</button>
+            <div class="portal-login-card">
+              <div class="portal-login-card__identity" id="login-identity"></div>
+              <form id="login-form" class="portal-form">
+                <label for="portal-password">專區密碼</label>
+                <div class="portal-password-row"><input id="portal-password" name="password" type="password" inputmode="numeric" autocomplete="current-password" maxlength="12" required /><button class="portal-button portal-button--primary" type="submit">進入專區</button></div>
+                <p class="portal-form-hint">示範版預設密碼：<code>0100</code>。登入後可自行修改。</p>
+                <p class="portal-form-error" id="login-error" role="alert"></p>
+              </form>
+            </div>
+          </section>
+          <section class="portal-screen" id="dashboard-screen" data-screen="dashboard" hidden>
+            <header class="portal-dashboard-header">
+              <div><button class="portal-back-button" type="button" id="logout-button">← 登出並返回</button><p class="portal-dashboard-school" id="dashboard-school"></p><h3 id="dashboard-person"></h3></div>
+              <div class="portal-dashboard-actions"><button class="portal-button portal-button--soft" id="change-password-button" type="button">修改密碼</button><button class="portal-button portal-button--primary" id="submit-selection-button" type="button">確認挑片完成</button></div>
+            </header>
+            <div class="portal-stage-tabs" role="tablist" aria-label="製作階段">
+              <button class="is-active" type="button" role="tab" aria-selected="true" data-stage="selection"><span>1</span>挑片</button>
+              <button type="button" role="tab" aria-selected="false" data-stage="proof"><span>2</span>校稿</button>
+              <button type="button" role="tab" aria-selected="false" data-stage="film"><span>3</span>數位影片</button>
+              <button type="button" role="tab" aria-selected="false" data-stage="print"><span>4</span>送印</button>
+            </div>
+            <div class="portal-dashboard-grid">
+              <div class="portal-dashboard-main">
+                <div class="portal-status-card" id="portal-status-card"></div>
+                <div class="portal-stage-message" id="stage-message" hidden></div>
+                <div id="selection-workspace">
+                  <div class="portal-toolbar"><div><strong>24 面相本內容</strong><span id="section-summary"></span></div><div class="portal-filter-pills" id="section-filters" aria-label="頁面篩選"></div></div>
+                  <div class="portal-section-list" id="album-section-list"></div>
+                </div>
+              </div>
+              <aside class="portal-activity-panel"><div class="portal-activity-panel__heading"><strong>儲存紀錄</strong><span>自動儲存</span></div><ol id="activity-log"></ol><p class="portal-activity-note">正式版會把每次修改寫入伺服器紀錄，攝影師可在截止後匯出最後選擇。</p></aside>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="portal-future">
+      <div class="container portal-future__grid">
+        <div><p class="portal-eyebrow">後續正式串接</p><h2>挑片結果會直接接到相本製作</h2><p>截止後匯出每位學生的照片清單、頁面文字、共同頁選擇與修改紀錄，再產生 InDesign 可編輯工程。校稿完成後，才輸出翻頁影片與印刷 PDF。</p></div>
+        <ul><li><span>01</span>學生與共同頁選片清單</li><li><span>02</span>InDesign／IDML 可編輯相本</li><li><span>03</span>逐面 JPG／PDF 校稿</li><li><span>04</span>數位翻頁影片與實體送印</li></ul>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="portal-dialog" id="photo-picker-dialog">
+    <form method="dialog" class="portal-dialog__surface" id="photo-picker-form">
+      <header><div><p class="portal-eyebrow">替換照片</p><h2 id="photo-picker-title">選擇候選照片</h2><p id="photo-picker-description"></p></div><button class="portal-dialog__close" value="cancel" aria-label="關閉">×</button></header>
+      <div class="portal-photo-picker" id="photo-picker-grid"></div>
+      <footer><span id="photo-picker-selection-label">尚未選擇</span><div><button class="portal-button portal-button--ghost-dark" value="cancel">取消</button><button class="portal-button portal-button--primary" id="confirm-photo-button" value="default">儲存替換</button></div></footer>
+    </form>
+  </dialog>
+  <dialog class="portal-dialog portal-dialog--compact" id="password-dialog">
+    <form method="dialog" class="portal-dialog__surface portal-form" id="password-form">
+      <header><div><p class="portal-eyebrow">帳號安全</p><h2>修改專區密碼</h2></div><button class="portal-dialog__close" value="cancel" aria-label="關閉">×</button></header>
+      <label for="current-password">原密碼</label><input id="current-password" type="password" required />
+      <label for="new-password">新密碼</label><input id="new-password" type="password" minlength="4" maxlength="12" required />
+      <label for="confirm-new-password">再次輸入新密碼</label><input id="confirm-new-password" type="password" minlength="4" maxlength="12" required />
+      <p class="portal-form-error" id="password-error" role="alert"></p>
+      <footer><button class="portal-button portal-button--ghost-dark" value="cancel">取消</button><button class="portal-button portal-button--primary" id="save-password-button" value="default">儲存新密碼</button></footer>
+    </form>
+  </dialog>
+  <dialog class="portal-dialog portal-dialog--compact" id="submit-dialog">
+    <form method="dialog" class="portal-dialog__surface">
+      <header><div><p class="portal-eyebrow">最後確認</p><h2>送出目前挑片結果？</h2></div><button class="portal-dialog__close" value="cancel" aria-label="關閉">×</button></header>
+      <p>送出後正式版會鎖定選片，接著進入相本排版。示範版仍提供「重新開啟」按鈕，方便測試。</p>
+      <footer><button class="portal-button portal-button--ghost-dark" value="cancel">再檢查一下</button><button class="portal-button portal-button--primary" id="confirm-submit-button" value="default">確認送出</button></footer>
+    </form>
+  </dialog>
+  <div id="portal-toast" class="portal-toast" role="status" aria-live="polite"></div>
+  <div id="site-footer-placeholder"></div>
+  <script src="/assets/js/include-components.js" defer></script>
+  <script src="/assets/js/graduation-album-client-portal.js?v=20261102-1" defer></script>
+</body>
+</html>
