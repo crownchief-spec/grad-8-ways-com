@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>畢業紀念冊製作專區｜線上挑片與校稿示範｜小巴老師攝影</title>
-  <meta name="description" content="畢業紀念冊製作專區功能示範：依學校與學生進入，確認攝影師預選照片、替換入冊照片、填寫頁面文字，並追蹤挑片、校稿、數位影片與送印進度。" />
+  <title>畢業紀念冊製作專區｜線上挑片與校稿｜小巴老師攝影</title>
+  <meta name="description" content="畢業紀念冊製作專區：依學校與學生進入，確認攝影師預選照片、替換入冊照片、填寫頁面文字，並追蹤挑片、校稿、數位影片與送印進度。" />
   <meta name="robots" content="noindex, nofollow, noarchive" />
   <meta name="theme-color" content="#596653" />
   <link rel="icon" href="/favicon.ico" sizes="32x32" />
   <link rel="stylesheet" href="/assets/css/style.css" />
-  <link rel="stylesheet" href="/assets/css/graduation-album-client-portal.css?v=20261102-2" />
+  <link rel="stylesheet" href="/assets/css/graduation-album-client-portal.css?v=20261102-3" />
 </head>
 <body class="album-portal-page">
   <div id="site-header-placeholder"></div>
@@ -23,14 +23,14 @@
           <h1>畢業紀念冊製作專區</h1>
           <p class="portal-hero__lead">照片已先由攝影師與系統預選好。家長不用從零開始挑片，只要逐頁確認；想換照片時，再從同一位學生、同一拍攝主題的候選照片中替換。</p>
           <div class="portal-hero__actions">
-            <a class="portal-button portal-button--primary" href="#portal-app">進入示範學校</a>
+            <a class="portal-button portal-button--primary" href="#portal-app">進入學校專區</a>
             <a class="portal-button portal-button--ghost" href="#portal-how">先看怎麼使用</a>
           </div>
         </div>
-        <aside class="portal-demo-note" aria-label="功能示範說明">
-          <span class="portal-demo-note__badge">功能示範版</span>
-          <strong>目前全部是虛構資料</strong>
-          <p>照片卡只顯示編號，不含任何真實兒童照片。示範密碼統一為 <code>0100</code>。</p>
+        <aside class="portal-demo-note" aria-label="挑片操作提醒">
+          <span class="portal-demo-note__badge">挑片操作提醒</span>
+          <strong>先確認，再替換</strong>
+          <p>每個相本位置都已放入攝影師預選照片；只有想調整時，再進入同一主題的候選照片中替換。</p>
         </aside>
       </div>
     </section>
@@ -54,8 +54,8 @@
     <section class="portal-app-shell" id="portal-app" aria-labelledby="portal-app-title">
       <div class="container">
         <div class="portal-app-titlebar">
-          <div><p class="portal-eyebrow">Interactive Demo</p><h2 id="portal-app-title">線上挑片系統操作示範</h2></div>
-          <button class="portal-text-button" id="reset-demo" type="button">重設示範資料</button>
+          <div><p class="portal-eyebrow">Album Selection Portal</p><h2 id="portal-app-title">線上挑片系統操作區</h2></div>
+          <button class="portal-text-button" id="reset-demo" type="button">重設操作資料</button>
         </div>
         <div class="portal-app" aria-live="polite">
           <section class="portal-screen is-active" id="school-screen" data-screen="school">
@@ -78,7 +78,7 @@
               <form id="login-form" class="portal-form">
                 <label for="portal-password">專區密碼</label>
                 <div class="portal-password-row"><input id="portal-password" name="password" type="password" inputmode="numeric" autocomplete="current-password" maxlength="12" required /><button class="portal-button portal-button--primary" type="submit">進入專區</button></div>
-                <p class="portal-form-hint">示範版預設密碼：<code>0100</code>。登入後可自行修改。</p>
+                <p class="portal-form-hint">目前測試密碼：<code>0100</code>。登入後可自行修改。</p>
                 <p class="portal-form-error" id="login-error" role="alert"></p>
               </form>
             </div>
@@ -103,7 +103,7 @@
                   <div class="portal-section-list" id="album-section-list"></div>
                 </div>
               </div>
-              <aside class="portal-activity-panel"><div class="portal-activity-panel__heading"><strong>儲存紀錄</strong><span>示範：本機儲存</span></div><ol id="activity-log"></ol><p class="portal-activity-note"><strong>目前示範版：</strong>結果只保留在這台裝置的這個瀏覽器。<br><strong>正式版：</strong>每次確認替換後才會寫入 Cloudflare D1，收到伺服器成功回覆才顯示「已儲存」。</p></aside>
+              <aside class="portal-activity-panel"><div class="portal-activity-panel__heading"><strong>儲存紀錄</strong><span>目前：本機儲存</span></div><ol id="activity-log"></ol><p class="portal-activity-note"><strong>目前版本：</strong>結果只保留在這台裝置的這個瀏覽器。<br><strong>伺服器版：</strong>每次確認替換後才會寫入 Cloudflare D1，收到伺服器成功回覆才顯示「已儲存」。</p></aside>
             </div>
           </section>
         </div>
@@ -138,7 +138,7 @@
   <dialog class="portal-dialog portal-dialog--compact" id="submit-dialog">
     <form method="dialog" class="portal-dialog__surface">
       <header><div><p class="portal-eyebrow">最後確認</p><h2>送出目前挑片結果？</h2></div><button class="portal-dialog__close" value="cancel" aria-label="關閉">×</button></header>
-      <p>送出後正式版會鎖定選片，接著進入相本排版。示範版仍提供「重新開啟」按鈕，方便測試。</p>
+      <p>送出後系統會鎖定選片，接著進入相本排版。目前仍提供「重新開啟」按鈕，方便檢查操作流程。</p>
       <footer><button class="portal-button portal-button--ghost-dark" value="cancel">再檢查一下</button><button class="portal-button portal-button--primary" id="confirm-submit-button" value="default">確認送出</button></footer>
     </form>
   </dialog>
@@ -148,6 +148,6 @@
   </div>
   <div id="site-footer-placeholder"></div>
   <script src="/assets/js/include-components.js" defer></script>
-  <script src="/assets/js/graduation-album-client-portal.js?v=20261102-2" defer></script>
+  <script src="/assets/js/graduation-album-client-portal.js?v=20261102-3" defer></script>
 </body>
 </html>
