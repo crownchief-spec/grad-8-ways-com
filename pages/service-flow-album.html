@@ -56,7 +56,6 @@
     }
     .album-jump-links,
     .album-table-grid,
-    .album-layout-notes,
     .album-production-grid,
     .album-faq-grid {
       display: grid;
@@ -134,10 +133,6 @@
       font-size: .875rem;
       line-height: 1.45;
     }
-    .album-layout-notes { align-items: start; }
-    .album-layout-notes .service-note,
-    .album-layout-notes .yearbook-flow-disclosure { margin: 0; }
-    .album-layout-notes .service-note span { font-size: var(--album-detail-size); }
 
     .album-shoot-capacity {
       display: grid;
@@ -265,7 +260,6 @@
       .album-table-grid { grid-template-columns: minmax(0, 1fr); }
     }
     @media (max-width: 620px) {
-      .album-layout-notes,
       .album-shoot-capacity,
       .album-reply-list,
       .album-production-grid,
@@ -342,29 +336,20 @@
                 </thead>
                 <tbody>
                   <tr><th scope="row">13–14 頁</th><td>個人便服照</td><td>3 張</td></tr>
-                  <tr><th scope="row">15–16 頁</th><td>工作照與上課照（方案三、四）<small>方案二此跨頁放個人便服照。</small></td><td>4 張</td></tr>
-                  <tr><th scope="row">17–18 頁</th><td>全班小組照</td><td>4 張</td></tr>
-                  <tr><th scope="row">19–20 頁</th><td>全班小組照</td><td>4 張</td></tr>
-                  <tr><th scope="row">21–22 頁</th><td>全班小組照</td><td>4 張</td></tr>
-                  <tr><th scope="row">23–24 頁</th><td>家庭生活照<small>可由家長提供原始檔。若方案有安排家庭照，也可使用當天拍攝的照片。</small></td><td>4 張</td></tr>
+                  <tr><th scope="row">15–20 頁</th><td>全班小組照（每一組都會收錄）</td><td>12 張</td></tr>
+                  <tr><th scope="row">21–22 頁</th><td>工作照與上課照（方案三、四）<small>方案一、二可由園方或家長提供自選照片，如家庭生活照或校園生活照。</small></td><td>4 張</td></tr>
+                  <tr><th scope="row">23–24 頁</th><td>家庭生活照<small>有安排家庭照拍攝時，使用當天的照片。未安排時，由家長提供原始檔。</small></td><td>4 張</td></tr>
                   <tr><th scope="row">封底</th><td>第二套服裝的班級大合照</td><td>1 張</td></tr>
                 </tbody>
               </table>
             </div>
 
-            <div class="album-layout-notes">
-              <div class="service-note" role="note">
-                <strong>小組照會拍到全班每一位孩子</strong>
-                <span>全班分組拍攝，每一組都會拍，並在 3 個跨頁、共 12 張小組照中呈現各組。</span>
+            <details class="yearbook-flow-disclosure">
+              <summary>相本材質與加頁規格</summary>
+              <div class="yearbook-flow-disclosure-body">
+                <p>直式 A4（21 × 29.7 cm），厚紙硬皮封面加亮膜，內頁為加厚銅西卡，含排版與樣本校稿。加 4 面（2 個跨頁）為 NT$200。</p>
               </div>
-
-              <details class="yearbook-flow-disclosure">
-                <summary>相本材質與加頁規格</summary>
-                <div class="yearbook-flow-disclosure-body">
-                  <p>直式 A4（21 × 29.7 cm），厚紙硬皮封面加亮膜，內頁為加厚銅西卡，含排版與樣本校稿。加 4 面（2 個跨頁）為 NT$200。</p>
-                </div>
-              </details>
-            </div>
+            </details>
           </article>
         </section>
 
@@ -379,7 +364,7 @@
               <li><strong>大合照</strong><span>開拍先集合全班，完成學士服與第二套服裝的大合照。</span></li>
               <li><strong>個人學士服照</strong><span>逐位拍攝，包含封面用的全身照。</span></li>
               <li><strong>個人便服照</strong><span>換上個人便服後，依班級名單逐位拍攝。</span></li>
-              <li><strong>小組照</strong><span>全班分組，每位孩子都會和同組同學一起拍。</span></li>
+              <li><strong>小組照</strong><span>全班分組拍攝。</span></li>
               <li><strong>工作照與上課照</strong><span>方案三、四才安排，依園方準備的課程或活動拍攝。</span></li>
               <li><strong>家庭照</strong><span>方案四或另有約定時安排，排在當天最後。</span></li>
             </ol>
