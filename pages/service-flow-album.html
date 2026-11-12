@@ -30,62 +30,273 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"畢業紀念冊製作流程｜24 面固定版型與畢業照拍攝順序｜小巴老師","headline":"畢業紀念冊製作流程｜24 面固定版型與畢業照拍攝順序｜小巴老師","description":"查看 24 面畢業紀念冊的固定跨頁與照片張數、兩套大合照服裝、標準拍攝順序，以及園方要提供的班級人數、服裝、拍攝地點與手機場地照。","url":"https://grad.8-ways.com/pages/service-flow-album.html","inLanguage":"zh-Hant","image":"https://grad.8-ways.com/assets/images/graduation-ceremony/graduation-ceremony-kid-prince-speech-01.jpg","isPartOf":{"@type":"WebSite","name":"小巴老師攝影團隊","url":"https://grad.8-ways.com/"},"provider":{"@type":"Organization","name":"小巴老師攝影團隊","url":"https://grad.8-ways.com/"},"areaServed":"台灣","serviceType":"畢業照拍攝與畢業紀念冊製作流程"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://grad.8-ways.com/"},{"@type":"ListItem","position":2,"name":"畢業照拍攝與畢業紀念冊製作流程","item":"https://grad.8-ways.com/pages/service-flow-album.html"}]}</script>
   <style>
-    .album-jump-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 16px;
+    .album-guide {
+      --album-gap: clamp(10px, 1.8vw, 18px);
+      --album-detail-size: .9375rem;
     }
-    .album-jump-links .btn { margin: 0; }
+    .album-guide .album-container { max-width: 1120px; }
+    .album-guide .yearbook-flow-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(18px, 4vw, 48px);
+      padding: clamp(20px, 3.6vw, 42px);
+    }
+    .album-guide .yearbook-flow-hero .kicker { margin: 0 0 8px; }
+    .album-guide h1 {
+      margin: 0 0 12px;
+      font-size: clamp(1.8rem, 3.8vw, 2.9rem);
+      line-height: 1.2;
+    }
+    .album-intro {
+      max-width: 36em;
+      margin: 0;
+      font-size: clamp(1rem, 1.4vw, 1.125rem);
+      line-height: 1.65;
+    }
+    .album-jump-links,
+    .album-table-grid,
+    .album-layout-notes,
+    .album-production-grid,
+    .album-faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--album-gap);
+    }
+    .album-jump-links .btn {
+      justify-content: center;
+      margin: 0;
+      padding: 10px 8px;
+      min-height: 46px;
+      font-size: var(--album-detail-size);
+      text-align: center;
+    }
+    .album-guide .yearbook-phase-section {
+      margin: clamp(20px, 3vw, 32px) 0;
+      padding: clamp(8px, 1.5vw, 16px);
+      scroll-margin-top: 92px;
+    }
+    .album-guide .yearbook-phase-section-header h2,
+    .album-guide .yearbook-flow-step > h2:first-child {
+      font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+      line-height: 1.3;
+    }
+    .album-guide .yearbook-flow-step {
+      padding: clamp(14px, 2.1vw, 24px);
+    }
     #phase-production-title { scroll-margin-top: 92px; }
+    .album-detail {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: var(--album-detail-size);
+      line-height: 1.6;
+    }
+    .album-spec {
+      margin: 0 0 5px;
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      font-weight: 600;
+    }
+    .album-spec strong { color: var(--phase-dark); }
+    .album-table-grid {
+      align-items: start;
+      margin: 16px 0;
+    }
     .album-layout {
       width: 100%;
-      margin: 14px 0 16px;
       border: 1px solid var(--line);
       border-collapse: collapse;
       background: var(--surface);
+      font-size: var(--album-detail-size);
+      line-height: 1.45;
     }
     .album-layout th, .album-layout td {
-      padding: 9px 12px;
+      padding: 9px 10px;
       border-bottom: 1px solid var(--line);
       text-align: left;
       vertical-align: top;
     }
     .album-layout thead th { background: var(--phase-shell); }
-    .album-layout tbody th { font-weight: 600; }
-    .album-layout th:first-child { white-space: nowrap; }
-    .album-layout tr > :last-child {
+    .album-layout th:first-child {
       width: 5.5em;
+      white-space: nowrap;
+    }
+    .album-layout tr > :last-child {
+      width: 4.75em;
+      color: var(--phase-dark);
+      font-weight: 700;
       text-align: center;
+      white-space: nowrap;
     }
     .album-layout td small {
       display: block;
+      margin-top: 2px;
       color: var(--text-muted);
+      font-size: .875rem;
+      line-height: 1.45;
     }
-    .album-shoot-order {
-      margin: 14px 0 16px;
-      padding-left: 1.65em;
+    .album-layout-notes { align-items: start; }
+    .album-layout-notes .service-note,
+    .album-layout-notes .yearbook-flow-disclosure { margin: 0; }
+    .album-layout-notes .service-note span { font-size: var(--album-detail-size); }
+
+    .album-shoot-capacity {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: center;
+      gap: var(--album-gap);
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--phase-shell);
     }
-    .album-shoot-order li { padding: 7px 0 7px 4px; }
-    .album-shoot-order li + li { border-top: 1px solid var(--line); }
-    .album-shoot-order span { display: block; }
-    @media (max-width: 560px) {
-      .album-layout { font-size: .9rem; }
+    .album-shoot-capacity p { margin: 0; }
+    .album-shoot-capacity p:first-child { font-weight: 650; }
+    .album-shoot-capacity strong {
+      color: var(--phase-dark);
+      font-size: 1.75rem;
+      line-height: 1;
+    }
+    .album-shoot-order, .album-reply-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--album-gap);
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .album-shoot-order { counter-reset: photo-step; }
+    .album-shoot-order li, .album-reply-list li {
+      min-width: 0;
+      padding: clamp(11px, 1.5vw, 16px);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+    .album-shoot-order li {
+      display: grid;
+      grid-template-columns: 1.55rem minmax(0, 1fr);
+      align-content: start;
+      column-gap: 8px;
+      row-gap: 5px;
+    }
+    .album-shoot-order li::before {
+      counter-increment: photo-step;
+      content: counter(photo-step);
+      display: grid;
+      place-items: center;
+      width: 1.55rem;
+      height: 1.55rem;
+      border-radius: 50%;
+      background: var(--phase-shell);
+      color: var(--phase-dark);
+      font-size: .875rem;
+      font-weight: 700;
+    }
+    .album-shoot-order strong { align-self: center; line-height: 1.35; }
+    .album-shoot-order span {
+      grid-column: 1 / -1;
+      color: var(--text-muted);
+      font-size: var(--album-detail-size);
+      line-height: 1.55;
+    }
+    .album-guide .album-reply-list h3 {
+      margin: 0 0 6px;
+      font-size: 1.125rem;
+      line-height: 1.35;
+      color: var(--phase-dark);
+    }
+    .album-reply-list p, .album-prep-list li {
+      margin: 0;
+      font-size: var(--album-detail-size);
+      line-height: 1.6;
+    }
+    .album-reply-action {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px 18px;
+      margin-top: 16px;
+    }
+    .album-reply-action .btn { margin: 0; }
+    .album-prep-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--album-gap);
+    }
+
+    .album-production-grid .yearbook-flow-step { margin: 0; }
+    .album-production-grid #step-07,
+    .album-faq-grid [id^="faq-"] { grid-column: 1 / -1; }
+    .album-guide .album-production-grid h3 {
+      margin: 0 0 8px;
+      color: var(--phase-dark);
+      font-size: clamp(1.0625rem, 1.8vw, 1.25rem);
+      line-height: 1.35;
+    }
+    .album-production-grid p { margin: 0; }
+    .album-production-grid p + p { margin-top: 8px; }
+    .album-guide .album-faq-grid {
+      align-items: start;
+      gap: 10px var(--album-gap);
+    }
+    .album-faq-grid details { margin: 0; }
+    .album-guide .yearbook-flow-disclosure summary,
+    .album-guide .yearbook-faq summary {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .album-guide details > summary::after {
+      content: "";
+      flex: 0 0 .45rem;
+      height: .45rem;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg);
+    }
+    .album-guide details[open] > summary::after { transform: rotate(225deg); }
+
+    @media (max-width: 880px) {
+      .album-guide .yearbook-flow-hero { grid-template-columns: minmax(0, 1fr); }
+      .album-table-grid { grid-template-columns: minmax(0, 1fr); }
+      .album-prep-list { grid-template-columns: minmax(0, 1fr); }
+    }
+    @media (max-width: 620px) {
+      .album-layout-notes,
+      .album-shoot-capacity,
+      .album-reply-list,
+      .album-production-grid,
+      .album-faq-grid { grid-template-columns: minmax(0, 1fr); }
+      .album-shoot-capacity { gap: 5px; }
+      .album-shoot-order { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .album-shoot-order li {
+        grid-template-columns: 1.3rem minmax(0, 1fr);
+        column-gap: 6px;
+      }
+      .album-shoot-order li::before {
+        width: 1.3rem;
+        height: 1.3rem;
+      }
+      .album-shoot-order strong { text-wrap: balance; }
       .album-layout th, .album-layout td { padding: 8px 6px; }
-      .album-layout tr > :last-child { width: 4.5em; }
+      .album-layout th:first-child { width: 4.75em; }
+      .album-layout tr > :last-child { width: 4em; }
     }
   </style>
 </head>
 <body>
   <div id="site-header-placeholder"></div>
 
-  <main class="subpage" id="top">
+  <main class="subpage album-guide" id="top">
     <section class="section tight">
-      <div class="container" style="max-width:920px">
+      <div class="container album-container">
         <div class="yearbook-flow-hero">
-          <p class="kicker" style="margin:0 0 8px">幼兒園畢業照攝影・畢業紀念冊</p>
-          <h1 style="margin-top:0">畢業紀念冊製作流程</h1>
-          <p>確認相本版型後，請回覆班級與人數、拍攝地點與手機照片，以及想穿的服裝。拍攝流程由小巴老師安排。</p>
+          <div>
+            <p class="kicker">幼兒園畢業照攝影</p>
+            <h1>畢業紀念冊製作流程</h1>
+            <p class="album-intro">確認相本版型後，回覆班級人數、拍攝地點與手機照片，以及想穿的服裝。拍攝流程由小巴老師安排。</p>
+          </div>
           <nav class="album-jump-links" aria-label="本頁快速導覽">
             <a class="btn ghost" href="#step-02">確認相本頁面</a>
             <a class="btn ghost" href="#step-03">看拍攝順序</a>
@@ -97,53 +308,72 @@
         <section class="yearbook-phase-section yearbook-phase-prep" aria-label="拍攝前的準備" id="phase-prep-title">
           <article class="yearbook-flow-step yearbook-phase-tone-1" id="step-02">
             <h2>確認畢業紀念冊的固定版型</h2>
-            <p><strong>直式 A4，內頁 24 面、共 12 個跨頁。</strong>一個跨頁就是攤開相本時看到的左右兩面。封面、封底另外計算。請確認下表的頁面內容和入冊張數，攝影團隊會照這份版型準備照片。</p>
+            <p class="album-spec">直式 A4・內頁 <strong>24 面</strong>・<strong>12 個跨頁</strong></p>
+            <p class="album-detail">跨頁是攤開相本時看到的左右兩面，封面與封底另外計算。攝影團隊依下表準備入冊照片。</p>
 
-            <table class="album-layout">
-              <thead>
-                <tr>
-                  <th scope="col">頁面</th>
-                  <th scope="col">入冊內容</th>
-                  <th scope="col">張數</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><th scope="row">封面</th><td>個人學士服全身照</td><td>1 張</td></tr>
-                <tr><th scope="row">1–2 頁</th><td>學士服大合照</td><td>2 張</td></tr>
-                <tr><th scope="row">3–4 頁</th><td>第二套服裝大合照<small>由園方決定穿制服、運動服或便服。</small></td><td>2 張</td></tr>
-                <tr><th scope="row">5–6 頁</th><td>芳名錄與老師的話<small>請園方提供學生姓名及老師的話。</small></td><td>依人數</td></tr>
-                <tr><th scope="row">7–8 頁</th><td>個人學士服照</td><td>3 張</td></tr>
-                <tr><th scope="row">9–10 頁</th><td>個人學士服照</td><td>3 張</td></tr>
-                <tr><th scope="row">11–12 頁</th><td>個人便服照</td><td>3 張</td></tr>
-                <tr><th scope="row">13–14 頁</th><td>個人便服照</td><td>3 張</td></tr>
-                <tr><th scope="row">15–16 頁</th><td>工作照與上課照（方案三、四）<small>方案二此跨頁放個人便服照。</small></td><td>4 張</td></tr>
-                <tr><th scope="row">17–18 頁</th><td>全班小組照</td><td>4 張</td></tr>
-                <tr><th scope="row">19–20 頁</th><td>全班小組照</td><td>4 張</td></tr>
-                <tr><th scope="row">21–22 頁</th><td>全班小組照</td><td>4 張</td></tr>
-                <tr><th scope="row">23–24 頁</th><td>家庭生活照<small>可由家長提供原始檔。若方案有安排家庭照，也可使用當天拍攝的照片。</small></td><td>4 張</td></tr>
-                <tr><th scope="row">封底</th><td>第二套服裝的班級大合照</td><td>1 張</td></tr>
-              </tbody>
-            </table>
-
-            <div class="service-note" role="note">
-              <strong>小組照會拍到全班每一位孩子</strong>
-              <span>全班分組拍攝，每一組都會拍，並在 3 個跨頁、共 12 張小組照中呈現各組。</span>
+            <div class="album-table-grid">
+              <table class="album-layout" aria-label="封面與第 1 至 12 頁">
+                <thead>
+                  <tr>
+                    <th scope="col">頁面</th>
+                    <th scope="col">入冊內容</th>
+                    <th scope="col">張數</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">封面</th><td>個人學士服全身照</td><td>1 張</td></tr>
+                  <tr><th scope="row">1–2 頁</th><td>學士服大合照</td><td>2 張</td></tr>
+                  <tr><th scope="row">3–4 頁</th><td>第二套服裝大合照<small>由園方決定穿制服、運動服或便服。</small></td><td>2 張</td></tr>
+                  <tr><th scope="row">5–6 頁</th><td>芳名錄與老師的話<small>請園方提供學生姓名及老師的話。</small></td><td>依人數</td></tr>
+                  <tr><th scope="row">7–8 頁</th><td>個人學士服照</td><td>3 張</td></tr>
+                  <tr><th scope="row">9–10 頁</th><td>個人學士服照</td><td>3 張</td></tr>
+                  <tr><th scope="row">11–12 頁</th><td>個人便服照</td><td>3 張</td></tr>
+                </tbody>
+              </table>
+              <table class="album-layout" aria-label="第 13 至 24 頁與封底">
+                <thead>
+                  <tr>
+                    <th scope="col">頁面</th>
+                    <th scope="col">入冊內容</th>
+                    <th scope="col">張數</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">13–14 頁</th><td>個人便服照</td><td>3 張</td></tr>
+                  <tr><th scope="row">15–16 頁</th><td>工作照與上課照（方案三、四）<small>方案二此跨頁放個人便服照。</small></td><td>4 張</td></tr>
+                  <tr><th scope="row">17–18 頁</th><td>全班小組照</td><td>4 張</td></tr>
+                  <tr><th scope="row">19–20 頁</th><td>全班小組照</td><td>4 張</td></tr>
+                  <tr><th scope="row">21–22 頁</th><td>全班小組照</td><td>4 張</td></tr>
+                  <tr><th scope="row">23–24 頁</th><td>家庭生活照<small>可由家長提供原始檔。若方案有安排家庭照，也可使用當天拍攝的照片。</small></td><td>4 張</td></tr>
+                  <tr><th scope="row">封底</th><td>第二套服裝的班級大合照</td><td>1 張</td></tr>
+                </tbody>
+              </table>
             </div>
 
-            <details class="yearbook-flow-disclosure">
-              <summary>相本材質與加頁規格</summary>
-              <div class="yearbook-flow-disclosure-body">
-                <p>直式 A4（21 × 29.7 cm），厚紙硬皮封面加亮膜，內頁為加厚銅西卡，含排版與樣本校稿。加 4 面（2 個跨頁）為 NT$200。</p>
+            <div class="album-layout-notes">
+              <div class="service-note" role="note">
+                <strong>小組照會拍到全班每一位孩子</strong>
+                <span>全班分組拍攝，每一組都會拍，並在 3 個跨頁、共 12 張小組照中呈現各組。</span>
               </div>
-            </details>
+
+              <details class="yearbook-flow-disclosure">
+                <summary>相本材質與加頁規格</summary>
+                <div class="yearbook-flow-disclosure-body">
+                  <p>直式 A4（21 × 29.7 cm），厚紙硬皮封面加亮膜，內頁為加厚銅西卡，含排版與樣本校稿。加 4 面（2 個跨頁）為 NT$200。</p>
+                </div>
+              </details>
+            </div>
           </article>
         </section>
 
         <section class="yearbook-phase-section yearbook-phase-shoot" aria-label="拍攝流程" id="phase-shoot-title">
           <article class="yearbook-flow-step yearbook-phase-tone-1" id="step-03">
             <h2>拍攝當天的標準順序</h2>
-            <p><strong>一天約安排 30 位畢業生。</strong>小巴老師會依人數、拍攝地點、換裝和園方作息排時段。各時段與所需時間皆為參考，當天會依現場狀況調整。</p>
-            <ol class="album-shoot-order">
+            <div class="album-shoot-capacity">
+              <p>一天約 <strong>30</strong> 位畢業生</p>
+              <p class="album-detail">小巴老師依人數、拍攝地點、換裝和園方作息排時段。各時段僅供參考，當天會依現場狀況調整。</p>
+            </div>
+            <ol class="album-shoot-order" role="list">
               <li><strong>大合照</strong><span>開拍先集合全班，完成學士服與第二套服裝的大合照。</span></li>
               <li><strong>個人學士服照</strong><span>逐位拍攝，包含封面用的全身照。</span></li>
               <li><strong>個人便服照</strong><span>換上個人便服後，依班級名單逐位拍攝。</span></li>
@@ -155,20 +385,29 @@
 
           <article class="yearbook-flow-step yearbook-phase-tone-1" id="step-01">
             <h2>園方只要回覆這三項</h2>
-            <ul class="yearbook-checklist">
-              <li><strong>班級與人數</strong>　請告訴我們有幾班、各班幾位，以及畢業生總人數。</li>
-              <li><strong>每個場景的地點與手機照片</strong>　例如大合照想在操場、學士服個人照想在教室、便服與小組照想在草地。請用手機拍各個場地的全景傳給小巴老師確認。</li>
-              <li><strong>想穿的服裝</strong>　請告訴我們大合照第二套要穿制服、運動服或便服，以及個人便服、小組照想穿的服裝。有想用的道具或作品，也可以一起告訴我們。</li>
+            <ul class="album-reply-list" role="list">
+              <li>
+                <h3>班級與人數</h3>
+                <p>請告訴我們有幾班、各班幾位，以及畢業生總人數。</p>
+              </li>
+              <li>
+                <h3>拍攝地點與手機照片</h3>
+                <p>請告訴我們各項想在哪裡拍，並附上手機拍的場地全景。例如大合照在操場、學士服照在教室、便服與小組照在草地。</p>
+              </li>
+              <li>
+                <h3>想穿的服裝</h3>
+                <p>請告訴我們大合照的第二套服裝，以及個人便服、小組照想穿什麼。有想用的道具或作品也可以一起告知。</p>
+              </li>
             </ul>
-            <p>把這些資料和照片傳到 LINE，小巴老師會排好當天的拍攝流程。</p>
-            <div class="actions">
+            <div class="album-reply-action">
+              <p class="album-detail">把資料和照片傳到 LINE，小巴老師會排好當天的拍攝流程。</p>
               <a class="btn primary" href="https://line.me/ti/p/~0911252302" target="_blank" rel="noopener noreferrer">用 LINE 回覆小巴老師</a>
             </div>
           </article>
 
           <article class="yearbook-flow-step yearbook-phase-tone-2" id="step-04">
             <h2>拍攝前與當天怎麼配合</h2>
-            <ul class="yearbook-checklist">
+            <ul class="yearbook-checklist album-prep-list">
               <li>請預留拍攝與候拍空間，並安排老師或家長協助帶隊、換裝與整理服裝。</li>
               <li>學士服內搭可避開高領和過長的袖口。戴畢業帽前，請先放下高馬尾。孩子是否戴眼鏡，可依拍攝項目事先告知。</li>
               <li>若有臨時缺席或身體不適，請由窗口告知攝影團隊。現場會視天氣、光線和孩子狀況調整節奏。</li>
@@ -181,31 +420,33 @@
             <div><h2 id="phase-production-title">拍攝後到交件</h2></div>
           </header>
 
-          <article class="yearbook-flow-step yearbook-phase-tone-1" id="step-05">
-            <h2>收到照片與入冊資料連結</h2>
-            <p>照片整理後會提供雲端下載連結。紀念冊方案也會提供線上挑片系統，方便查看預選照片、補充想入冊的照片或填寫頁面文字。雲端照片通常保留半年，建議用電腦完整下載備份。</p>
-          </article>
+          <div class="album-production-grid">
+            <article class="yearbook-flow-step yearbook-phase-tone-1" id="step-05">
+              <h3>收到照片與入冊資料連結</h3>
+              <p>照片整理後會提供雲端下載連結。紀念冊方案也會提供線上挑片系統，方便查看預選照片、補充想入冊的照片或填寫頁面文字。雲端照片通常保留半年，建議用電腦完整下載備份。</p>
+            </article>
 
-          <article class="yearbook-flow-step yearbook-phase-tone-1" id="step-06">
-            <h2>提供芳名錄與家庭生活照</h2>
-            <p>請窗口彙整各班的姓名與老師的話。家庭生活照若由家長提供，請準備每位孩子 4 張原始檔，可參考<a href="#photo-checklist">家庭照檔案準備說明</a>。</p>
-          </article>
+            <article class="yearbook-flow-step yearbook-phase-tone-1" id="step-06">
+              <h3>提供芳名錄與家庭生活照</h3>
+              <p>請窗口彙整各班的姓名與老師的話。家庭生活照若由家長提供，請準備每位孩子 4 張原始檔，可參考<a href="#photo-checklist">家庭照檔案準備說明</a>。</p>
+            </article>
 
-          <article class="yearbook-flow-step yearbook-phase-tone-2" id="step-07">
-            <h2>確認一本樣本相本</h2>
-            <p>設計師依固定版型製作一本樣本。請由窗口統一核對班級、姓名、文字和版面，彙整需要修正的地方後一次回覆。樣本定稿且素材齊備後，建議預留約一個月給全班排版、印刷和寄送。</p>
-            <p class="small">例如希望 6 月 15 日收到相本，建議最晚 5 月 15 日完成樣本定稿並交齊素材。</p>
-          </article>
+            <article class="yearbook-flow-step yearbook-phase-tone-2" id="step-07">
+              <h3>確認一本樣本相本</h3>
+              <p>設計師依固定版型製作一本樣本。請由窗口統一核對班級、姓名、文字和版面，彙整需要修正的地方後一次回覆。樣本定稿且素材齊備後，建議預留約一個月給全班排版、印刷和寄送。</p>
+              <p class="small">例如希望 6 月 15 日收到相本，建議最晚 5 月 15 日完成樣本定稿並交齊素材。</p>
+            </article>
 
-          <article class="yearbook-flow-step yearbook-phase-tone-3" id="step-08">
-            <h2>依定稿樣本製作全班相本</h2>
-            <p>全班相本沿用定稿版型製作，版面與文字的校稿集中在樣本階段。若有需補交的檔案，請由窗口統一提供學生姓名及對應照片。</p>
-          </article>
+            <article class="yearbook-flow-step yearbook-phase-tone-3" id="step-08">
+              <h3>依定稿樣本製作全班相本</h3>
+              <p>全班相本沿用定稿版型製作，版面與文字的校稿集中在樣本階段。若有需補交的檔案，請由窗口統一提供學生姓名及對應照片。</p>
+            </article>
 
-          <article class="yearbook-flow-step yearbook-phase-tone-4" id="step-09">
-            <h2>印刷與寄送</h2>
-            <p>全班相本製作完成後送印，成品寄到學校或事先約定的收件地點。請在樣本校稿時確認修改，送印後若需重製，可能另有費用及製作時間。</p>
-          </article>
+            <article class="yearbook-flow-step yearbook-phase-tone-4" id="step-09">
+              <h3>印刷與寄送</h3>
+              <p>全班相本製作完成後送印，成品寄到學校或事先約定的收件地點。請在樣本校稿時確認修改，送印後若需重製，可能另有費用及製作時間。</p>
+            </article>
+          </div>
         </section>
 
         <section class="yearbook-phase-section yearbook-phase-help" aria-labelledby="phase-help-title">
@@ -333,72 +574,74 @@
         <!-- FAQ -->
         <article class="yearbook-flow-step yearbook-faq yearbook-phase-tone-4" id="faq">
           <h2>常見問題</h2>
-          <details id="faq-layout-whitespace">
-            <summary>同一頁放幾張照片、直式或橫式，會影響留白嗎？</summary>
-            <div class="yearbook-faq-rich">
-              <p>會。紀念冊內頁為<strong>直式</strong>，同一頁若放<strong>兩張、三張或四張</strong>照片，再加上每張是<strong>橫式或直式</strong>，版位與<strong>空白面積</strong>會明顯不同。以下三圖示意「張數與直橫不同時，留白如何變化」（風格接近同一類美編；實際入冊仍依樣式與照片比例調整）。點圖可放大檢視。</p>
-              <div id="yearbook-faq-zoom-grid">
-                <div class="yearbook-three-compare">
+          <div class="album-faq-grid">
+            <details id="faq-layout-whitespace">
+              <summary>同一頁放幾張照片、直式或橫式，會影響留白嗎？</summary>
+              <div class="yearbook-faq-rich">
+                <p>會。紀念冊內頁為<strong>直式</strong>，同一頁若放<strong>兩張、三張或四張</strong>照片，再加上每張是<strong>橫式或直式</strong>，版位與<strong>空白面積</strong>會明顯不同。以下三圖示意「張數與直橫不同時，留白如何變化」（風格接近同一類美編；實際入冊仍依樣式與照片比例調整）。點圖可放大檢視。</p>
+                <div id="yearbook-faq-zoom-grid">
+                  <div class="yearbook-three-compare">
+                    <figure style="margin:0" class="yearbook-zoomable">
+                      <img src="/assets/images/graduation-album/graduation-yearbook-page-two-landscape-photos-vertical-stack.jpg" alt="幼兒園畢業紀念冊直式頁面示意：兩張橫式照片上下排列，留白較明顯" width="680" height="960" loading="lazy" decoding="async" class="flow-guide-image" />
+                      <figcaption class="small" style="text-align:center;margin-top:6px">兩張入冊（示意）</figcaption>
+                    </figure>
+                    <figure style="margin:0" class="yearbook-zoomable">
+                      <img src="/assets/images/graduation-album/graduation-yearbook-page-three-landscape-photos-stacked.jpg" alt="畢業紀念冊直式頁面示意：三張橫式照片堆疊，畫面較滿" width="678" height="960" loading="lazy" decoding="async" class="flow-guide-image" />
+                      <figcaption class="small" style="text-align:center;margin-top:6px">三張入冊（示意）</figcaption>
+                    </figure>
+                    <figure style="margin:0" class="yearbook-zoomable">
+                      <img src="/assets/images/graduation-album/graduation-yearbook-page-four-photos-mixed-orientation-collage.jpg" alt="畢業紀念冊直式頁面示意：四張直橫混搭拼貼" width="675" height="960" loading="lazy" decoding="async" class="flow-guide-image" />
+                      <figcaption class="small" style="text-align:center;margin-top:6px">四張入冊（示意）</figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </details>
+            <details>
+              <summary>園方需要自己排拍攝流程表嗎？</summary>
+              <p>園方只要提供班級與人數、各拍攝地點與手機照片，以及想穿的服裝。當天時段由小巴老師安排。</p>
+            </details>
+            <details>
+              <summary>樣本相本確認後，其他學生還可以再校稿嗎？</summary>
+              <p>樣本相本確認後，會作為全校統一版型。其他學生相本會依樣本套版製作，通常不再逐本個別校稿。</p>
+            </details>
+            <details>
+              <summary>家長提供的家庭照有什麼限制？</summary>
+              <p>請提供至少 1MB 以上的原始高解析照片，並盡量使用手機或相機原始檔、雲端原圖下載。請避免從 LINE、Facebook 等通訊軟體另存壓縮檔再提供，否則印刷後可能模糊或起格。</p>
+            </details>
+            <details id="faq-photo-edge-crop">
+              <summary>家長提供的照片注意事項，人物避免太貼近邊緣</summary>
+              <div class="yearbook-faq-rich">
+                <p>不建議。相本內頁的<strong>圖框入冊時約有 10% 的邊緣裁切</strong>（出血／安全區），若人物臉部、手部或身體<strong>過於貼近照片邊緣</strong>，排版後容易在成品上被切到。這在家長自拍的合影中特別常見。請盡量選擇人物四周留有餘裕的照片；若只有邊緣構圖的畫面，可改選其他張或重新拍攝。點圖可放大檢視。</p>
+                <div id="yearbook-faq-edge-crop-grid" class="yearbook-two-compare">
                   <figure style="margin:0" class="yearbook-zoomable">
-                    <img src="/assets/images/graduation-album/graduation-yearbook-page-two-landscape-photos-vertical-stack.jpg" alt="幼兒園畢業紀念冊直式頁面示意：兩張橫式照片上下排列，留白較明顯" width="680" height="960" loading="lazy" decoding="async" class="flow-guide-image" />
-                    <figcaption class="small" style="text-align:center;margin-top:6px">兩張入冊（示意）</figcaption>
+                    <img src="/assets/images/graduation-album/graduation-yearbook-family-photo-subjects-too-close-to-edge-original.jpg" alt="幼兒園畢業紀念冊家庭照挑選注意：家長提供的合影，人物臉部與手部過於貼近照片右側與下緣" title="家長提供家庭照示範：人物過於貼近畫面邊緣" width="720" height="960" loading="lazy" decoding="async" class="flow-guide-image" />
+                    <figcaption class="small" style="text-align:center;margin-top:6px">提供的照片（人物貼邊）</figcaption>
                   </figure>
                   <figure style="margin:0" class="yearbook-zoomable">
-                    <img src="/assets/images/graduation-album/graduation-yearbook-page-three-landscape-photos-stacked.jpg" alt="畢業紀念冊直式頁面示意：三張橫式照片堆疊，畫面較滿" width="678" height="960" loading="lazy" decoding="async" class="flow-guide-image" />
-                    <figcaption class="small" style="text-align:center;margin-top:6px">三張入冊（示意）</figcaption>
-                  </figure>
-                  <figure style="margin:0" class="yearbook-zoomable">
-                    <img src="/assets/images/graduation-album/graduation-yearbook-page-four-photos-mixed-orientation-collage.jpg" alt="畢業紀念冊直式頁面示意：四張直橫混搭拼貼" width="675" height="960" loading="lazy" decoding="async" class="flow-guide-image" />
-                    <figcaption class="small" style="text-align:center;margin-top:6px">四張入冊（示意）</figcaption>
+                    <img src="/assets/images/graduation-album/graduation-yearbook-family-photo-edge-crop-yearbook-layout-example.jpg" alt="幼兒園畢業紀念冊入冊示意：同一張家庭照排版後，因圖框約10%邊緣裁切，右側與下方人物遭切到" title="畢業紀念冊入冊示範：圖框約10%裁切後人物遭切到" width="770" height="960" loading="lazy" decoding="async" class="flow-guide-image" />
+                    <figcaption class="small" style="text-align:center;margin-top:6px">入冊排版後實際呈現</figcaption>
                   </figure>
                 </div>
               </div>
-            </div>
-          </details>
-          <details>
-            <summary>園方需要自己排拍攝流程表嗎？</summary>
-            <p>園方只要提供班級與人數、各拍攝地點與手機照片，以及想穿的服裝。當天時段由小巴老師安排。</p>
-          </details>
-          <details>
-            <summary>樣本相本確認後，其他學生還可以再校稿嗎？</summary>
-            <p>樣本相本確認後，會作為全校統一版型。其他學生相本會依樣本套版製作，通常不再逐本個別校稿。</p>
-          </details>
-          <details>
-            <summary>家長提供的家庭照有什麼限制？</summary>
-            <p>請提供至少 1MB 以上的原始高解析照片，並盡量使用手機或相機原始檔、雲端原圖下載。請避免從 LINE、Facebook 等通訊軟體另存壓縮檔再提供，否則印刷後可能模糊或起格。</p>
-          </details>
-          <details id="faq-photo-edge-crop">
-            <summary>家長提供的照片注意事項，人物避免太貼近邊緣</summary>
-            <div class="yearbook-faq-rich">
-              <p>不建議。相本內頁的<strong>圖框入冊時約有 10% 的邊緣裁切</strong>（出血／安全區），若人物臉部、手部或身體<strong>過於貼近照片邊緣</strong>，排版後容易在成品上被切到。這在家長自拍的合影中特別常見。請盡量選擇人物四周留有餘裕的照片；若只有邊緣構圖的畫面，可改選其他張或重新拍攝。點圖可放大檢視。</p>
-              <div id="yearbook-faq-edge-crop-grid" class="yearbook-two-compare">
-                <figure style="margin:0" class="yearbook-zoomable">
-                  <img src="/assets/images/graduation-album/graduation-yearbook-family-photo-subjects-too-close-to-edge-original.jpg" alt="幼兒園畢業紀念冊家庭照挑選注意：家長提供的合影，人物臉部與手部過於貼近照片右側與下緣" title="家長提供家庭照示範：人物過於貼近畫面邊緣" width="720" height="960" loading="lazy" decoding="async" class="flow-guide-image" />
-                  <figcaption class="small" style="text-align:center;margin-top:6px">提供的照片（人物貼邊）</figcaption>
-                </figure>
-                <figure style="margin:0" class="yearbook-zoomable">
-                  <img src="/assets/images/graduation-album/graduation-yearbook-family-photo-edge-crop-yearbook-layout-example.jpg" alt="幼兒園畢業紀念冊入冊示意：同一張家庭照排版後，因圖框約10%邊緣裁切，右側與下方人物遭切到" title="畢業紀念冊入冊示範：圖框約10%裁切後人物遭切到" width="770" height="960" loading="lazy" decoding="async" class="flow-guide-image" />
-                  <figcaption class="small" style="text-align:center;margin-top:6px">入冊排版後實際呈現</figcaption>
-                </figure>
-              </div>
-            </div>
-          </details>
-          <details>
-            <summary>修圖包含哪些內容？</summary>
-            <p>一般可處理蚊子咬、小傷口、痘痘、輕微髒污與局部雜物去除。瘀青可淡化，但不一定能修除。大面積胎記為先天特徵，無法修圖。</p>
-          </details>
-          <details>
-            <summary>可以修笑容或表情嗎？</summary>
-            <p>不包含修飾表情與笑容。若大合照中有表情不佳，可視是否有同角度照片評估換頭，但並非所有照片都能處理。</p>
-          </details>
-          <details>
-            <summary>為什麼家長代表統籌可能會比較花時間？</summary>
-            <p>若由家長代表統籌畢業紀念冊製作，通常需要整合多位家長意見，流程可能比學校單一窗口更花時間。建議由一位窗口統一整理意見後再回覆，並盡早排定校稿時程。</p>
-          </details>
-          <details>
-            <summary>如果想在畢業典禮前拿到紀念冊，要注意什麼？</summary>
-            <p>請盡早完成樣本校稿、交齊芳名錄與所需照片，再預留約一個月給排版、印刷與寄送。</p>
-          </details>
+            </details>
+            <details>
+              <summary>修圖包含哪些內容？</summary>
+              <p>一般可處理蚊子咬、小傷口、痘痘、輕微髒污與局部雜物去除。瘀青可淡化，但不一定能修除。大面積胎記為先天特徵，無法修圖。</p>
+            </details>
+            <details>
+              <summary>可以修笑容或表情嗎？</summary>
+              <p>不包含修飾表情與笑容。若大合照中有表情不佳，可視是否有同角度照片評估換頭，但並非所有照片都能處理。</p>
+            </details>
+            <details>
+              <summary>為什麼家長代表統籌可能會比較花時間？</summary>
+              <p>若由家長代表統籌畢業紀念冊製作，通常需要整合多位家長意見，流程可能比學校單一窗口更花時間。建議由一位窗口統一整理意見後再回覆，並盡早排定校稿時程。</p>
+            </details>
+            <details>
+              <summary>如果想在畢業典禮前拿到紀念冊，要注意什麼？</summary>
+              <p>請盡早完成樣本校稿、交齊芳名錄與所需照片，再預留約一個月給排版、印刷與寄送。</p>
+            </details>
+          </div>
         </article>
 
         </section>
